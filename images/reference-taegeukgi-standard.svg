@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#fff"/>
+  <g transform="translate(450 300) rotate(33.6900675)">
+    <circle r="120" fill="#0047a0"/>
+    <path d="M-120 0A120 120 0 0 1 120 0L-120 0Z" fill="#cd2e3a"/>
+    <circle cx="60" cy="0" r="60" fill="#cd2e3a"/>
+    <circle cx="-60" cy="0" r="60" fill="#0047a0"/>
+  </g>
+  <!-- Geon: upper-left, solid / solid / solid -->
+  <g transform="translate(245 165) rotate(-33.6900675)" fill="#111">
+    <rect x="-68" y="-31" width="136" height="18"/><rect x="-68" y="-9" width="136" height="18"/><rect x="-68" y="13" width="136" height="18"/>
+  </g>
+  <!-- Gam: upper-right, broken / solid / broken -->
+  <g transform="translate(655 165) rotate(33.6900675)" fill="#111">
+    <rect x="-68" y="-31" width="59" height="18"/><rect x="9" y="-31" width="59" height="18"/>
+    <rect x="-68" y="-9" width="136" height="18"/>
+    <rect x="-68" y="13" width="59" height="18"/><rect x="9" y="13" width="59" height="18"/>
+  </g>
+  <!-- Ri: lower-left, solid / broken / solid -->
+  <g transform="translate(245 435) rotate(33.6900675)" fill="#111">
+    <rect x="-68" y="-31" width="136" height="18"/>
+    <rect x="-68" y="-9" width="59" height="18"/><rect x="9" y="-9" width="59" height="18"/>
+    <rect x="-68" y="13" width="136" height="18"/>
+  </g>
+  <!-- Gon: lower-right, broken / broken / broken -->
+  <g transform="translate(655 435) rotate(-33.6900675)" fill="#111">
+    <rect x="-68" y="-31" width="59" height="18"/><rect x="9" y="-31" width="59" height="18"/>
+    <rect x="-68" y="-9" width="59" height="18"/><rect x="9" y="-9" width="59" height="18"/>
+    <rect x="-68" y="13" width="59" height="18"/><rect x="9" y="13" width="59" height="18"/>
+  </g>
+</svg>
