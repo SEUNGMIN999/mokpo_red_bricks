@@ -481,16 +481,18 @@ button{touch-action:manipulation}
   background:linear-gradient(180deg,rgba(3,3,3,.96),rgba(14,11,8,.82) 72%,transparent);border-bottom:1px solid rgba(204,174,107,.18)}
 .patrol-track::before{content:"";position:absolute;left:7%;right:7%;bottom:17px;border-top:1px dashed rgba(233,217,174,.2)}
 .patrol-track::after{content:"";position:absolute;left:50%;bottom:13px;width:6px;height:6px;border-radius:50%;background:#b44734;box-shadow:0 0 11px #d94d35}
-.patrol-icon{position:absolute;top:7px;left:50%;z-index:2;width:46px;height:72px;transform:translateX(-50%);transition:left .15s linear,filter .16s;filter:drop-shadow(0 7px 7px #000)}
-.patrol-icon .cap{position:absolute;left:5px;top:1px;width:36px;height:12px;border-radius:55% 55% 3px 3px;background:linear-gradient(#202425,#07090a);border-bottom:3px solid #742019;box-shadow:0 -3px 0 #303536}
-.patrol-icon .cap::before{content:"";position:absolute;left:-3px;right:-5px;bottom:-4px;height:4px;border-radius:50%;background:#080909}
+.patrol-icon{position:absolute;top:7px;left:50%;z-index:2;width:46px;height:72px;transform:translateX(-50%);transition:left .15s linear,filter .16s;filter:drop-shadow(0 7px 7px #000);animation:patrolBob .42s ease-in-out infinite}
+@keyframes patrolBob{0%,100%{transform:translateX(-50%) translateY(0) rotate(0deg)}50%{transform:translateX(-50%) translateY(-2px) rotate(1deg)}}
+.patrol-icon .cap{position:absolute;left:5px;top:1px;width:36px;height:12px;border-radius:55% 55% 3px 3px;background:linear-gradient(100deg,#2a2f30 0%,#202425 45%,#07090a 100%);border-bottom:3px solid #742019;box-shadow:0 -3px 0 #303536,inset 0 1px 1px rgba(255,255,255,.12)}
+.patrol-icon .cap::before{content:"";position:absolute;left:-3px;right:-5px;bottom:-4px;height:4px;border-radius:50%;background:#080909;box-shadow:0 1px 2px rgba(0,0,0,.6)}
 .patrol-icon .cap::after{content:"";position:absolute;left:15px;top:2px;width:7px;height:6px;border-radius:50%;background:#c3a04a;box-shadow:0 0 5px rgba(221,183,86,.5)}
-.patrol-icon .head{position:absolute;left:11px;top:15px;width:24px;height:18px;border-radius:40% 45% 48% 45%;background:linear-gradient(90deg,#81583e,#b37b56 52%,#70462f);box-shadow:inset -5px 0 5px rgba(0,0,0,.28)}
+.patrol-icon .head{position:absolute;left:11px;top:15px;width:24px;height:18px;border-radius:40% 45% 48% 45%;background:linear-gradient(90deg,#81583e,#b37b56 52%,#70462f);box-shadow:inset -5px 0 5px rgba(0,0,0,.28),inset 3px -2px 4px rgba(255,214,168,.16)}
 .patrol-icon .head::after{content:"";position:absolute;right:-3px;top:8px;width:8px;height:3px;background:#2b1a12;border-radius:60%}
-.patrol-icon .body{position:absolute;left:5px;top:31px;width:36px;height:32px;border-radius:8px 8px 2px 2px;background:linear-gradient(90deg,#111414,#303638 47%,#0b0d0d);border-bottom:5px solid #6b4a28;box-shadow:inset 0 0 8px #050505}
+.patrol-icon .body{position:absolute;left:5px;top:31px;width:36px;height:32px;border-radius:8px 8px 2px 2px;background:linear-gradient(90deg,#111414,#303638 47%,#0b0d0d);border-bottom:5px solid #6b4a28;box-shadow:inset 0 0 8px #050505,inset 0 2px 2px rgba(255,255,255,.08)}
 .patrol-icon .body::before{content:"";position:absolute;left:16px;top:2px;width:2px;height:24px;background:#777;opacity:.4}
 .patrol-icon .body::after{content:"";position:absolute;right:-7px;top:12px;width:4px;height:33px;background:linear-gradient(#aab0ac,#626766);transform:rotate(-10deg);box-shadow:0 0 3px #000}
-.patrol-icon .legs{position:absolute;left:9px;top:62px;width:28px;height:10px;border-left:9px solid #0c0e0e;border-right:9px solid #0c0e0e;box-sizing:border-box}
+.patrol-icon .legs{position:absolute;left:9px;top:62px;width:28px;height:10px;border-left:9px solid #0c0e0e;border-right:9px solid #0c0e0e;box-sizing:border-box;animation:legStride .42s ease-in-out infinite}
+@keyframes legStride{0%,100%{transform:skewX(-7deg)}50%{transform:skewX(7deg)}}
 .patrol-icon .beam{position:absolute;right:36px;top:28px;width:185px;height:64px;opacity:.34;pointer-events:none;
   background:linear-gradient(90deg,rgba(255,248,207,.04),rgba(255,236,160,.5));clip-path:polygon(100% 43%,0 0,0 100%);transform-origin:right center;animation:patrolBeam 1.05s ease-in-out infinite alternate}
 .flag-stealth[data-side="right"] .patrol-icon .beam{right:auto;left:36px;transform:scaleX(-1);transform-origin:left center}
@@ -508,10 +510,19 @@ button{touch-action:manipulation}
 .hidden-flag::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(3deg,transparent 0 12px,rgba(78,54,32,.08) 13px 14px);mix-blend-mode:multiply;pointer-events:none}
 .hidden-flag svg{width:100%;height:100%;display:block}
 .sewing-hands{position:absolute;z-index:4;left:-27px;right:-27px;bottom:17px;height:54px;pointer-events:none}
-.sewing-hand{position:absolute;bottom:0;width:70px;height:34px;border-radius:48% 50% 42% 48%;
-  background:repeating-linear-gradient(97deg,transparent 0 9px,rgba(61,35,24,.24) 10px 11px),linear-gradient(135deg,#8c654d,#b48768 44%,#654331);box-shadow:0 5px 8px #000,inset -8px -5px 9px rgba(60,32,19,.3)}
+.sewing-hand{position:absolute;bottom:0;width:70px;height:34px;border-radius:46% 52% 40% 44%;
+  background:repeating-linear-gradient(97deg,transparent 0 9px,rgba(61,35,24,.24) 10px 11px),linear-gradient(135deg,#8c654d,#b48768 44%,#654331);box-shadow:0 5px 8px #000,inset -8px -5px 9px rgba(60,32,19,.3),inset 0 3px 3px rgba(255,220,185,.14)}
 .sewing-hand.left{left:0;transform:rotate(-12deg)}.sewing-hand.right{right:0;transform:rotate(12deg)}
-.sewing-hand::before{content:"";position:absolute;top:7px;width:60px;height:12px;border-radius:50%;background:repeating-linear-gradient(97deg,transparent 0 8px,rgba(61,35,24,.23) 9px 10px),linear-gradient(135deg,#9a6e51,#b98a69)}
+.sewing-hand::before{content:"";position:absolute;top:5px;width:62px;height:15px;border-radius:52% 52% 30% 30%;
+  background:
+    radial-gradient(circle at 9px 11px, rgba(40,20,12,.28) 0 3px, transparent 5px),
+    radial-gradient(circle at 23px 9px, rgba(40,20,12,.24) 0 3px, transparent 5px),
+    radial-gradient(circle at 37px 9px, rgba(40,20,12,.24) 0 3px, transparent 5px),
+    radial-gradient(circle at 51px 11px, rgba(40,20,12,.26) 0 3px, transparent 5px),
+    radial-gradient(circle at 30px 3px, rgba(255,232,205,.22) 0 5px, transparent 8px),
+    repeating-linear-gradient(97deg,transparent 0 8px,rgba(61,35,24,.23) 9px 10px),
+    linear-gradient(135deg,#9a6e51,#b98a69);
+  box-shadow:inset 0 -3px 4px rgba(40,20,12,.22)}
 .sewing-hand.left::after{content:"";position:absolute;left:54px;top:-15px;width:2px;height:45px;background:#c8c5b5;transform:rotate(35deg);box-shadow:0 0 3px #000}
 .thread-stitch{position:absolute;z-index:3;left:31px;right:30px;bottom:21px;border-top:1px dashed rgba(83,42,29,.72);opacity:.68}
 .flag-date{position:absolute;z-index:4;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;color:#7e2019;
@@ -2524,7 +2535,7 @@ function buildScreens(){
       <h2>이동하는 신호</h2>
       <div class="signal-telegram">
         <span>윤식 · 긴급 전보</span>
-        <strong>「명부를 옮길 연락책이 이미 출발했소.<br>바퀴 소리를 따라 이동 수단을 찾아 주시오.」</strong>
+        <strong>「명부를 옮기려던 연락책이 순사의 눈을 피해 몸을 숨겼소.<br>명부는 아직 그의 손에 있으니, 바퀴 소리를 따라 이동 수단을 직접 찾아 주시오!」</strong>
       </div>
       <p class="signal-lines">
         검거 지시서가 재로 사라진 순간, 윤식과의 교신이 뚝 끊겼다.<br>
