@@ -1168,7 +1168,22 @@ input[type=range]#t-range{
 /* 후일담·기록 화면 */
 .center-col{justify-content:center}
 #scr-epilogue .narr-block{min-height:0;text-align:center}
+#scr-epilogue>*:not(.brick-rise-bg){position:relative;z-index:1}
 #scr-record .end-credit{margin-top:22px}
+
+/* 붉은 벽돌이 쌓이는 후일담 배경 */
+.brick-rise-bg{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;opacity:.5;pointer-events:none}
+.brick-rise-bg .brow{
+  flex:1;opacity:0;transform:translateY(10px);border-top:1px solid rgba(0,0,0,.35);
+  background:repeating-linear-gradient(90deg,var(--brick) 0 36px, rgba(0,0,0,.4) 36px 39px);
+}
+.brick-rise-bg.on .brow{animation:brickRiseRow .8s ease forwards}
+.brick-rise-bg .brow:nth-child(even){background-position:18px 0}
+@keyframes brickRiseRow{to{opacity:1;transform:none}}
+.brick-moral{
+  margin-top:16px;padding:16px 14px;border:1px solid rgba(210,173,94,.4);border-radius:6px;
+  background:rgba(10,7,5,.72);font-size:14.5px;line-height:2.05;
+}
 
 /* ---------- 전시 안내판 ---------- */
 .sign-plaque{
@@ -1681,7 +1696,8 @@ const CONFIG = {
     message: "스무 해 전, 당신 덕분에 검거 명령서를 불태울 수 있었소.\n동지들은 몸을 피할 시간을 얻었고,\n나는 살아서 다시 그대에게 신호를 보냈소.\n\n하지만 1940년대의 목포에서는\n나 역시 영장 한 장에 끌려가 저 굴을 팠고,\n이름조차 남기지 못한 이들의 고통이 그곳에 묻혀 있소.\n내가 보낸 기록을 그대의 시대에 남겨 주시오.\n\n이제 전신선을 끊어야 하오.\n놈들이 신호를 추적하고 있으니…\n\n마지막으로 하나만 묻겠소.\n스무 해 뒤에도 내가 지키려 했던 목포는,\n그대의 시대에는 평화로운가요?",
     sign: "― 스무 해 뒤, 1940년대 목포에서 윤식",
     replyPrompt: "전신선이 끊어지기 전, 스무 해를 견뎌 다시 돌아온 윤식에게 짧은 답장을 보낼 수 있다. 무엇이라 답하겠는가?",
-    epilogue: "…송신 완료. 윤식의 마지막 신호가 끊겼다. 현재의 전시실만 조용히 남았다.\n\n1920년의 젊은 서기와 1940년대 방공호의 지친 목소리는 같은 사람이었다. 스무 해 동안 윤식은 이름을 지키고, 다시 기록을 미래로 보내기 위해 버텼다.\n\n기록 어디에도 '윤식'이라는 이름은 남아 있지 않다. 그러나 이름을 남기지 못한 수많은 사람이 각자의 자리에서 역사를 견디고 지켜 냈다는 사실은 남아 있다.\n\n붉은 벽돌과 어두운 굴은 서로 다른 시대의 이야기를 기억한다. 우리가 그 이야기를 기억하는 한, 그들의 시간은 사라지지 않을 것이다.",
+    epilogue: "…송신 완료. 윤식의 마지막 신호가 끊겼다. 현재의 전시실만 조용히 남았다.\n\n1920년의 젊은 서기와 1940년대 방공호의 지친 목소리는 같은 사람이었다. 스무 해 동안 윤식은 이름을 지키고, 다시 기록을 미래로 보내기 위해 버텼다.\n\n기록 어디에도 '윤식'이라는 이름은 남아 있지 않다. 그러나 이름을 남기지 못한 수많은 사람이 각자의 자리에서 역사를 견디고 지켜 냈다는 사실은 남아 있다.",
+    brickMoral: "벽돌은 부서지지 않았다. 다만 그 위에 여러 시대의 아픔과 기억이 겹겹이 쌓였을 뿐이다.\n\n가장 단단했던 것은 벽돌이 아니라, 그 곁을 끝까지 지켜낸 사람들의 마음이었다.\n\n오늘 우리가 딛고 선 이 자리도, 누군가 지켜낸 시간 위에 놓여 있다.\n\n결국 부서진 것은 벽돌이 아니라, 그들을 잊으려 했던 시간이었다 ― 우리가 잊지 않는 한, 그 시간도 헛되지 않다.",
     credit: "이 게임의 무대인 목포근대역사관 1관(구 목포일본영사관, 1920년 당시 목포부청사)과 뒤편 방공호에는 일제강점기의 아픈 역사가 남아 있습니다. 오늘의 평화로운 목포는 이름 없이 스러져 간 이들의 헌신 위에 서 있습니다. 이야기는 실제 역사적 장소와 사건에서 출발했으며, 윤식과 비밀 작전, 검거 대상 지시서와 시간을 잇는 통신 장치는 이야기를 위해 구성한 인물과 장치입니다."
   }
 };
@@ -2523,8 +2539,10 @@ function buildScreens(){
   const epi = document.createElement('div');
   epi.className = 'screen center-col'; epi.id = 'scr-epilogue';
   epi.innerHTML = `
+    <div class="brick-rise-bg" id="brick-rise-bg" aria-hidden="true"></div>
     <div class="narr-block" id="epi-body"></div>
-    <button class="btn" id="btn-epi-next" style="visibility:hidden">임무 기록 확인</button>`;
+    <div class="narr-block brick-moral" id="brick-moral"></div>
+    <button class="btn" id="btn-epi-next" style="visibility:hidden">업적 확인하기</button>`;
   app.appendChild(epi);
 
   /* --- 임무 기록 --- */
@@ -3361,6 +3379,15 @@ function openHint(i){
   else btn.textContent = `🔍 힌트 보기 (${state.hintOpened[i]}/3)`;
 }
 
+/* ---------- 후일담 배경 : 붉은 벽돌이 아래에서부터 쌓여 올라오는 연출 ---------- */
+function buildBrickRiseBg(el, rows=9){
+  if(!el) return;
+  el.innerHTML = Array.from({length:rows}, (_,i)=>{
+    const delay = ((rows-1-i)*0.12).toFixed(2);
+    return `<div class="brow" style="animation-delay:${delay}s"></div>`;
+  }).join('');
+}
+
 /* ---------- 낡은 지도 : 다음 목적지(2층 계단) 표시 ---------- */
 function renderFloorMap(){
   const wrap = $('#inter-map');
@@ -3727,6 +3754,22 @@ async function finishGame(){
     await replyModal();
     /* ④ 전신선 단절 → 현재 역사관의 아침 */
     await playEndingDisconnect();
+    /* ④-2 후일담 + 붉은 벽돌이 쌓이는 배경 위로 떠오르는 마지막 말 */
+    show('#scr-epilogue');
+    buildBrickRiseBg($('#brick-rise-bg'));
+    $('#brick-rise-bg').classList.remove('on');
+    $('#epi-body').textContent = '';
+    $('#brick-moral').textContent = '';
+    $('#brick-moral').style.opacity = 0;
+    await typewrite($('#epi-body'), CONFIG.ending.epilogue, 32);
+    await delay(500);
+    $('#brick-rise-bg').classList.add('on');
+    await delay(700);
+    $('#brick-moral').style.opacity = 1;
+    await typewrite($('#brick-moral'), CONFIG.ending.brickMoral, 34);
+    const epiBtn = $('#btn-epi-next');
+    epiBtn.style.visibility = 'visible';
+    await waitClick(epiBtn);
     /* ⑤ 작전 기록 */
     show('#scr-record');
     loadMedia($('#record-media'), CONFIG.media && CONFIG.media.recordImage);
