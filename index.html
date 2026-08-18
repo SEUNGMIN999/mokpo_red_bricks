@@ -1753,6 +1753,13 @@ function buzz(p){ if(navigator.vibrate) try{ navigator.vibrate(p); }catch(e){} }
 /* ---------- 효과음 (외부 파일 없이 WebAudio 사용) ---------- */
 let AC = null;
 function audio(){ if(!AC){ try{ AC = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } return AC; }
+/* 모바일에서 재생이 끝난 오디오 노드가 오래 쌓이면 장시간 플레이 시 점점 느려지다 멈추는
+   원인이 될 수 있어, stop() 이후 명시적으로 disconnect()까지 해서 확실히 해제한다. */
+function disposeNodesOnEnd(endingNode, ...nodes){
+  const cleanup = ()=>{ nodes.forEach(n=>{ try{ n.disconnect(); }catch(e){} }); };
+  try{ endingNode.addEventListener('ended', cleanup, {once:true}); }
+  catch(e){ setTimeout(cleanup, 4000); }
+}
 function tone(freq, dur=0.15, type='sine', vol=0.12, when=0){
   if(state.muted) return;
   const ac = audio(); if(!ac) return;
@@ -1762,6 +1769,7 @@ function tone(freq, dur=0.15, type='sine', vol=0.12, when=0){
   g.gain.exponentialRampToValueAtTime(0.0001, ac.currentTime + when + dur);
   o.connect(g).connect(ac.destination);
   o.start(ac.currentTime + when); o.stop(ac.currentTime + when + dur + .02);
+  disposeNodesOnEnd(o, o, g);
 }
 function noiseBurst(dur=.3, vol=.06, cutoff=700, when=0){
   if(state.muted) return;
@@ -1776,6 +1784,7 @@ function noiseBurst(dur=.3, vol=.06, cutoff=700, when=0){
   gain.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+when+dur);
   src.connect(filter).connect(gain).connect(ac.destination);
   src.start(ac.currentTime+when); src.stop(ac.currentTime+when+dur+.03);
+  disposeNodesOnEnd(src, src, filter, gain);
 }
 function sweepTone(from,to,dur=.5,type='sawtooth',vol=.04,when=0){
   if(state.muted) return;
@@ -1786,6 +1795,7 @@ function sweepTone(from,to,dur=.5,type='sawtooth',vol=.04,when=0){
   gain.gain.setValueAtTime(vol,ac.currentTime+when);
   gain.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+when+dur);
   o.connect(gain).connect(ac.destination);o.start(ac.currentTime+when);o.stop(ac.currentTime+when+dur+.03);
+  disposeNodesOnEnd(o, o, gain);
 }
 function playDoorOpenSfx(){
   /* 잠금쇠 철컥 → 낡은 돌쩌귀 마찰 → 무거운 목문이 열리는 저음 */
@@ -1836,6 +1846,7 @@ function bgmPhrase(master,preset,token){
     const o=ac.createOscillator(),g=ac.createGain();o.type=i%2?'sine':'triangle';o.frequency.value=freq;
     g.gain.setValueAtTime(.0001,start+i*.42);g.gain.exponentialRampToValueAtTime(.022,start+i*.42+.08);g.gain.exponentialRampToValueAtTime(.0001,start+i*.42+1.55);
     o.connect(g).connect(master);o.start(start+i*.42);o.stop(start+i*.42+1.65);
+    disposeNodesOnEnd(o, o, g);
   });
 }
 function launchBgm(theme=BGM.theme){
@@ -2943,6 +2954,12 @@ function mgSneak(i){
     window.removeEventListener('message', onStealthComplete);
     sfx.found(); buzz([80,60,80]);
     unlockQuiz(i, '◈ 잠입 성공! 순사의 눈을 피했다. 이제 건물 정면을 관찰하라.');
+    /* 완료 후에도 iframe이 DOM에 남아 내부 타이머/애니메이션 루프가 백그라운드에서
+       계속 돌면 플레이 시간이 길어질수록 기기가 점점 느려지다 멈출 수 있다.
+       CSS로 숨기는 것만으로는 내부 실행이 확실히 멈추지 않으므로, 문서를 완전히
+       비워 내부 스크립트 실행 컨텍스트 자체를 종료시킨다. */
+    frame.src = 'about:blank';
+    setTimeout(()=>frame.remove(), 50);
   };
   window.addEventListener('message', onStealthComplete);
 }
@@ -3134,8 +3151,10 @@ function mgMansae(i){
     if(ac.createStereoPanner){const p=ac.createStereoPanner();p.pan.value=side;out.connect(p).connect(ac.destination);}else out.connect(ac.destination);
     const thud=ac.createOscillator(),tg=ac.createGain();thud.type='sine';thud.frequency.setValueAtTime(near?82:118,t);thud.frequency.exponentialRampToValueAtTime(near?43:70,t+.15);
     tg.gain.setValueAtTime(.8,t);tg.gain.exponentialRampToValueAtTime(.0001,t+.18);thud.connect(tg).connect(out);thud.start(t);thud.stop(t+.19);
+    disposeNodesOnEnd(thud, thud, tg, out);
     const n=ac.createBuffer(1,Math.ceil(ac.sampleRate*.11),ac.sampleRate),d=n.getChannelData(0);for(let k=0;k<d.length;k++)d[k]=(Math.random()*2-1)*(1-k/d.length);
     const src=ac.createBufferSource(),f=ac.createBiquadFilter(),ng=ac.createGain();src.buffer=n;f.type='lowpass';f.frequency.value=near?260:420;ng.gain.value=.32;src.connect(f).connect(ng).connect(out);src.start(t);
+    src.stop(t+.12); disposeNodesOnEnd(src, src, f, ng);
     room.classList.add('footstep');setTimeout(()=>room.classList.remove('footstep'),150);
   }
   function caught(){
