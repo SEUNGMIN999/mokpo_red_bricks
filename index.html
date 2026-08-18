@@ -583,6 +583,31 @@ button{touch-action:manipulation}
   vertical-align:-2px;animation:blink .8s steps(1) infinite}
 #pro-narr{text-align:center}
 
+/* ---------- 낡은 지도 (다음 목적지 안내) ---------- */
+#inter-map{margin-top:16px}
+.map-card{
+  border:1px solid rgba(201,162,75,.5);border-radius:3px;overflow:hidden;animation:fadeIn .9s;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 26px, rgba(43,29,18,.06) 26px 27px),
+    linear-gradient(160deg,#efe2bd, #e3d0a0 70%, #d8c28c);
+  box-shadow:0 10px 24px rgba(0,0,0,.4), inset 0 0 30px rgba(120,86,40,.16);
+}
+.map-card .h-head{
+  background:rgba(201,162,75,.22);padding:10px 14px;font-family:'Nanum Myeongjo',serif;
+  font-weight:800;font-size:14px;color:#6b4f2a;letter-spacing:.05em;
+  border-bottom:1px dashed rgba(107,79,42,.4);
+}
+.map-card .h-head::before{content:"🗺 "}
+.map-svg-wrap{padding:14px 16px 4px}
+.map-svg-wrap svg{display:block;width:100%;height:auto}
+.map-route{stroke-dasharray:7 6;animation:mapRouteDash 1.6s linear infinite}
+@keyframes mapRouteDash{to{stroke-dashoffset:-52}}
+.map-pin-now circle:last-child{animation:mapPingNow 2s ease-out infinite}
+.map-pin-dest circle:last-child{animation:mapPingDest 1.6s ease-out infinite}
+@keyframes mapPingNow{0%{r:5;opacity:.55}100%{r:16;opacity:0}}
+@keyframes mapPingDest{0%{r:5;opacity:.65}100%{r:20;opacity:0}}
+.map-cap{padding:6px 14px 14px;font-size:12px;line-height:1.7;color:#6b4f2a;text-align:center;word-break:keep-all}
+
 /* ---------- 역사 노트 ---------- */
 .hist-card{
   margin-top:16px;border:1px solid rgba(201,162,75,.5);border-radius:3px;overflow:hidden;
@@ -636,11 +661,9 @@ button{touch-action:manipulation}
 }
 .operation-card{width:100%;margin:10px 0 18px;padding:15px;border:1px solid rgba(210,173,94,.3);border-radius:10px;background:linear-gradient(145deg,rgba(27,21,16,.94),rgba(8,8,7,.92));box-shadow:0 14px 35px rgba(0,0,0,.38)}
 .operation-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid rgba(210,173,94,.18);color:#e8d6a5;font:700 14px 'Noto Serif KR',serif}.operation-card-head span{color:#73dcd3;font:700 11px 'IBM Plex Sans KR',sans-serif}
-.badge-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.mission-badge{position:relative;min-height:106px;padding:12px 9px;border-radius:8px;border:1px solid rgba(210,173,94,.16);background:rgba(255,255,255,.028);text-align:center;opacity:.36;filter:grayscale(1)}.mission-badge.earned{opacity:1;filter:none;border-color:rgba(210,173,94,.48);background:radial-gradient(circle at 50% 8%,rgba(210,173,94,.15),rgba(255,255,255,.025));box-shadow:inset 0 1px rgba(255,255,255,.05);animation:badgePop .55s both}.mission-badge.earned:nth-child(2){animation-delay:.1s}.mission-badge.earned:nth-child(3){animation-delay:.2s}.mission-badge.earned:nth-child(4){animation-delay:.3s}.mission-badge.earned:nth-child(5){animation-delay:.4s}
-.mission-badge .badge-icon{font-size:28px;line-height:1.1;filter:drop-shadow(0 0 8px rgba(210,173,94,.3))}.mission-badge strong{display:block;margin:6px 0 3px;color:#efd58f;font:700 13px 'Noto Serif KR',serif}.mission-badge small{display:block;color:#a99b7a;font:500 9px/1.45 'IBM Plex Sans KR',sans-serif;word-break:keep-all}.mission-badge.earned::after{content:'획득';position:absolute;right:6px;top:6px;padding:2px 5px;border-radius:999px;background:rgba(45,137,129,.3);color:#8ce9e0;font-size:8px}.mission-badge:not(.earned)::after{content:'미획득';position:absolute;right:6px;top:6px;color:#887b63;font-size:8px}
-.badge-grid .mission-badge:last-child:nth-child(odd){grid-column:1/-1}
+.badge-grid{display:flex;flex-direction:column;gap:8px}.mission-badge{position:relative;display:flex;align-items:center;gap:12px;min-height:64px;padding:10px 40px 10px 14px;border-radius:8px;border:1px solid rgba(210,173,94,.16);background:rgba(255,255,255,.028);text-align:left;opacity:.36;filter:grayscale(1);width:100%;cursor:pointer;font:inherit;color:inherit;-webkit-tap-highlight-color:transparent;transition:transform .15s ease}.mission-badge:active{transform:scale(.98)}.mission-badge.earned{opacity:1;filter:none;border-color:rgba(210,173,94,.48);background:radial-gradient(circle at 8% 50%,rgba(210,173,94,.15),rgba(255,255,255,.025));box-shadow:inset 0 1px rgba(255,255,255,.05);animation:badgePop .55s both}.mission-badge.earned:nth-child(2){animation-delay:.1s}.mission-badge.earned:nth-child(3){animation-delay:.2s}.mission-badge.earned:nth-child(4){animation-delay:.3s}.mission-badge.earned:nth-child(5){animation-delay:.4s}
+.mission-badge .badge-icon{flex:0 0 auto;font-size:26px;line-height:1.1;filter:drop-shadow(0 0 8px rgba(210,173,94,.3))}.mission-badge .badge-text{flex:1 1 auto;min-width:0}.mission-badge strong{display:block;margin:0 0 2px;color:#efd58f;font:700 13.5px 'Noto Serif KR',serif}.mission-badge small{display:block;color:#a99b7a;font:500 10px/1.45 'IBM Plex Sans KR',sans-serif;word-break:keep-all}.mission-badge.earned::after{content:'획득 · 보기';position:absolute;right:10px;top:50%;transform:translateY(-50%);padding:2px 7px;border-radius:999px;background:rgba(45,137,129,.3);color:#8ce9e0;font-size:8px;white-space:nowrap}.mission-badge:not(.earned)::after{content:'미획득';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:#887b63;font-size:8px}
 @keyframes badgePop{from{opacity:0;transform:scale(.82) translateY(12px)}60%{transform:scale(1.04)}to{opacity:1;transform:none}}
-@media(max-width:390px){.badge-grid{grid-template-columns:1fr}.badge-grid .mission-badge:last-child:nth-child(odd){grid-column:auto}.mission-badge{min-height:94px}}
 
 /* 업적 획득 카드 — 결과 화면 위로 한 장씩 떠오르는 연출 */
 #badge-unlock-layer{position:fixed;z-index:12000;inset:0;display:grid;place-items:center;padding:22px;background:radial-gradient(circle at 50% 45%,rgba(61,45,22,.48),rgba(3,3,3,.92) 66%);opacity:0;pointer-events:none;transition:opacity .3s ease;perspective:1100px}
@@ -1548,11 +1571,11 @@ const CONFIG = {
     { type:'narr', preview:'dial', btn:'다이얼 확인하기', text:"그때, 화면이 저절로 바뀌더니 오래된 라디오처럼 생긴 다이얼 하나가 떠올랐다.\n\n신호가 잡힐 듯 말 듯 흩어진다.\n\n다이얼을 돌려 소리가 가장 또렷해지는\n주파수를 직접 찾아야 한다." },
     { type:'tuner' },
     { type:'rift' },
-    { type:'tg', text:`치직― 수신 좌표가 고정되었소.\n\n여기는 1920년 ${_mm}월 ${_dd}일 밤.\n옛 일본영사관 건물을 쓰고 있는 목포부청사요.\n\n나는 부청 통신실에서 일하는 조선인 서기, 윤식이라 하오.\n그대가 다이얼을 맞춘 순간, 백 년 뒤의 신호가 이 전신기에 찍히기 시작했소.\n\n…그대가 있는 곳도 ${_mm}월 ${_dd}일이오?` },
+    { type:'tg', btn:'네, 맞습니다.', text:`치직― 수신 좌표가 고정되었소.\n\n여기는 1920년 ${_mm}월 ${_dd}일 밤.\n옛 일본영사관 건물을 쓰고 있는 목포부청사요.\n\n나는 부청 통신실에서 일하는 조선인 서기, 윤식이라 하오.\n그대가 다이얼을 맞춘 순간, 백 년 뒤의 신호가 이 전신기에 찍히기 시작했소.\n\n…그대가 있는 곳도 ${_mm}월 ${_dd}일이오?` },
     { type:'identify' },
     { type:'tg', image:"images/prologue-arrest-generated.jpg",   /* 동지 연행 장면 */
       text:"오늘 낮, 순사들이 우리와 뜻을 함께한 동지 한 사람을 목포부청으로 끌고 갔소.\n\n놈들의 밀실 금고엔 동지들을 체포하라는 「검거 대상 지시서」가 잠들어 있고, 내일 새벽 검거가 시작된다 하오.\n\n오늘 밤이… 그 명령을 없앨 마지막 기회요." },
-    { type:'tg', text:"허나 나는 감시받는 몸. 전신실을 오래 비우면 곧 의심을 사오.\n\n밀실을 여는 암호는, 이 건물을 지은 이가 벽돌과 벽난로와 물건들 곳곳에 흩어 숨겨 두었다 들었소.\n\n그대의 시대에도,\n이 건물은 그 자리에 그대로 서 있지 않소?" },
+    { type:'tg', btn:'네, 그대로 있습니다.', text:"허나 나는 감시받는 몸. 전신실을 오래 비우면 곧 의심을 사오.\n\n밀실을 여는 암호는, 이 건물을 지은 이가 벽돌과 벽난로와 물건들 곳곳에 흩어 숨겨 두었다 들었소.\n\n그대의 시대에도,\n이 건물은 그 자리에 그대로 서 있지 않소?" },
     { type:'tg', image:"images/prologue-copper-wire-signal.png",   /* 벽 속 구리 전신선의 시공간 연결 */
       text:"그렇다면 그대가 나의 눈이 되어 주시오.\n\n벽 속 구리선은 백년이 지나도 그 자리에 있고,\n벽돌 또한 변하지 않는 법.\n\n지금 이 전신기와 그대의 기계는 같은 선으로 이어져 있소.\n\n그대는 미래의 전시물을 조사하고, 나는 1920년의 목포부청사에서 움직이겠소. 그대가 찾아낸 암호를 보내 주면 내가 밀실의 자물쇠를 하나씩 열겠소." },
     { type:'narr', text:`믿을 수 없는 이야기였다.\n\n하지만 신호의 발신 좌표는\n정확히 지금 내가 서 있는 이 건물을 가리키고 있었다.\n\n몸은 ${_yyyy}년 ${_mm}월 ${_dd}일에 남아 있었지만,\n스마트폰을 움직일 때마다 과거의 그림자도 함께 움직였다.\n\n과거의 순사에게 발각되면 전신 연결이 끊길 것이다. 나는 떨리는 손으로 답신 버튼을 눌렀다.` }
@@ -1588,7 +1611,7 @@ const CONFIG = {
       place: "역사관 1층 전시실 (벽난로)",
       story: "현재의 1층 전시실 위로 1920년 목포부청 사무실이 희미하게 겹쳐졌다. 실제 전시실의 작은 벽난로를 스마트폰으로 비추자, 과거의 거울 형상이 화면 위에 떠올랐다. 거울 속에는 「밀실의 지도」로 통하는 암호문이 좌우로 뒤집혀 있다.",
       question: "거울에 드러난 뒤집힌 단서를 해독하라. 「1897년 설치된 관아로 개항장 내에서 외국 영사관과의 외교와 사무를 담당한 기관」의 이름을 입력하라.",
-      visual: { type: "mirror", text: "1897년 설치된 관아로 개항장 내에서 외국 영사관과의 외교와 사무를 담당한 기관" },
+      visual: { type: "mirror", text: "1897년 설치된 관아로<br>개항장 내에서 외국 영사관과의<br>외교와 사무를 담당한 기관" },
       placeholder: "정답 단어 입력",
       answers: ["무안감리서"],
       hints: [
@@ -2202,7 +2225,7 @@ function initAnswerDevice(i){
       key.classList.add('active'); setValue(key.textContent); tone(420+Number(key.textContent)*55,.06,'square',.06); buzz(22);
     });
   }else if(i===1){
-    const keys=['무','감','안','리','서','목','포'];
+    const keys=['리','목','무','서','포','안','감'];
     box.innerHTML=`<div class="device-label">TELEGRAPH TYPEWRITER · 전신 타자기</div><div class="device-display">· · ·</div><div class="typewriter-keys">${keys.map(x=>`<button class="type-key" type="button">${x}</button>`).join('')}<button class="type-key back" type="button">지움</button></div><div class="device-help">글쇠를 눌러 옛 관청의 이름을 조합하세요.</div>`;
     let value='';
     box.querySelectorAll('.type-key:not(.back)').forEach(key=>key.onclick=()=>{ if(value.length<7){value+=key.textContent;setValue(value);sfx.telegraph();} });
@@ -2429,6 +2452,7 @@ function buildScreens(){
       <div class="tg-body" id="inter-body"></div>
       <div class="tg-sign">― 윤식</div>
     </div>
+    <div id="inter-map"></div>
     <div id="inter-hist"></div>
     <button class="btn" id="btn-inter-next">다음 교신 수신</button>`;
   app.appendChild(inter);
@@ -2445,10 +2469,10 @@ function buildScreens(){
         <strong>「명부를 옮길 연락책이 이미 출발했소.<br>바퀴 소리를 따라 이동 수단을 찾아 주시오.」</strong>
       </div>
       <p class="signal-lines">
-        검거 지시서가 재로 사라진 순간, 윤식과의 교신도 끊겼다.<br>
-        그 직후 전신기에서 덜컹이는 나무 바퀴 소리가 들려왔다.
-        <em>동시에 현재 전시실의 ‘근대 목포 거리’ 쪽에서 스마트폰이 진동했다.</em>
-        <b>진동이 가리킨 바퀴 달린 전시물의 이름을 입력하세요.</b>
+        검거 지시서가 재로 사라진 순간, 윤식과의 교신이 뚝 끊겼다.<br>
+        대신 스마트폰이 스스로 진동하며, 화면 위로 낡은 나무 바퀴 자국이 어렴풋이 겹쳐졌다.
+        <em>그 바퀴는 목포 거리를 오래도록 오가며, 여러 시대를 스쳐 지나온 듯 세월의 흔적을 두르고 있었다.</em>
+        <b>진동이 가리킨, 그 바퀴 달린 전시물의 이름을 입력하세요.</b>
       </p>
       <div class="rickshaw-answer">
         <input id="rickshaw-answer" autocomplete="off" placeholder="전시물 이름 입력" aria-label="바퀴가 달린 운송 수단 이름">
@@ -2516,7 +2540,7 @@ function buildScreens(){
     </section>
     <div class="gear-telegram" id="record-reply" style="display:none;margin:12px 0"></div>
     <div class="media-frame" id="record-media"></div>
-    <div class="small-note" style="display:block;text-align:center;margin:8px 0 16px">현장 기록 ― 글씨와 이름으로 기억을 남기는 목포근대역사관</div>
+    <div class="small-note" style="display:block;text-align:center;margin:8px 0 16px">현장 기록 ― 정명여학교 선교사 사택 천장에서 발견된 「독립가」<br>선조들의 독립을 향한 열망을 담은 대한제국 시기의 노래</div>
     <div class="end-credit">${CONFIG.ending.credit}</div>
     <button class="btn ghost" id="btn-retry">처음부터 다시 하기</button>`;
   app.appendChild(rec);
@@ -3337,6 +3361,36 @@ function openHint(i){
   else btn.textContent = `🔍 힌트 보기 (${state.hintOpened[i]}/3)`;
 }
 
+/* ---------- 낡은 지도 : 다음 목적지(2층 계단) 표시 ---------- */
+function renderFloorMap(){
+  const wrap = $('#inter-map');
+  if(!wrap) return;
+  wrap.innerHTML = `
+    <div class="map-card">
+      <div class="h-head">낡은 지도 · 목포부청사 내부</div>
+      <div class="map-svg-wrap">
+        <svg viewBox="0 0 300 190" role="img" aria-label="1층 벽난로에서 2층 계단으로 가는 길을 표시한 지도">
+          <rect x="14" y="18" width="272" height="70" rx="6" fill="none" stroke="#6b4f2a" stroke-width="1.4" stroke-dasharray="2 3"/>
+          <text x="24" y="13" font-size="10" fill="#6b4f2a" font-family="'Nanum Gothic Coding',monospace">2층 · 목표</text>
+          <rect x="14" y="104" width="272" height="70" rx="6" fill="none" stroke="#6b4f2a" stroke-width="1.4" stroke-dasharray="2 3"/>
+          <text x="24" y="99" font-size="10" fill="#6b4f2a" font-family="'Nanum Gothic Coding',monospace">1층 · 현재 위치</text>
+          <path class="map-route" d="M78,138 C78,90 190,112 190,72 C190,50 210,58 226,58"
+                fill="none" stroke="#b23a2b" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M215,50 l11,8 l-11,8" fill="none" stroke="#b23a2b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <g class="map-pin-now" transform="translate(78,138)">
+            <circle r="5" fill="#b23a2b"/><circle r="5" fill="none" stroke="#b23a2b" stroke-width="1.5"/>
+          </g>
+          <text x="78" y="156" font-size="10.5" text-anchor="middle" fill="#3a2a12" font-weight="700">벽난로 · 서기실</text>
+          <g class="map-pin-dest" transform="translate(226,58)">
+            <circle r="5" fill="#1c6b52"/><circle r="5" fill="none" stroke="#1c6b52" stroke-width="1.5"/>
+          </g>
+          <text x="226" y="42" font-size="10.5" text-anchor="middle" fill="#1c6b52" font-weight="700">2층 계단 · 전시실</text>
+        </svg>
+      </div>
+      <div class="map-cap">지도 위의 붉은 선이 가리키는 곳 ― 2층 계단을 따라 전시실로 올라가라.</div>
+    </div>`;
+  sfx.found();
+}
 function stageClear(i){
   // 벽돌 진행도
   $('#bricks').children[i].classList.add('done');
@@ -3354,6 +3408,7 @@ function stageClear(i){
     const btn = $('#btn-inter-next');
     const hist = $('#inter-hist');
     hist.innerHTML = '';
+    $('#inter-map').innerHTML = '';
     btn.style.visibility='hidden';
     const interTelegram=$('#scr-inter .telegram');
     const vaultRift=$('#vault-rift');
@@ -3368,6 +3423,7 @@ function stageClear(i){
       await playTelegramFeed(interTelegram);
       await typewrite($('#inter-body'), personalize(CONFIG.stages[i].clear));
       stampTelegramReceived(interTelegram);
+      if(i===1) renderFloorMap();
     }
     const h = CONFIG.stages[i].history;
     if(h){
@@ -3487,7 +3543,7 @@ async function playVaultRift(){
 
 const ENDING_TELEGRAM_SCENES = [
   "{player}, 해냈소.\n명령서는 사라졌고 동지들의 이름은 지켜졌소.",
-  "신호가 곧 끊길 것이오. 마지막으로 묻겠소.\n{player}, 당신이 서 있는 미래의 목포는… 평화로운가요?"
+  "신호가 곧 끊길 것이오. 마지막으로 묻겠소.\n{player}, 당신이 서 있는 미래의 목포는 평화로운지 궁금하오."
 ];
 async function playEndingTelegram(){
   const body=$('#end-body');
@@ -3544,8 +3600,46 @@ function renderOperationBadges(){
   ];
   const earned=badges.filter(x=>x.earned).length;
   $('#badge-count').textContent=`${earned} / ${badges.length} 획득`;
-  $('#badge-grid').innerHTML=badges.map(x=>`<article class="mission-badge ${x.earned?'earned':''}"><div class="badge-icon">${x.icon}</div><strong>${x.name}</strong><small>${x.desc}</small></article>`).join('');
+  const grid=$('#badge-grid');
+  grid.innerHTML=badges.map((x,idx)=>`<button type="button" class="mission-badge ${x.earned?'earned':''}" data-idx="${idx}" aria-label="${x.name} · ${x.earned?'획득':'미획득'} · 눌러서 자세히 보기"><div class="badge-icon">${x.icon}</div><div class="badge-text"><strong>${x.name}</strong><small>${x.desc}</small></div></button>`).join('');
+  grid.querySelectorAll('.mission-badge').forEach(el=>{
+    el.onclick=()=>showBadgeDetail(badges[Number(el.dataset.idx)]);
+  });
   return {earned,trust,badges};
+}
+
+/* ---------- 결과 화면에서 배지 카드를 눌렀을 때 상세 팝업 ---------- */
+function showBadgeDetail(badge){
+  let layer=document.getElementById('badge-unlock-layer');
+  if(!layer){
+    layer=document.createElement('div');
+    layer.id='badge-unlock-layer';
+    layer.setAttribute('role','dialog');
+    layer.setAttribute('aria-live','polite');
+    layer.innerHTML='<div class="badge-unlock-card"></div>';
+    document.body.appendChild(layer);
+  }
+  const card=layer.querySelector('.badge-unlock-card');
+  layer.classList.remove('card-on','card-out','flash');
+  card.innerHTML=`
+    <div class="badge-unlock-rays"></div>
+    <div class="badge-unlock-kicker">${badge.earned?'업적 획득':'미획득 업적'}</div>
+    <div class="badge-unlock-icon">${badge.icon}</div>
+    <h2>${badge.name}</h2>
+    <p>${badge.desc}</p>
+    <div class="badge-unlock-stamp"${badge.earned?'':' style="border-color:rgba(160,150,120,.5);color:#a99b7a"'}>${badge.earned?'획득 완료':'미획득'}</div>
+    <div class="badge-unlock-skip">화면을 누르면 닫기</div>`;
+  layer.classList.add('on');
+  void layer.offsetWidth;
+  layer.classList.add('card-on');
+  if(badge.earned){ tone(392,.16,'sine',.1); setTimeout(()=>tone(523,.2,'sine',.11),110); sfx.found(); buzz([35,25,95]); }
+  else { sfx.tick(); }
+  layer.onclick=()=>{
+    layer.onclick=null;
+    layer.classList.remove('card-on');
+    layer.classList.add('card-out');
+    setTimeout(()=>layer.classList.remove('on','card-out'),360);
+  };
 }
 
 async function playBadgeUnlocks(badges){
