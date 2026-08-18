@@ -119,6 +119,7 @@ h1.game-title .y{
 .identity-card.answer-ready::after{content:'답신 입력'}
 .identity-card label{display:block;font:10px 'Nanum Gothic Coding',monospace;letter-spacing:.22em;color:var(--gold);margin-bottom:8px}
 .identity-question{min-height:96px;padding:15px 3px 12px;color:var(--paper);font:800 clamp(16px,4.5vw,21px)/1.9 'Nanum Myeongjo',serif;white-space:pre-line;word-break:keep-all}
+.identity-highlight{min-height:0;padding:0 3px 12px;color:var(--paper);font:800 clamp(16px,4.5vw,21px)/1.9 'Nanum Myeongjo',serif;white-space:pre-line;word-break:keep-all;text-align:center}
 .identity-input-panel[hidden]{display:none}.identity-input-panel.input-ready{animation:identityInputReady .65s ease both}
 @keyframes identityInputReady{from{opacity:0;transform:translateY(15px);filter:blur(3px)}to{opacity:1;transform:none;filter:none}}
 .identity-row{display:flex;gap:8px;align-items:center}
@@ -661,8 +662,9 @@ button{touch-action:manipulation}
 }
 .operation-card{width:100%;margin:10px 0 18px;padding:15px;border:1px solid rgba(210,173,94,.3);border-radius:10px;background:linear-gradient(145deg,rgba(27,21,16,.94),rgba(8,8,7,.92));box-shadow:0 14px 35px rgba(0,0,0,.38)}
 .operation-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid rgba(210,173,94,.18);color:#e8d6a5;font:700 14px 'Noto Serif KR',serif}.operation-card-head span{color:#73dcd3;font:700 11px 'IBM Plex Sans KR',sans-serif}
-.badge-grid{display:flex;flex-direction:column;gap:8px}.mission-badge{position:relative;display:flex;align-items:center;gap:12px;min-height:64px;padding:10px 40px 10px 14px;border-radius:8px;border:1px solid rgba(210,173,94,.16);background:rgba(255,255,255,.028);text-align:left;opacity:.36;filter:grayscale(1);width:100%;cursor:pointer;font:inherit;color:inherit;-webkit-tap-highlight-color:transparent;transition:transform .15s ease}.mission-badge:active{transform:scale(.98)}.mission-badge.earned{opacity:1;filter:none;border-color:rgba(210,173,94,.48);background:radial-gradient(circle at 8% 50%,rgba(210,173,94,.15),rgba(255,255,255,.025));box-shadow:inset 0 1px rgba(255,255,255,.05);animation:badgePop .55s both}.mission-badge.earned:nth-child(2){animation-delay:.1s}.mission-badge.earned:nth-child(3){animation-delay:.2s}.mission-badge.earned:nth-child(4){animation-delay:.3s}.mission-badge.earned:nth-child(5){animation-delay:.4s}
-.mission-badge .badge-icon{flex:0 0 auto;font-size:26px;line-height:1.1;filter:drop-shadow(0 0 8px rgba(210,173,94,.3))}.mission-badge .badge-text{flex:1 1 auto;min-width:0}.mission-badge strong{display:block;margin:0 0 2px;color:#efd58f;font:700 13.5px 'Noto Serif KR',serif}.mission-badge small{display:block;color:#a99b7a;font:500 10px/1.45 'IBM Plex Sans KR',sans-serif;word-break:keep-all}.mission-badge.earned::after{content:'획득 · 보기';position:absolute;right:10px;top:50%;transform:translateY(-50%);padding:2px 7px;border-radius:999px;background:rgba(45,137,129,.3);color:#8ce9e0;font-size:8px;white-space:nowrap}.mission-badge:not(.earned)::after{content:'미획득';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:#887b63;font-size:8px}
+.badge-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mission-badge:last-child:nth-child(odd){grid-column:1 / -1}
+.mission-badge{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-height:110px;padding:14px 30px 12px 14px;border-radius:10px;border:1px solid rgba(210,173,94,.16);background:rgba(255,255,255,.028);text-align:left;opacity:.36;filter:grayscale(1);width:100%;cursor:pointer;font:inherit;color:inherit;-webkit-tap-highlight-color:transparent;transition:transform .15s ease}.mission-badge:active{transform:scale(.97)}.mission-badge.earned{opacity:1;filter:none;border-color:rgba(210,173,94,.48);background:radial-gradient(circle at 15% 12%,rgba(210,173,94,.15),rgba(255,255,255,.025));box-shadow:inset 0 1px rgba(255,255,255,.05);animation:badgePop .55s both}.mission-badge.earned:nth-child(2){animation-delay:.1s}.mission-badge.earned:nth-child(3){animation-delay:.2s}.mission-badge.earned:nth-child(4){animation-delay:.3s}.mission-badge.earned:nth-child(5){animation-delay:.4s}
+.mission-badge .badge-icon{flex:0 0 auto;font-size:24px;line-height:1.1;filter:drop-shadow(0 0 8px rgba(210,173,94,.3))}.mission-badge .badge-text{width:100%;min-width:0}.mission-badge strong{display:block;margin:4px 0 2px;color:#efd58f;font:700 13px 'Noto Serif KR',serif}.mission-badge small{display:block;color:#a99b7a;font:500 10px/1.42 'IBM Plex Sans KR',sans-serif;word-break:keep-all}.mission-badge.earned::after{content:'획득';position:absolute;right:8px;top:8px;padding:2px 7px;border-radius:999px;background:rgba(45,137,129,.3);color:#8ce9e0;font-size:8px;white-space:nowrap}.mission-badge:not(.earned)::after{content:'미획득';position:absolute;right:8px;top:8px;color:#887b63;font-size:8px}
 @keyframes badgePop{from{opacity:0;transform:scale(.82) translateY(12px)}60%{transform:scale(1.04)}to{opacity:1;transform:none}}
 
 /* 업적 획득 카드 — 결과 화면 위로 한 장씩 떠오르는 연출 */
@@ -1226,6 +1228,15 @@ input[type=range]#t-range{
   font-family:'Nanum Myeongjo',serif;font-weight:700;font-size:15px;line-height:2.05;
   color:#e8dcba;white-space:pre-wrap;word-break:keep-all;min-height:60px;
 }
+.glow-brick{
+  color:var(--gold);font-weight:900;
+  text-shadow:0 0 6px rgba(201,162,75,.85),0 0 14px rgba(138,53,36,.75);
+  animation:glowBrickPulse 1.8s ease-in-out infinite;
+}
+@keyframes glowBrickPulse{
+  0%,100%{text-shadow:0 0 6px rgba(201,162,75,.7),0 0 12px rgba(138,53,36,.6);}
+  50%{text-shadow:0 0 12px rgba(201,162,75,1),0 0 26px rgba(138,53,36,.95),0 0 34px rgba(201,162,75,.5);}
+}
 #sign-after{min-height:0;padding:20px 6px 0}
 
 /* 접근성 · 모션 축소 */
@@ -1340,7 +1351,13 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
 .rift-safe{position:absolute;z-index:2;left:50%;top:47%;width:245px;height:250px;transform:translate(-50%,-50%);border:8px solid #5e492d;border-radius:13px;background:linear-gradient(145deg,#2c2924,#0d0c0b);box-shadow:0 25px 50px #000,inset 0 0 0 3px #a78548;transition:.8s cubic-bezier(.2,.8,.2,1)}
 .rift-safe::before{content:"1920 · 금고";position:absolute;top:18px;left:0;right:0;color:#b99a5e;text-align:center;font:700 12px 'IBM Plex Sans KR',sans-serif;letter-spacing:.2em}
 .rift-dial{position:absolute;left:50%;top:53%;width:124px;height:124px;transform:translate(-50%,-50%);border:9px solid #9d7d42;border-radius:50%;background:radial-gradient(circle,#17130d 0 17%,#ceb469 18% 22%,#18140e 23% 65%,#876b39 66%);box-shadow:0 0 0 3px #332716,0 0 30px rgba(221,183,91,.18)}
-.rift-dial b{position:absolute;color:#ead99d;font:700 22px Georgia,serif}.rift-dial .n4{left:14px;top:48px}.rift-dial .n8{right:13px;top:48px}.rift-needle{position:absolute;left:59px;top:21px;width:5px;height:43px;border-radius:4px;background:#e3c56e;transform-origin:50% 41px;transition:.7s cubic-bezier(.2,.9,.25,1);box-shadow:0 0 10px #d9af4c}.dial-four .rift-needle{transform:rotate(-92deg)}.dial-eight .rift-needle{transform:rotate(92deg)}
+.rift-dial::before{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(255,224,150,0);box-shadow:0 0 0 rgba(255,224,150,0);pointer-events:none}
+.dial-four .rift-dial::before,.dial-eight .rift-dial::before{animation:dialLockRing .6s ease-out}
+@keyframes dialLockRing{0%{border-color:rgba(255,224,150,.95);box-shadow:0 0 22px rgba(255,224,150,.85)}100%{border-color:rgba(255,224,150,0);box-shadow:0 0 0 rgba(255,224,150,0);transform:scale(1.4)}}
+.rift-dial b{position:absolute;color:#ead99d;font:700 22px Georgia,serif;transition:.3s}.rift-dial .n4{left:14px;top:48px}.rift-dial .n8{right:13px;top:48px}.rift-needle{position:absolute;left:59px;top:21px;width:5px;height:43px;border-radius:4px;background:#e3c56e;transform-origin:50% 41px;transition:.7s cubic-bezier(.34,1.42,.3,1);box-shadow:0 0 10px #d9af4c}.dial-four .rift-needle{transform:rotate(-92deg)}.dial-eight .rift-needle{transform:rotate(92deg)}
+.dial-four .rift-needle,.dial-eight .rift-needle{animation:needleSnap .55s ease-out}
+.dial-four .n4,.dial-eight .n8{color:#fff3cf;text-shadow:0 0 10px #ffdf94,0 0 18px rgba(255,224,150,.8)}
+@keyframes needleSnap{0%{filter:brightness(1)}22%{filter:brightness(2.6) drop-shadow(0 0 12px #fff4cf)}45%{filter:brightness(1.2)}100%{filter:brightness(1)}}
 .safe-open .rift-safe{transform:translate(-145%,-50%) rotateY(-28deg);opacity:.15;filter:blur(2px)}
 .rift-order,.rift-roster,.rift-clock,.rift-year,.rift-knocks{position:absolute;opacity:0;transition:.65s ease}
 .rift-order{z-index:3;left:50%;top:46%;width:230px;min-height:270px;padding:28px 20px;transform:translate(-50%,-42%) scale(.78) rotate(-2deg);background:repeating-linear-gradient(0deg,#e8d4a0 0 27px,#d7be82 28px);color:#3b2417;border:1px solid #8d6634;box-shadow:0 22px 45px #000;text-align:center;font:700 15px/1.9 'Noto Serif KR',serif}
@@ -1348,8 +1365,29 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
 .rift-roster{z-index:5;inset:20px 24px 72px;display:flex;align-items:center;justify-content:center;transform:scale(.92);background:rgba(4,3,2,.78);box-shadow:inset 0 0 70px #000}.rift-roster img{max-width:100%;max-height:100%;object-fit:contain;filter:sepia(.25) brightness(.9);box-shadow:0 0 42px rgba(255,213,119,.35)}.rift-roster-label{position:absolute;z-index:21;left:50%;top:20px;max-width:calc(100% - 48px);padding:8px 14px;transform:translateX(-50%);opacity:0;background:rgba(11,9,7,.96);color:#f7e4aa;border:1px solid #9a7838;box-shadow:0 5px 18px rgba(0,0,0,.6);text-align:center;font:700 clamp(12px,2.2vw,15px)/1.35 'IBM Plex Sans KR',sans-serif;font-style:normal;letter-spacing:.06em;white-space:nowrap;transition:.4s}.roster-on .rift-order{opacity:.08;filter:blur(3px)}.roster-on .rift-roster{opacity:1;transform:scale(1)}.roster-on .rift-roster-label{opacity:1}
 .rift-clock{z-index:7;left:50%;top:45%;width:170px;height:170px;transform:translate(-50%,-50%) scale(.65);border:13px solid #4d3320;border-radius:50%;background:radial-gradient(circle,#e2d4ab 0 66%,#756044 67%);box-shadow:0 0 0 4px #15100b,0 20px 50px #000}.rift-clock::before{content:"";position:absolute;left:81px;top:27px;width:5px;height:58px;background:#2d241b;transform-origin:bottom;animation:clockSpin .5s linear infinite}.rift-clock::after{content:"";position:absolute;left:80px;top:48px;width:6px;height:38px;background:#2d241b;transform-origin:bottom;transform:rotate(96deg)}.clock-on .rift-roster{opacity:.22}.clock-on .rift-clock{opacity:1;transform:translate(-50%,-50%) scale(1)}.clock-stop .rift-clock::before{animation-play-state:paused}
 .rift-knocks{z-index:8;inset:0;display:grid;place-items:center;pointer-events:none}.rift-knocks i{position:absolute;width:90px;height:90px;border:3px solid #d6b35c;border-radius:50%;opacity:0}.knock-on .rift-knocks{opacity:1}.knock-on .rift-knocks i{animation:knockRing 1.25s ease-out}.knock-on .rift-knocks i:nth-child(2){animation-delay:.2s}.knock-on .rift-knocks i:nth-child(3){animation-delay:.4s}.knock-on .rift-knocks i:nth-child(4){animation-delay:.6s}
-.rift-year{z-index:12;left:25%;right:25%;top:auto;bottom:76px;height:104px;display:grid;place-items:center;border:1px solid rgba(217,178,88,.28);border-radius:12px;color:#f1dfa9;background:radial-gradient(circle,rgba(4,2,2,.82),rgba(4,2,2,.56));font:800 clamp(54px,12vw,92px) Georgia,serif;text-shadow:6px 0 #7d241c,-6px 0 #1f817d;box-shadow:0 14px 35px rgba(0,0,0,.48);pointer-events:none}.year-on .rift-year{opacity:1;animation:yearRift .16s steps(2) 8}.year-on .rift-roster{opacity:.7}.year-on .rift-clock{opacity:.12}.year-on .rift-roster-label,.year-on .rift-caption{opacity:1}
-@keyframes clockSpin{to{transform:rotate(360deg)}}@keyframes knockRing{0%{opacity:1;transform:scale(.25)}100%{opacity:0;transform:scale(4)}}@keyframes yearRift{50%{transform:translate(7px,-3px);filter:hue-rotate(60deg)}}
+.rift-year{z-index:12;left:25%;right:25%;top:auto;bottom:76px;height:104px;display:grid;place-items:center;border:1px solid rgba(217,178,88,.28);border-radius:12px;color:#f1dfa9;background:radial-gradient(circle,rgba(4,2,2,.82),rgba(4,2,2,.56));font:800 clamp(54px,12vw,92px) Georgia,serif;text-shadow:6px 0 #7d241c,-6px 0 #1f817d;box-shadow:0 14px 35px rgba(0,0,0,.48);pointer-events:none;overflow:hidden}
+.rift-year::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(120,240,235,.09) 3px,transparent 4px);mix-blend-mode:screen;opacity:0}
+.year-on .rift-year{opacity:1;animation:yearRift .16s steps(2) 8, yearGlitchShadow .45s ease-in-out infinite}
+.year-on .rift-year::before{opacity:1;animation:scanFlicker .28s steps(2) infinite}
+.year-on .rift-roster{opacity:.7}.year-on .rift-clock{opacity:.12}.year-on .rift-roster-label,.year-on .rift-caption{opacity:1}
+.vault-rift.year-on{animation:riftShake 1.4s steps(2,end) 2}
+@keyframes clockSpin{to{transform:rotate(360deg)}}@keyframes knockRing{0%{opacity:1;transform:scale(.25)}100%{opacity:0;transform:scale(4)}}
+@keyframes yearRift{
+  0%,100%{transform:none;filter:none}
+  10%{transform:translate(-4px,2px) skewX(2deg);filter:hue-rotate(15deg) brightness(1.3)}
+  25%{transform:translate(6px,-3px);filter:hue-rotate(-25deg) brightness(.7)}
+  40%{transform:translate(-3px,-1px) skewX(-3deg);filter:hue-rotate(40deg)}
+  55%{transform:translate(5px,3px);filter:brightness(1.5) saturate(1.6)}
+  70%{transform:translate(-6px,1px) skewX(2deg);filter:hue-rotate(60deg)}
+  85%{transform:translate(2px,-2px);filter:brightness(.6)}
+}
+@keyframes yearGlitchShadow{
+  0%,100%{text-shadow:6px 0 #7d241c,-6px 0 #1f817d}
+  20%{text-shadow:9px 1px #7d241c,-4px -1px #1f817d}
+  45%{text-shadow:2px -2px #7d241c,-9px 2px #1f817d}
+  70%{text-shadow:8px 2px #7d241c,-2px -3px #1f817d}
+}
+@keyframes scanFlicker{50%{opacity:.4}}
 @media(max-width:520px){.vault-rift{height:470px}.rift-safe{width:205px;height:220px}.rift-roster{inset:15px 12px 74px}.rift-roster-label{top:15px;max-width:calc(100% - 30px);font-size:12px;white-space:normal}.rift-year{left:19%;right:19%;top:auto;bottom:72px;height:86px;font-size:clamp(48px,18vw,72px)}.rift-caption{font-size:13px}}
 .rickshaw-title{margin:4px 0 9px;color:#f0dfad;font:800 clamp(22px,5.8vw,38px)/1.25 'Noto Serif KR',serif;text-align:center;letter-spacing:-.04em;white-space:nowrap}.rickshaw-lead{margin:0 auto 14px;max-width:620px;color:#cbbd9c;font:600 14px/1.7 'IBM Plex Sans KR',sans-serif;text-align:center;word-break:keep-all}.rickshaw-lead span{display:block}
 .rickshaw-discovery{width:min(100%,720px);margin:auto;padding:24px 20px;border:1px solid rgba(205,164,78,.38);border-radius:13px;background:linear-gradient(145deg,rgba(30,22,16,.96),rgba(8,7,6,.97));box-shadow:0 20px 48px rgba(0,0,0,.5);text-align:center}.rickshaw-discovery h2{margin:0 0 15px;color:#f0dfad;font:800 clamp(27px,7vw,40px)/1.3 'Noto Serif KR',serif}.signal-telegram{margin:0 auto 16px;padding:13px 16px;border:1px dashed rgba(205,164,78,.48);background:linear-gradient(90deg,rgba(119,72,31,.13),rgba(8,7,6,.15));color:#d4b76f;text-align:left;opacity:0;transform:translateY(-10px)}.signal-telegram span{display:block;margin-bottom:6px;color:#c99c42;font:700 11px 'IBM Plex Sans KR',sans-serif;letter-spacing:.16em}.signal-telegram strong{display:block;color:#f1dfb1;font:700 15px/1.75 'Noto Serif KR',serif;word-break:keep-all}.rickshaw-discovery .signal-lines{margin:0 0 20px;color:#d8c8a5;font:700 14px/1.8 'Noto Serif KR',serif;word-break:keep-all;opacity:0;transform:translateY(8px)}.rickshaw-discovery .signal-lines em{display:block;margin-top:7px;color:#e1c77f;font-style:normal}.rickshaw-discovery .signal-lines b{display:block;margin-top:10px;color:#71ddd4;font-family:'IBM Plex Sans KR',sans-serif;font-size:13px;letter-spacing:.06em}.rickshaw-answer{display:grid;grid-template-columns:1fr auto;gap:8px;opacity:0;transform:translateY(8px)}.rickshaw-discovery.story-on .signal-telegram{animation:signalStoryIn .55s .12s ease forwards}.rickshaw-discovery.story-on .signal-lines{animation:signalStoryIn .55s .72s ease forwards}.rickshaw-discovery.story-on .rickshaw-answer{animation:signalStoryIn .5s 1.25s ease forwards}@keyframes signalStoryIn{to{opacity:1;transform:none}}.rickshaw-answer input{min-width:0;padding:15px 14px;border:1px solid rgba(205,164,78,.55);border-radius:7px;background:#0a0806;color:#f4e4bd;font:700 18px 'Noto Serif KR',serif;outline:none}.rickshaw-answer input:focus{border-color:#69d9d0;box-shadow:0 0 0 3px rgba(105,217,208,.12)}.rickshaw-answer button{margin:0;width:auto;padding:13px 20px;letter-spacing:.06em}.rickshaw-feedback{min-height:28px;margin-top:11px;color:#b9a887;font:700 13px/1.6 'IBM Plex Sans KR',sans-serif}.rickshaw-feedback.good{color:#79dfd5}.rickshaw-feedback.bad{color:#e57a68;animation:shake .28s}.rickshaw-game[hidden]{display:none}.rickshaw-game.reveal{animation:rickshawReveal .85s ease both}@keyframes rickshawReveal{from{opacity:0;transform:translateY(20px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
@@ -1581,12 +1619,12 @@ const CONFIG = {
       text:`${_yyyy}년 ${_mm}월 ${_dd}일, 목포.\n\n유달산 아래 붉은 벽돌 건물, 목포근대역사관 1관.\n\n입구 옆, 세월에 바랜 전시 안내판 하나가 눈에 들어왔다.` },
     { type:'sign', image:"images/prologue-sign.jpg",   /* 입구 전시 안내판 사진 */
       sign:"이 건물은 일본영사관으로 지어진 뒤 목포이사청과 목포부청사로 사용되었다. 붉은 벽돌은 여러 시대의 흔적을 품고 있다.",
-      after:"그 문장을 읽는 순간\n\n— 주머니 속 스마트폰이 미친 듯이 떨리기 시작했다." },
+      after:"빛나는 붉은 벽돌을 만지는 순간\n주머니 속 스마트폰이 미친 듯이 떨리기 시작했다." },
     { type:'narr', fx:'shake-soft', text:"안테나가 사라졌다. 와이파이도, 데이터도 먹통.\n\n대신 화면에는 처음 보는 주파수 하나가 잡혀 있었다. 마치 벽 속의 낡은 구리선이 백 년 동안 붙들고 있던 신호를, 지금 막 내 전화기에 흘려보내는 것처럼.\n\n뚜… 뚜뚜… 뚜―\n\n…모스 부호다." },
     { type:'narr', preview:'dial', btn:'다이얼 확인하기', text:"그때, 화면이 저절로 바뀌더니 오래된 라디오처럼 생긴 다이얼 하나가 떠올랐다.\n\n신호가 잡힐 듯 말 듯 흩어진다.\n\n다이얼을 돌려 소리가 가장 또렷해지는\n주파수를 직접 찾아야 한다." },
     { type:'tuner' },
     { type:'rift' },
-    { type:'tg', btn:'네, 맞습니다.', text:`치직― 수신 좌표가 고정되었소.\n\n여기는 1920년 ${_mm}월 ${_dd}일 밤.\n옛 일본영사관 건물을 쓰고 있는 목포부청사요.\n\n나는 부청 통신실에서 일하는 조선인 서기, 윤식이라 하오.\n그대가 다이얼을 맞춘 순간, 백 년 뒤의 신호가 이 전신기에 찍히기 시작했소.\n\n…그대가 있는 곳도 ${_mm}월 ${_dd}일이오?` },
+    { type:'tg', btn:'네, 맞습니다.', text:`치직- 수신 좌표 고정 완료\n\n여기는 1920년 ${_mm}월 ${_dd}일 밤.\n옛 일본영사관 건물을 쓰고 있는 목포부청사요.\n\n나는 부청 통신실에서 일하는 조선인 서기, 윤식이라 하오.\n그대가 다이얼을 맞춘 순간, 백 년 뒤의 신호가 이 전신기에 찍히기 시작했소.\n\n…그대가 있는 곳도 ${_mm}월 ${_dd}일이오?` },
     { type:'identify' },
     { type:'tg', image:"images/prologue-arrest-generated.jpg",   /* 동지 연행 장면 */
       text:"오늘 낮, 순사들이 우리와 뜻을 함께한 동지 한 사람을 목포부청으로 끌고 갔소.\n\n놈들의 밀실 금고엔 동지들을 체포하라는 「검거 대상 지시서」가 잠들어 있고, 내일 새벽 검거가 시작된다 하오.\n\n오늘 밤이… 그 명령을 없앨 마지막 기회요." },
@@ -1859,12 +1897,12 @@ const sfx = {
 
 /* ---------- 장면 반응형 배경음악 (WebAudio · 외부 음원 없음) ---------- */
 const BGM_PRESETS={
-  current:{notes:[55,82.41,110],volume:.027,cutoff:520,noise:.004,phrase:[220,246.94,293.66],gap:7200},
-  mokpo:{notes:[49,65.41,82.41],volume:.031,cutoff:360,noise:.003,phrase:[164.81,146.83,123.47],gap:6100},
-  prep:{notes:[55,73.42,98],volume:.029,cutoff:430,noise:.002,phrase:[196,220,261.63],gap:5600},
-  vault:{notes:[41.2,61.74,92.5],volume:.032,cutoff:290,noise:.002,phrase:[123.47,185,138.59],gap:4800},
-  bunker:{notes:[36.71,55,73.42],volume:.03,cutoff:240,noise:.008,phrase:[110,98,82.41],gap:6800},
-  ending:{notes:[65.41,82.41,98,130.81],volume:.035,cutoff:780,noise:.001,phrase:[261.63,329.63,392,523.25],gap:5200}
+  current:{notes:[55,82.41,110],volume:.07,cutoff:520,noise:.004,phrase:[220,246.94,293.66],gap:7200},
+  mokpo:{notes:[49,65.41,82.41],volume:.08,cutoff:360,noise:.003,phrase:[164.81,146.83,123.47],gap:6100},
+  prep:{notes:[55,73.42,98],volume:.075,cutoff:430,noise:.002,phrase:[196,220,261.63],gap:5600},
+  vault:{notes:[41.2,61.74,92.5],volume:.085,cutoff:290,noise:.002,phrase:[123.47,185,138.59],gap:4800},
+  bunker:{notes:[36.71,55,73.42],volume:.08,cutoff:240,noise:.008,phrase:[110,98,82.41],gap:6800},
+  ending:{notes:[65.41,82.41,98,130.81],volume:.095,cutoff:780,noise:.001,phrase:[261.63,329.63,392,523.25],gap:5200}
 };
 const BGM={theme:'current',started:false,master:null,nodes:[],timer:0,token:0};
 function stopBgm(fade=.7){
@@ -1994,7 +2032,7 @@ const BRIEF_SHORT = [
   '순사가 동지를 끌고 갔소.\n{player}, 정면의 하얀 태양 문양을 세어 첫 암호를 보내시오.',
   '첫 자물쇠가 열렸소.\n벽난로 위 차가운 거울에 입김을 불어,\n숨어 있는 뒤집힌 글자를 드러내시오.\n그 글자가 가리키는 대한제국 관아의 이름을 찾으시오.',
   '복도에 순사의 발소리가 들리오.\n학생들이 숨겨 만든 태극기를 완성하고, 천 뒤에 감춘 날짜를 찾아내시오.',
-  '스무 해 전과 같은 네 번의 호출 부호가 들리오.\n{player}, 나 윤식이오. 내게는 20년이 흘렀소.\n1940년대 방공호에서 푸른 발자국 네 개를 따라 우리의 기록을 찾아 주시오.'
+  '스무 해 전과 같은 네 번의 호출 부호가 들리오.\n{player}, 나 윤식이오. 내게는 20년이 흘렀소.\n나 역시 영장 한 장에 이름이 올라 이 방공호로 끌려왔소.\n푸른 발자국 네 개를 따라 우리의 기록을 찾아 주시오.'
 ];
 const SCENE_EVENTS = [
   ['순찰등이 벽을 훑는다.\n그림자가 멀어질 때 움직여라.','event-patrol'],
@@ -2167,6 +2205,9 @@ function glitch(fromYear, toYear, text, cb){
 }
 
 /* ---------- 타자기 효과 (화면을 탭하면 빨리 감기) ---------- */
+function escapeHtml(text){
+  return String(text).replace(/[&<>"']/g, ch=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[ch]));
+}
 function sentenceLineBreaks(text){
   return String(text)
     .replace(/([.!?])([”’」』\]\)]*)[ \t]+(?=[가-힣A-Za-z0-9「“])/g, '$1$2\n')
@@ -2348,6 +2389,7 @@ function buildScreens(){
     <div class="identity-card" id="pro-identify" style="display:none">
       <label for="player-name">1920년 목포 · 윤식의 전보</label>
       <div class="identity-question" id="identify-question" aria-live="polite"></div>
+      <div class="identity-highlight" id="identify-highlight"></div>
       <div class="identity-input-panel" id="identity-input-panel" hidden>
         <div class="typewriter" id="name-typewriter">
           <div class="typewriter-paper"><div class="identity-row"><span>수신자</span><input id="player-name" maxlength="12" autocomplete="name" placeholder="한글 이름을 입력하세요"></div></div>
@@ -2668,8 +2710,11 @@ async function playPrologue(){
       input.disabled = true;
       submit.disabled = true;
       question.textContent = '';
+      $('#identify-highlight').textContent = '';
       const telegraphIv = setInterval(()=>sfx.telegraph(),1100);
-      await typewrite(question,'「내 전보를 받은 사람의 이름은 무엇이오?\n\n백 년 뒤의 협력자여, 그대의 이름을 보내 주시오.」',38);
+      await typewrite(question,'내 전보를 받은 사람의 이름은 무엇이오?',38);
+      await new Promise(r=>setTimeout(r,250));
+      await typewrite($('#identify-highlight'),'백 년 뒤의 협력자여,\n그대의 이름을 보내 주시오.',38);
       clearInterval(telegraphIv);
       await new Promise(r=>setTimeout(r,350));
       box.classList.remove('asking');
@@ -2705,8 +2750,8 @@ async function playPrologue(){
       }
       $('#pro-sign').style.display = 'block';
       $('#sign-after').innerHTML = '';
-      await typewrite($('#sign-body'), sc.sign, 40);
-      await new Promise(r=>setTimeout(r, 550));
+      $('#sign-body').innerHTML = escapeHtml(sc.sign).replace(/붉은 벽돌/g, '<span class="glow-brick">붉은 벽돌</span>');
+      await new Promise(r=>setTimeout(r, 900));
       startFx('shake');
       await typewrite($('#sign-after'), sc.after, 30);
     } else if(sc.type === 'narr'){
@@ -3758,16 +3803,22 @@ async function finishGame(){
     show('#scr-epilogue');
     buildBrickRiseBg($('#brick-rise-bg'));
     $('#brick-rise-bg').classList.remove('on');
-    $('#epi-body').textContent = '';
-    $('#brick-moral').textContent = '';
-    $('#brick-moral').style.opacity = 0;
-    await typewrite($('#epi-body'), CONFIG.ending.epilogue, 32);
-    await delay(500);
+    const epiBtn = $('#btn-epi-next');
+    const epiBody = $('#epi-body'), brickMoral = $('#brick-moral');
+    epiBody.textContent = ''; epiBody.style.display = 'block';
+    brickMoral.textContent = ''; brickMoral.style.opacity = 0; brickMoral.style.display = 'none';
+    epiBtn.style.visibility = 'hidden'; epiBtn.textContent = '다음으로';
+    await typewrite(epiBody, CONFIG.ending.epilogue, 32);
+    epiBtn.style.visibility = 'visible';
+    await waitClick(epiBtn);
+    epiBtn.style.visibility = 'hidden';
+    epiBody.style.display = 'none';
     $('#brick-rise-bg').classList.add('on');
     await delay(700);
-    $('#brick-moral').style.opacity = 1;
-    await typewrite($('#brick-moral'), CONFIG.ending.brickMoral, 34);
-    const epiBtn = $('#btn-epi-next');
+    brickMoral.style.display = 'block';
+    brickMoral.style.opacity = 1;
+    await typewrite(brickMoral, CONFIG.ending.brickMoral, 34);
+    epiBtn.textContent = '업적 확인하기';
     epiBtn.style.visibility = 'visible';
     await waitClick(epiBtn);
     /* ⑤ 작전 기록 */
