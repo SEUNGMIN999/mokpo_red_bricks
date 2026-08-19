@@ -583,6 +583,9 @@ button{touch-action:manipulation}
   color:rgba(240,227,190,.97);padding:26px 6px;min-height:160px;
   white-space:pre-wrap;word-break:keep-all;
   text-shadow:0 2px 4px rgba(0,0,0,.6);
+  flex-shrink:0; /* 세로로 긴 화면(.screen{display:flex;flex-direction:column})에서
+    본문이 화면보다 길어질 때 기본 flex-shrink 때문에 글자 상자가 실제 글 길이보다
+    낮게 눌려버려, 넘친 글자가 아래 버튼과 겹쳐 보이는 문제를 막는다. */
 }
 .narr-block .caret{display:inline-block;width:8px;height:17px;background:var(--paper);
   vertical-align:-2px;animation:blink .8s steps(1) infinite}
@@ -1209,6 +1212,11 @@ input[type=range]#t-range{
 
 /* 후일담·기록 화면 */
 .center-col{justify-content:center}
+/* 내용이 길어 화면보다 커지면 justify-content:center가 콘텐츠 시작부를
+   스크롤로 닿을 수 없게 잘라내는 문제가 있어(특히 짧은 화면 높이), 이
+   두 화면은 위에서부터 자연스럽게 흐르며 스크롤되도록 고정한다. */
+#scr-epilogue.center-col{justify-content:flex-start;padding-top:14vh;padding-bottom:80px}
+#scr-record.center-col{justify-content:flex-start}
 #scr-epilogue .narr-block{min-height:0;text-align:center}
 #scr-epilogue>*:not(.brick-rise-bg){position:relative;z-index:1}
 #scr-record .end-credit{margin-top:22px}
@@ -1219,12 +1227,18 @@ input[type=range]#t-range{
   flex:1;opacity:0;transform:translateY(10px);border-top:1px solid rgba(0,0,0,.35);
   background:repeating-linear-gradient(90deg,var(--brick) 0 36px, rgba(0,0,0,.4) 36px 39px);
 }
-.brick-rise-bg.on .brow{animation:brickRiseRow .8s ease forwards}
+.brick-rise-bg.on .brow{animation:brickRiseRow 1.15s cubic-bezier(.19,.85,.24,1) forwards}
 .brick-rise-bg .brow:nth-child(even){background-position:18px 0}
 @keyframes brickRiseRow{to{opacity:1;transform:none}}
 .brick-moral{
   margin-top:16px;padding:16px 14px;border:1px solid rgba(210,173,94,.4);border-radius:6px;
   background:rgba(10,7,5,.72);font-size:14.5px;line-height:2.05;
+  transition:opacity 1.1s ease;
+}
+.brick-tagline{
+  display:none;margin-top:16px;opacity:0;transition:opacity 1.2s ease;
+  text-align:center;font:600 12px 'IBM Plex Sans KR',sans-serif;letter-spacing:.16em;
+  color:rgba(233,217,174,.6);
 }
 
 /* ---------- 전시 안내판 ---------- */
@@ -1404,14 +1418,15 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
 .dial-four .n4,.dial-eight .n8{color:#fff3cf;text-shadow:0 0 10px #ffdf94,0 0 18px rgba(255,224,150,.8)}
 @keyframes needleSnap{0%{filter:brightness(1)}22%{filter:brightness(2.6) drop-shadow(0 0 12px #fff4cf)}45%{filter:brightness(1.2)}100%{filter:brightness(1)}}
 .safe-open .rift-safe{transform:translate(-145%,-50%) rotateY(-28deg);opacity:.15;filter:blur(2px)}
-.rift-order,.rift-roster,.rift-clock,.rift-year,.rift-knocks{position:absolute;opacity:0;transition:.65s ease}
+.rift-order,.rift-roster,.rift-clock,.rift-knocks{position:absolute;opacity:0;transition:.65s ease}
+.vault-rift .rift-year{position:absolute;opacity:0;transition:.65s ease}
 .rift-order{z-index:3;left:50%;top:46%;width:230px;min-height:270px;padding:28px 20px;transform:translate(-50%,-42%) scale(.78) rotate(-2deg);background:repeating-linear-gradient(0deg,#e8d4a0 0 27px,#d7be82 28px);color:#3b2417;border:1px solid #8d6634;box-shadow:0 22px 45px #000;text-align:center;font:700 15px/1.9 'Noto Serif KR',serif}
 .rift-order small{display:block;margin-bottom:20px;color:#8a2d20;border:3px double #8a2d20;font-size:12px}.order-on .rift-order{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(-2deg)}
 .rift-roster{z-index:5;inset:20px 24px 72px;display:flex;align-items:center;justify-content:center;transform:scale(.92);background:rgba(4,3,2,.78);box-shadow:inset 0 0 70px #000}.rift-roster img{max-width:100%;max-height:100%;object-fit:contain;filter:sepia(.25) brightness(.9);box-shadow:0 0 42px rgba(255,213,119,.35)}.rift-roster-label{position:absolute;z-index:21;left:50%;top:20px;max-width:calc(100% - 48px);padding:8px 14px;transform:translateX(-50%);opacity:0;background:rgba(11,9,7,.96);color:#f7e4aa;border:1px solid #9a7838;box-shadow:0 5px 18px rgba(0,0,0,.6);text-align:center;font:700 clamp(12px,2.2vw,15px)/1.35 'IBM Plex Sans KR',sans-serif;font-style:normal;letter-spacing:.06em;white-space:nowrap;transition:.4s}.roster-on .rift-order{opacity:.08;filter:blur(3px)}.roster-on .rift-roster{opacity:1;transform:scale(1)}.roster-on .rift-roster-label{opacity:1}
 .rift-clock{z-index:7;left:50%;top:45%;width:170px;height:170px;transform:translate(-50%,-50%) scale(.65);border:13px solid #4d3320;border-radius:50%;background:radial-gradient(circle,#e2d4ab 0 66%,#756044 67%);box-shadow:0 0 0 4px #15100b,0 20px 50px #000}.rift-clock::before{content:"";position:absolute;left:81px;top:27px;width:5px;height:58px;background:#2d241b;transform-origin:bottom;animation:clockSpin .5s linear infinite}.rift-clock::after{content:"";position:absolute;left:80px;top:48px;width:6px;height:38px;background:#2d241b;transform-origin:bottom;transform:rotate(96deg)}.clock-on .rift-roster{opacity:.22}.clock-on .rift-clock{opacity:1;transform:translate(-50%,-50%) scale(1)}.clock-stop .rift-clock::before{animation-play-state:paused}
 .rift-knocks{z-index:8;inset:0;display:grid;place-items:center;pointer-events:none}.rift-knocks i{position:absolute;width:90px;height:90px;border:3px solid #d6b35c;border-radius:50%;opacity:0}.knock-on .rift-knocks{opacity:1}.knock-on .rift-knocks i{animation:knockRing 1.25s ease-out}.knock-on .rift-knocks i:nth-child(2){animation-delay:.2s}.knock-on .rift-knocks i:nth-child(3){animation-delay:.4s}.knock-on .rift-knocks i:nth-child(4){animation-delay:.6s}
-.rift-year{z-index:12;left:8%;right:8%;top:auto;bottom:76px;height:104px;padding:0 10px;display:grid;place-items:center;border:1px solid rgba(217,178,88,.28);border-radius:12px;color:#f1dfa9;background:radial-gradient(circle,rgba(4,2,2,.82),rgba(4,2,2,.56));font:800 clamp(28px,6vw,58px) Georgia,serif;letter-spacing:-.03em;white-space:nowrap;text-shadow:5px 0 #7d241c,-5px 0 #1f817d;box-shadow:0 14px 35px rgba(0,0,0,.48);pointer-events:none;overflow:hidden}
-.rift-year::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(120,240,235,.09) 3px,transparent 4px);mix-blend-mode:screen;opacity:0}
+.vault-rift .rift-year{z-index:12;left:8%;right:8%;top:auto;bottom:76px;height:104px;padding:0 10px;display:grid;place-items:center;border:1px solid rgba(217,178,88,.28);border-radius:12px;color:#f1dfa9;background:radial-gradient(circle,rgba(4,2,2,.82),rgba(4,2,2,.56));font:800 clamp(28px,6vw,58px) Georgia,serif;letter-spacing:-.03em;white-space:nowrap;text-shadow:5px 0 #7d241c,-5px 0 #1f817d;box-shadow:0 14px 35px rgba(0,0,0,.48);pointer-events:none;overflow:hidden}
+.vault-rift .rift-year::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(120,240,235,.09) 3px,transparent 4px);mix-blend-mode:screen;opacity:0}
 .year-on .rift-year{opacity:1;animation:yearRift .16s steps(2) 8, yearGlitchShadow .45s ease-in-out infinite}
 .year-on .rift-year::before{opacity:1;animation:scanFlicker .28s steps(2) infinite}
 .year-on .rift-roster{opacity:.7}.year-on .rift-clock{opacity:.12}.year-on .rift-roster-label,.year-on .rift-caption{opacity:1}
@@ -1433,7 +1448,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   70%{text-shadow:8px 2px #7d241c,-2px -3px #1f817d}
 }
 @keyframes scanFlicker{50%{opacity:.4}}
-@media(max-width:520px){.vault-rift{height:470px}.rift-safe{width:205px;height:220px}.rift-roster{inset:15px 12px 74px}.rift-roster-label{top:15px;max-width:calc(100% - 30px);font-size:12px;white-space:normal}.rift-year{left:6%;right:6%;top:auto;bottom:72px;height:86px;font-size:clamp(24px,9vw,40px);letter-spacing:-.03em}.rift-caption{font-size:13px}}
+@media(max-width:520px){.vault-rift{height:470px}.rift-safe{width:205px;height:220px}.rift-roster{inset:15px 12px 74px}.rift-roster-label{top:15px;max-width:calc(100% - 30px);font-size:12px;white-space:normal}.vault-rift .rift-year{left:6%;right:6%;top:auto;bottom:72px;height:86px;font-size:clamp(24px,9vw,40px);letter-spacing:-.03em}.rift-caption{font-size:13px}}
 .rickshaw-title{margin:4px 0 9px;color:#f0dfad;font:800 clamp(22px,5.8vw,38px)/1.25 'Noto Serif KR',serif;text-align:center;letter-spacing:-.04em;white-space:nowrap}.rickshaw-lead{margin:0 auto 14px;max-width:620px;color:#cbbd9c;font:600 14px/1.7 'IBM Plex Sans KR',sans-serif;text-align:center;word-break:keep-all}.rickshaw-lead span{display:block}
 .rickshaw-discovery{width:min(100%,720px);margin:auto;padding:24px 20px;border:1px solid rgba(205,164,78,.38);border-radius:13px;background:linear-gradient(145deg,rgba(30,22,16,.96),rgba(8,7,6,.97));box-shadow:0 20px 48px rgba(0,0,0,.5);text-align:center}.rickshaw-discovery h2{margin:0 0 15px;color:#f0dfad;font:800 clamp(27px,7vw,40px)/1.3 'Noto Serif KR',serif}.signal-telegram{margin:0 auto 16px;padding:13px 16px;border:1px dashed rgba(205,164,78,.48);background:linear-gradient(90deg,rgba(119,72,31,.13),rgba(8,7,6,.15));color:#d4b76f;text-align:left;opacity:0;transform:translateY(-10px)}.signal-telegram span{display:block;margin-bottom:6px;color:#c99c42;font:700 11px 'IBM Plex Sans KR',sans-serif;letter-spacing:.16em}.signal-telegram strong{display:block;color:#f1dfb1;font:700 15px/1.75 'Noto Serif KR',serif;word-break:keep-all}.rickshaw-discovery .signal-lines{margin:0 0 20px;color:#d8c8a5;font:700 14px/1.8 'Noto Serif KR',serif;word-break:keep-all;opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}.rickshaw-discovery .signal-lines:empty{margin:0}.rickshaw-discovery .signal-lines.on{opacity:1;transform:none}.rickshaw-discovery .signal-em{display:block;margin-top:7px;color:#e1c77f;font-style:normal}.rickshaw-discovery .signal-hint{display:block;margin-top:2px;color:#71ddd4;font-family:'IBM Plex Sans KR',sans-serif;font-size:13px;letter-spacing:.06em}.rickshaw-answer{display:grid;grid-template-columns:1fr auto;gap:8px;opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}.rickshaw-answer.on{opacity:1;transform:none}.rickshaw-discovery.story-on .signal-telegram{animation:signalStoryIn .55s .12s ease forwards}.rickshaw-discovery .btn-continue{opacity:0;transform:translateY(8px);display:block;margin:6px auto 2px}.rickshaw-discovery.story-on .btn-continue{animation:signalStoryIn .5s .78s ease forwards}.rickshaw-discovery .btn-continue.gone{display:none}.rickshaw-discovery .rickshaw-photo{margin:14px 0 4px;opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}.rickshaw-discovery .rickshaw-photo img{width:100%;display:block;border-radius:6px;border:1px solid rgba(201,162,75,.45);box-shadow:0 10px 24px rgba(0,0,0,.5);filter:sepia(.12) contrast(1.03) brightness(.96)}.rickshaw-discovery .rickshaw-photo figcaption{margin-top:6px;color:#b9a887;font:600 11px 'IBM Plex Sans KR',sans-serif;letter-spacing:.06em;text-align:center}.rickshaw-discovery .rickshaw-photo.on{opacity:1;transform:none}@keyframes signalStoryIn{to{opacity:1;transform:none}}.rickshaw-answer input{min-width:0;padding:15px 14px;border:1px solid rgba(205,164,78,.55);border-radius:7px;background:#0a0806;color:#f4e4bd;font:700 18px 'Noto Serif KR',serif;outline:none}.rickshaw-answer input:focus{border-color:#69d9d0;box-shadow:0 0 0 3px rgba(105,217,208,.12)}.rickshaw-answer button{margin:0;width:auto;padding:13px 20px;letter-spacing:.06em}.rickshaw-feedback{min-height:28px;margin-top:11px;color:#b9a887;font:700 13px/1.6 'IBM Plex Sans KR',sans-serif}.rickshaw-feedback.good{color:#79dfd5}.rickshaw-feedback.bad{color:#e57a68;animation:shake .28s}.rickshaw-game[hidden]{display:none}.rickshaw-game.reveal{animation:rickshawReveal .85s ease both}@keyframes rickshawReveal{from{opacity:0;transform:translateY(20px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
 .rickshaw-stage{position:relative;width:min(100%,720px);margin:auto;overflow:hidden;border:1px solid rgba(205,164,78,.42);border-radius:14px;background:#0a0806;box-shadow:0 22px 55px rgba(0,0,0,.52);transition:.7s}.rickshaw-stage>.rickshaw-scene{display:block;width:100%;height:auto;opacity:0;filter:sepia(.22) saturate(.84) brightness(.68);transition:opacity .85s ease,filter .85s ease,transform 1.2s ease;transform:scale(1.025)}.rickshaw-stage>.rickshaw-scene:not(:first-child){position:absolute;inset:0;height:100%;object-fit:cover}.rickshaw-stage.era-1920>.scene-1920,.rickshaw-stage.era-1930>.scene-1930,.rickshaw-stage.era-1940>.scene-1940{opacity:1;transform:scale(1)}.rickshaw-stage.era-1920>.scene-1920{filter:sepia(.3) saturate(.88) brightness(.7)}.rickshaw-stage.era-1930>.scene-1930{filter:sepia(.38) saturate(.76) brightness(.65)}.rickshaw-stage.era-1940>.scene-1940{filter:grayscale(.35) sepia(.18) saturate(.7) brightness(.56)}.rickshaw-stage::before{content:"";position:absolute;z-index:3;inset:-20%;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(240,214,151,.25) 48%,transparent 58%);transform:translateX(-80%);opacity:0}.rickshaw-stage.era-shift::before{animation:rickshawEraSweep .85s ease}.rickshaw-stage::after{content:"";position:absolute;z-index:2;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.34)),repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,234,184,.035) 4px);mix-blend-mode:multiply}@keyframes rickshawEraSweep{0%{opacity:0;transform:translateX(-80%)}35%{opacity:1}100%{opacity:0;transform:translateX(80%)}}
@@ -1782,7 +1797,7 @@ const CONFIG = {
     sign: "― 스무 해 뒤, 1940년대 목포에서 윤식",
     replyPrompt: "전신선이 끊어지기 전, 스무 해를 견뎌 다시 돌아온 윤식에게 짧은 답장을 보낼 수 있다. 무엇이라 답하겠는가?",
     epilogue: "…송신 완료. 윤식의 마지막 신호가 끊겼다. 스마트폰 화면이 꺼지고, 어두운 방공호와 현재의 목포만 남았다.\n\n1920년의 젊은 서기와 1940년대 방공호의 지친 목소리는 같은 사람이었다. 스무 해 동안 윤식은 이름을 지키고, 다시 기록을 미래로 보내기 위해 버텼다.\n\n기록 어디에도 '윤식'이라는 이름은 남아 있지 않다. 그러나 이름을 남기지 못한 수많은 사람이 각자의 자리에서 역사를 견디고 지켜 냈다는 사실은 남아 있다.\n\n방공호 밖으로 나서자, 유달산 아래 붉은 벽돌 위로 오늘의 햇빛이 내려앉고 있었다.",
-    brickMoral: "벽돌은 부서지지 않았다. 다만 그 위에 여러 시대의 아픔과 기억이 겹겹이 쌓였을 뿐이다.\n\n가장 단단했던 것은 벽돌이 아니라, 그 곁을 끝까지 지켜낸 사람들의 마음이었다.\n\n오늘 우리가 딛고 선 이 자리도, 누군가 지켜낸 시간 위에 놓여 있다.\n\n결국 부서진 것은 벽돌이 아니라, 그들을 잊으려 했던 시간이었다 ― 우리가 잊지 않는 한, 그 시간도 헛되지 않다.",
+    brickMoral: "오늘 우리가 딛고 선 이 자리도,\n누군가 지켜낸 시간 위에 놓여 있다.\n\n우리가 잊지 않는 한,\n그 시간도 사라지지 않는다.",
     credit: "이 게임의 무대인 목포근대역사관 1관(구 목포일본영사관, 1920년 당시 목포부청사)과 뒤편 방공호에는 일제강점기의 아픈 역사가 남아 있습니다. 오늘의 평화로운 목포는 이름 없이 스러져 간 이들의 헌신 위에 서 있습니다. 이야기는 실제 역사적 장소와 사건에서 출발했으며, 윤식과 비밀 작전, 검거 대상자 명부와 검거 대상 지시서, 시간을 잇는 통신 장치는 이야기를 위해 구성한 인물과 장치입니다."
   }
 };
@@ -2634,7 +2649,8 @@ function buildScreens(){
     <div class="brick-rise-bg" id="brick-rise-bg" aria-hidden="true"></div>
     <div class="narr-block" id="epi-body"></div>
     <div class="narr-block brick-moral" id="brick-moral"></div>
-    <button class="btn" id="btn-epi-next" style="visibility:hidden">업적 확인하기</button>`;
+    <div class="brick-tagline" id="brick-tagline">― 목포 : 붉은 벽돌의 비밀 ―</div>
+    <button class="btn" id="btn-epi-next" style="visibility:hidden">기억을 기록으로 남기기</button>`;
   app.appendChild(epi);
 
   /* --- 임무 기록 --- */
@@ -3531,7 +3547,7 @@ function openHint(i){
 function buildBrickRiseBg(el, rows=9){
   if(!el) return;
   el.innerHTML = Array.from({length:rows}, (_,i)=>{
-    const delay = ((rows-1-i)*0.12).toFixed(2);
+    const delay = ((rows-1-i)*0.2).toFixed(2); /* 한 층씩 차분하게 쌓이도록 층당 간격을 늘린다 */
     return `<div class="brow" style="animation-delay:${delay}s"></div>`;
   }).join('');
 }
@@ -3871,6 +3887,50 @@ async function playEndingTelegram(){
   }
 }
 
+/* 답장을 보낸 뒤 ― 그 답장이 스무 해 저편에 정말로 닿았다는 짧은 감정적 확인.
+   말을 아낄수록 무게가 실리므로 "……고맙소." 한 마디만 남긴다. */
+async function playFinalSignalAck(){
+  const body=$('#end-body');
+  await new Promise(r=>setTimeout(r,2000)); /* 답장을 보낸 뒤, 모든 것이 멈추는 정적 */
+  body.classList.add('scene-out');
+  await new Promise(r=>setTimeout(r,380));
+  body.innerHTML='<span style="display:block;font:600 13px \'IBM Plex Sans KR\',sans-serif;letter-spacing:.06em;color:#71ddd4">［1940년대에서 마지막 신호 수신］</span>';
+  body.classList.remove('scene-out');
+  await new Promise(r=>setTimeout(r,1500));
+  body.classList.add('scene-out');
+  await new Promise(r=>setTimeout(r,380));
+  body.textContent='……고맙소.';
+  body.classList.remove('scene-out');
+  sfx.received();
+  if(navigator.vibrate) navigator.vibrate([40,50,120]);
+  await new Promise(r=>setTimeout(r,2000));
+}
+
+/* 후일담 : 한꺼번에 타이핑하지 않고 "정지 → 한 문단 → 정지 → 한 문단"으로 끊어,
+   플레이어가 따라 읽기보다 잠시 머물 수 있게 한다. */
+const EPILOGUE_BEATS = [
+  { text:'……치직.', hold:2000 },
+  { text:'윤식의 마지막 신호가 끊겼다.', hold:2500 },
+  { text:'1920년의 젊은 서기와\n1940년대 방공호의 지친 목소리는\n같은 사람이었다.', hold:3000 },
+  { text:'기록 어디에도\n\'윤식\'이라는 이름은 남아 있지 않다.', hold:4000 },
+  { text:'그러나 이름을 남기지 못한 수많은 사람들이\n각자의 자리에서 역사를 견디고 지켜 냈다는 사실은 남아 있다.', hold:3200 },
+  { text:'방공호 밖으로 나서자,\n유달산 아래 붉은 벽돌 위로\n오늘의 햇빛이 내려앉고 있었다.', hold:3000 }
+];
+async function playEpilogueBeats(el, beats){
+  for(let idx=0; idx<beats.length; idx++){
+    const b=beats[idx];
+    if(idx>0){
+      el.style.opacity='0';
+      await new Promise(r=>setTimeout(r,700));
+    }
+    el.textContent=b.text;
+    void el.offsetWidth;
+    if(idx===0) noiseBurst(.5,.06,900);
+    requestAnimationFrame(()=>{ el.style.opacity='1'; });
+    await new Promise(r=>setTimeout(r,700+b.hold));
+  }
+}
+
 async function endingShot(id,duration){
   const shot=$(id);
   document.querySelectorAll('.ending-shot').forEach(x=>x.classList.remove('on'));
@@ -4029,33 +4089,45 @@ async function finishGame(){
     await playTelegramFeed(endingTelegram);
     await playEndingTelegram();
     stampTelegramReceived(endingTelegram);
+    await delay(3200); /* 마지막 질문("…목포가 평화롭소?")을 읽고 머무는 시간 */
     const rbtn = $('#btn-end-reply');
     rbtn.style.visibility = 'visible';
     await waitClick(rbtn);
     /* ③ 플레이어 답장 */
     await replyModal();
+    /* ③-2 답장이 스무 해 저편에 정말로 닿았다는 짧은 확인 */
+    await playFinalSignalAck();
     /* ④ 전신선 단절 → 현재 역사관의 아침 */
     await playEndingDisconnect();
-    /* ④-2 후일담 + 붉은 벽돌이 쌓이는 배경 위로 떠오르는 마지막 말 */
+    /* ④-2 후일담 : 정지 → 한 문단 → 정지 → 한 문단으로, 급하게 몰아치지 않고 보여준다 */
     show('#scr-epilogue');
     buildBrickRiseBg($('#brick-rise-bg'));
     $('#brick-rise-bg').classList.remove('on');
     const epiBtn = $('#btn-epi-next');
-    const epiBody = $('#epi-body'), brickMoral = $('#brick-moral');
-    epiBody.textContent = ''; epiBody.style.display = 'block';
+    const epiBody = $('#epi-body'), brickMoral = $('#brick-moral'), brickTagline = $('#brick-tagline');
+    epiBody.textContent = ''; epiBody.style.display = 'block'; epiBody.style.opacity = '0';
+    epiBody.style.transition = 'opacity .7s ease';
     brickMoral.textContent = ''; brickMoral.style.opacity = 0; brickMoral.style.display = 'none';
-    epiBtn.style.visibility = 'hidden'; epiBtn.textContent = '다음으로';
-    await typewrite(epiBody, CONFIG.ending.epilogue, 32);
-    epiBtn.style.visibility = 'visible';
-    await waitClick(epiBtn);
+    brickTagline.style.display = 'none'; brickTagline.style.opacity = '0';
     epiBtn.style.visibility = 'hidden';
+    await playEpilogueBeats(epiBody, EPILOGUE_BEATS);
+    epiBody.style.opacity = '0';
+    await delay(750);
     epiBody.style.display = 'none';
     $('#brick-rise-bg').classList.add('on');
-    await delay(700);
+    await delay(2600); /* 벽돌이 천천히, 다급하지 않게 쌓이는 시간을 넉넉히 준다 */
     brickMoral.style.display = 'block';
-    brickMoral.style.opacity = 1;
-    await typewrite(brickMoral, CONFIG.ending.brickMoral, 34);
-    epiBtn.textContent = '업적 확인하기';
+    brickMoral.style.opacity = '0';
+    void brickMoral.offsetWidth;
+    requestAnimationFrame(()=>{ brickMoral.style.opacity = '1'; });
+    await delay(600);
+    await typewrite(brickMoral, CONFIG.ending.brickMoral, 44);
+    await delay(2000); /* 마지막 문장이 끝난 뒤 곧바로 넘기지 않고, 여운을 둔다 */
+    brickTagline.style.display = 'block';
+    void brickTagline.offsetWidth;
+    requestAnimationFrame(()=>{ brickTagline.style.opacity = '1'; });
+    await delay(2000);
+    epiBtn.textContent = '기억을 기록으로 남기기';
     epiBtn.style.visibility = 'visible';
     await waitClick(epiBtn);
     /* ⑤ 작전 기록 */
