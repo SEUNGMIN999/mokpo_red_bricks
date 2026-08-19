@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>목포 : 붉은 벽돌의 시간</title>
+<title>목포 : 붉은 벽돌의 비밀</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=Nanum+Gothic+Coding:wght@400;700&family=Noto+Serif+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   목포 : 붉은 벽돌의 시간
+   목포 : 붉은 벽돌의 비밀
    디자인 컨셉 — 1920년대 전보(電報)와 낡은 서류, 붉은 벽돌
    ============================================================ */
 :root{
@@ -849,6 +849,7 @@ input[type=range]#t-range{
 #scr-title.has-photo .title-plate{background:rgba(16,9,5,.55);backdrop-filter:blur(2px)}
 
 /* ---------- 미디어 슬롯 (사진·영상) ---------- */
+.mission-caption{padding:8px 4px 0;font-size:12px;line-height:1.6;color:rgba(233,217,174,.7);text-align:center;word-break:keep-all}
 .media-frame{display:none;margin:14px 0 4px;animation:fadeIn .8s}
 .media-frame.show{display:block}
 .media-frame img,.media-frame video{
@@ -1388,7 +1389,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
 .rift-roster{z-index:5;inset:20px 24px 72px;display:flex;align-items:center;justify-content:center;transform:scale(.92);background:rgba(4,3,2,.78);box-shadow:inset 0 0 70px #000}.rift-roster img{max-width:100%;max-height:100%;object-fit:contain;filter:sepia(.25) brightness(.9);box-shadow:0 0 42px rgba(255,213,119,.35)}.rift-roster-label{position:absolute;z-index:21;left:50%;top:20px;max-width:calc(100% - 48px);padding:8px 14px;transform:translateX(-50%);opacity:0;background:rgba(11,9,7,.96);color:#f7e4aa;border:1px solid #9a7838;box-shadow:0 5px 18px rgba(0,0,0,.6);text-align:center;font:700 clamp(12px,2.2vw,15px)/1.35 'IBM Plex Sans KR',sans-serif;font-style:normal;letter-spacing:.06em;white-space:nowrap;transition:.4s}.roster-on .rift-order{opacity:.08;filter:blur(3px)}.roster-on .rift-roster{opacity:1;transform:scale(1)}.roster-on .rift-roster-label{opacity:1}
 .rift-clock{z-index:7;left:50%;top:45%;width:170px;height:170px;transform:translate(-50%,-50%) scale(.65);border:13px solid #4d3320;border-radius:50%;background:radial-gradient(circle,#e2d4ab 0 66%,#756044 67%);box-shadow:0 0 0 4px #15100b,0 20px 50px #000}.rift-clock::before{content:"";position:absolute;left:81px;top:27px;width:5px;height:58px;background:#2d241b;transform-origin:bottom;animation:clockSpin .5s linear infinite}.rift-clock::after{content:"";position:absolute;left:80px;top:48px;width:6px;height:38px;background:#2d241b;transform-origin:bottom;transform:rotate(96deg)}.clock-on .rift-roster{opacity:.22}.clock-on .rift-clock{opacity:1;transform:translate(-50%,-50%) scale(1)}.clock-stop .rift-clock::before{animation-play-state:paused}
 .rift-knocks{z-index:8;inset:0;display:grid;place-items:center;pointer-events:none}.rift-knocks i{position:absolute;width:90px;height:90px;border:3px solid #d6b35c;border-radius:50%;opacity:0}.knock-on .rift-knocks{opacity:1}.knock-on .rift-knocks i{animation:knockRing 1.25s ease-out}.knock-on .rift-knocks i:nth-child(2){animation-delay:.2s}.knock-on .rift-knocks i:nth-child(3){animation-delay:.4s}.knock-on .rift-knocks i:nth-child(4){animation-delay:.6s}
-.rift-year{z-index:12;left:25%;right:25%;top:auto;bottom:76px;height:104px;display:grid;place-items:center;border:1px solid rgba(217,178,88,.28);border-radius:12px;color:#f1dfa9;background:radial-gradient(circle,rgba(4,2,2,.82),rgba(4,2,2,.56));font:800 clamp(54px,12vw,92px) Georgia,serif;text-shadow:6px 0 #7d241c,-6px 0 #1f817d;box-shadow:0 14px 35px rgba(0,0,0,.48);pointer-events:none;overflow:hidden}
+.rift-year{z-index:12;left:16%;right:16%;top:auto;bottom:76px;height:104px;padding:0 10px;display:grid;place-items:center;border:1px solid rgba(217,178,88,.28);border-radius:12px;color:#f1dfa9;background:radial-gradient(circle,rgba(4,2,2,.82),rgba(4,2,2,.56));font:800 clamp(38px,9vw,78px) Georgia,serif;letter-spacing:-.02em;white-space:nowrap;text-shadow:6px 0 #7d241c,-6px 0 #1f817d;box-shadow:0 14px 35px rgba(0,0,0,.48);pointer-events:none;overflow:hidden}
 .rift-year::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(120,240,235,.09) 3px,transparent 4px);mix-blend-mode:screen;opacity:0}
 .year-on .rift-year{opacity:1;animation:yearRift .16s steps(2) 8, yearGlitchShadow .45s ease-in-out infinite}
 .year-on .rift-year::before{opacity:1;animation:scanFlicker .28s steps(2) infinite}
@@ -1411,7 +1412,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   70%{text-shadow:8px 2px #7d241c,-2px -3px #1f817d}
 }
 @keyframes scanFlicker{50%{opacity:.4}}
-@media(max-width:520px){.vault-rift{height:470px}.rift-safe{width:205px;height:220px}.rift-roster{inset:15px 12px 74px}.rift-roster-label{top:15px;max-width:calc(100% - 30px);font-size:12px;white-space:normal}.rift-year{left:19%;right:19%;top:auto;bottom:72px;height:86px;font-size:clamp(48px,18vw,72px)}.rift-caption{font-size:13px}}
+@media(max-width:520px){.vault-rift{height:470px}.rift-safe{width:205px;height:220px}.rift-roster{inset:15px 12px 74px}.rift-roster-label{top:15px;max-width:calc(100% - 30px);font-size:12px;white-space:normal}.rift-year{left:10%;right:10%;top:auto;bottom:72px;height:86px;font-size:clamp(32px,13vw,56px)}.rift-caption{font-size:13px}}
 .rickshaw-title{margin:4px 0 9px;color:#f0dfad;font:800 clamp(22px,5.8vw,38px)/1.25 'Noto Serif KR',serif;text-align:center;letter-spacing:-.04em;white-space:nowrap}.rickshaw-lead{margin:0 auto 14px;max-width:620px;color:#cbbd9c;font:600 14px/1.7 'IBM Plex Sans KR',sans-serif;text-align:center;word-break:keep-all}.rickshaw-lead span{display:block}
 .rickshaw-discovery{width:min(100%,720px);margin:auto;padding:24px 20px;border:1px solid rgba(205,164,78,.38);border-radius:13px;background:linear-gradient(145deg,rgba(30,22,16,.96),rgba(8,7,6,.97));box-shadow:0 20px 48px rgba(0,0,0,.5);text-align:center}.rickshaw-discovery h2{margin:0 0 15px;color:#f0dfad;font:800 clamp(27px,7vw,40px)/1.3 'Noto Serif KR',serif}.signal-telegram{margin:0 auto 16px;padding:13px 16px;border:1px dashed rgba(205,164,78,.48);background:linear-gradient(90deg,rgba(119,72,31,.13),rgba(8,7,6,.15));color:#d4b76f;text-align:left;opacity:0;transform:translateY(-10px)}.signal-telegram span{display:block;margin-bottom:6px;color:#c99c42;font:700 11px 'IBM Plex Sans KR',sans-serif;letter-spacing:.16em}.signal-telegram strong{display:block;color:#f1dfb1;font:700 15px/1.75 'Noto Serif KR',serif;word-break:keep-all}.rickshaw-discovery .signal-lines{margin:0 0 20px;color:#d8c8a5;font:700 14px/1.8 'Noto Serif KR',serif;word-break:keep-all;opacity:0;transform:translateY(8px)}.rickshaw-discovery .signal-lines em{display:block;margin-top:7px;color:#e1c77f;font-style:normal}.rickshaw-discovery .signal-lines b{display:block;margin-top:10px;color:#71ddd4;font-family:'IBM Plex Sans KR',sans-serif;font-size:13px;letter-spacing:.06em}.rickshaw-answer{display:grid;grid-template-columns:1fr auto;gap:8px;opacity:0;transform:translateY(8px)}.rickshaw-discovery.story-on .signal-telegram{animation:signalStoryIn .55s .12s ease forwards}.rickshaw-discovery.story-on .signal-lines{animation:signalStoryIn .55s .72s ease forwards}.rickshaw-discovery.story-on .rickshaw-answer{animation:signalStoryIn .5s 1.25s ease forwards}@keyframes signalStoryIn{to{opacity:1;transform:none}}.rickshaw-answer input{min-width:0;padding:15px 14px;border:1px solid rgba(205,164,78,.55);border-radius:7px;background:#0a0806;color:#f4e4bd;font:700 18px 'Noto Serif KR',serif;outline:none}.rickshaw-answer input:focus{border-color:#69d9d0;box-shadow:0 0 0 3px rgba(105,217,208,.12)}.rickshaw-answer button{margin:0;width:auto;padding:13px 20px;letter-spacing:.06em}.rickshaw-feedback{min-height:28px;margin-top:11px;color:#b9a887;font:700 13px/1.6 'IBM Plex Sans KR',sans-serif}.rickshaw-feedback.good{color:#79dfd5}.rickshaw-feedback.bad{color:#e57a68;animation:shake .28s}.rickshaw-game[hidden]{display:none}.rickshaw-game.reveal{animation:rickshawReveal .85s ease both}@keyframes rickshawReveal{from{opacity:0;transform:translateY(20px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
 .rickshaw-stage{position:relative;width:min(100%,720px);margin:auto;overflow:hidden;border:1px solid rgba(205,164,78,.42);border-radius:14px;background:#0a0806;box-shadow:0 22px 55px rgba(0,0,0,.52);transition:.7s}.rickshaw-stage>.rickshaw-scene{display:block;width:100%;height:auto;opacity:0;filter:sepia(.22) saturate(.84) brightness(.68);transition:opacity .85s ease,filter .85s ease,transform 1.2s ease;transform:scale(1.025)}.rickshaw-stage>.rickshaw-scene:not(:first-child){position:absolute;inset:0;height:100%;object-fit:cover}.rickshaw-stage.era-1920>.scene-1920,.rickshaw-stage.era-1930>.scene-1930,.rickshaw-stage.era-1940>.scene-1940{opacity:1;transform:scale(1)}.rickshaw-stage.era-1920>.scene-1920{filter:sepia(.3) saturate(.88) brightness(.7)}.rickshaw-stage.era-1930>.scene-1930{filter:sepia(.38) saturate(.76) brightness(.65)}.rickshaw-stage.era-1940>.scene-1940{filter:grayscale(.35) sepia(.18) saturate(.7) brightness(.56)}.rickshaw-stage::before{content:"";position:absolute;z-index:3;inset:-20%;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(240,214,151,.25) 48%,transparent 58%);transform:translateX(-80%);opacity:0}.rickshaw-stage.era-shift::before{animation:rickshawEraSweep .85s ease}.rickshaw-stage::after{content:"";position:absolute;z-index:2;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.34)),repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,234,184,.035) 4px);mix-blend-mode:multiply}@keyframes rickshawEraSweep{0%{opacity:0;transform:translateX(-80%)}35%{opacity:1}100%{opacity:0;transform:translateX(80%)}}
@@ -1618,7 +1619,7 @@ const _dd = _now.getDate();        // 오늘 날짜
 
 const CONFIG = {
   gameTitle: "목포",
-  subTitle: "붉은 벽돌의 시간",
+  subTitle: "붉은 벽돌의 비밀",
 
   /* ── 미디어 설정 ──────────────────────────────────────
      모든 사진·영상은 "선택 사항"입니다. 파일이 없으면 그 자리만
@@ -1678,7 +1679,7 @@ const CONFIG = {
         image: "images/1-history-current-building-reconstruction.png",   /* 현재 건물 형태를 바탕으로 한 식민지기 감시 상황 */
         text: "이 건물은 1900년에 지어진, 목포에서 가장 오래된 근대 건축물이에요(사적 제289호). 일본은 1897년 목포가 개항하자 자국민 보호를 내세워 이 영사관을 세웠지만, 실제로는 조선 침탈의 거점이었답니다. 창틀 위 태양 문양처럼 건물 곳곳에 일본의 야욕이 새겨져 있어요. 위 장면은 현재 남아 있는 건물의 형태를 바탕으로 당시 영사관 주변의 감시 분위기를 보여 줍니다."
       },
-      clear: "스마트폰 속에서 돌쩌귀가 무겁게 돌아가며 1920년의 현관문이 열렸다. 문 너머의 과거 복도가 현재 전시실 입구와 겹쳐진다. 윤식의 신호다. ― 「좋습니다. 이제 안으로. 발소리를 죽이세요.」"
+      clear: "스마트폰 속에서 돌쩌귀가 무겁게 돌아가며 1920년의 현관문이 열렸다.\n문 너머의 과거 복도가 현재 전시실 입구와 겹쳐진다.\n\n윤식의 신호다.\n「좋습니다, {player} ― 이제 안으로.\n발소리를 죽이며 들어가시오.」"
     },
     {
       no: "제2막", title: "목포부청 비밀 서기실",
@@ -1688,6 +1689,7 @@ const CONFIG = {
       story: "현재의 1층 전시실 위로 1920년 목포부청 사무실이 희미하게 겹쳐졌다. 실제 전시실의 작은 벽난로를 스마트폰으로 비추자, 과거의 거울 형상이 화면 위에 떠올랐다. 거울 속에는 「밀실의 지도」로 통하는 암호문이 좌우로 뒤집혀 있다.",
       question: "거울에 드러난 뒤집힌 단서를 해독하라. 「1897년 설치된 관아로 개항장 내에서 외국 영사관과의 외교와 사무를 담당한 기관」의 이름을 입력하라.",
       visual: { type: "mirror", text: "1897년 설치된 관아로<br>개항장 내에서 외국 영사관과의<br>외교와 사무를 담당한 기관" },
+      missionCaption: "이 벽난로가 있는 방에 암호의 실마리가 있을 것이오.",
       placeholder: "정답 단어 입력",
       answers: ["무안감리서"],
       hints: [
@@ -1803,7 +1805,6 @@ function personalize(text=''){
     .replace('훌륭하오!', `훌륭하오, ${name}!`)
     .replace('지도가 무사히 전송됐구려!', `${name}, 지도가 무사히 전송됐구려!`)
     .replace('명부의 이름이 모두 복원되는 순간', `${name}의 손끝에서 명부의 이름이 모두 복원되는 순간`)
-    .replace('― 「좋습니다. 이제 안으로.', `― 「좋습니다, ${name}. 이제 안으로.`)
     .replace('당신 덕분에 일제의 검거 명령서를 불태웠소.', `${name}, 당신 덕분에 일제의 검거 명령서를 불태웠소.`)
     .replace('…송신 완료.', `…${name}의 이름으로 송신 완료.`);
 }
@@ -2052,8 +2053,8 @@ function setSceneTheme(theme){
 }
 
 const BRIEF_SHORT = [
-  '순사가 동지를 끌고 갔소.\n{player}, 정면의 하얀 태양 문양을 세어 첫 암호를 보내시오.',
-  '첫 자물쇠가 열렸소.\n벽난로 위 차가운 거울에 입김을 불어,\n숨어 있는 뒤집힌 글자를 드러내시오.\n그 글자가 가리키는 대한제국 관아의 이름을 찾으시오.',
+  '순사가 동지를 끌고 갔소.\n{player}, 이제 이 건물에 몰래 들어가야 하오.',
+  '첫 자물쇠가 열렸소.\n지금 그 벽난로 위엔 거울이 없겠지만, 스마트폰 화면 속 차가운 거울에 입김을 불어,\n숨어 있는 뒤집힌 글자를 드러내시오.\n그 글자가 가리키는 대한제국 관아의 이름을 찾으시오.',
   '복도에 순사의 발소리가 들리오.\n학생들이 숨겨 만든 태극기를 완성하고, 천 뒤에 감춘 날짜를 찾아내시오.',
   '스무 해 전과 같은 네 번의 호출 부호가 들리오.\n{player}, 나 윤식이오. 내게는 20년이 흘렀소.\n나 역시 영장 한 장에 이름이 올라 이 방공호로 끌려왔소.\n푸른 발자국 네 개를 따라 우리의 기록을 찾아 주시오.'
 ];
@@ -2490,6 +2491,7 @@ function buildScreens(){
           <div class="m-q">${st.question}</div>
           ${visual}
           <div class="media-frame" id="mmedia${i}"></div>
+          ${st.missionCaption ? `<div class="mission-caption">${st.missionCaption}</div>` : ''}
           ${fieldHint}
         </div>
         <div class="answer-device" id="device${i}"></div>
@@ -2499,7 +2501,7 @@ function buildScreens(){
         </div>
         <div class="feedback" id="fb${i}"></div>
         <div class="hint-box" id="hints${i}">
-          <button class="hint-btn" id="hintbtn${i}">🔍 힌트 보기 (0/3)</button>
+          <button class="hint-btn" id="hintbtn${i}">🔍 힌트 보기 (0/${st.hints.length})</button>
         </div>
       </div>`;
     app.appendChild(scr);
@@ -3464,7 +3466,7 @@ function openHint(i){
   state.hintOpened[i]++;
   const btn = $('#hintbtn'+i);
   if(state.hintOpened[i] >= hints.length){ btn.textContent = '힌트를 모두 확인했어요'; btn.disabled = true; btn.style.opacity=.4; }
-  else btn.textContent = `🔍 힌트 보기 (${state.hintOpened[i]}/3)`;
+  else btn.textContent = `🔍 힌트 보기 (${state.hintOpened[i]}/${hints.length})`;
 }
 
 /* ---------- 후일담 배경 : 붉은 벽돌이 아래에서부터 쌓여 올라오는 연출 ---------- */
@@ -3489,17 +3491,17 @@ function renderFloorMap(){
           <text x="24" y="13" font-size="10" fill="#6b4f2a" font-family="'Nanum Gothic Coding',monospace">2층 · 목표</text>
           <rect x="14" y="104" width="272" height="70" rx="6" fill="none" stroke="#6b4f2a" stroke-width="1.4" stroke-dasharray="2 3"/>
           <text x="24" y="99" font-size="10" fill="#6b4f2a" font-family="'Nanum Gothic Coding',monospace">1층 · 현재 위치</text>
-          <path class="map-route" d="M78,138 C78,90 190,112 190,72 C190,50 210,58 226,58"
+          <path class="map-route" d="M222,138 C222,90 110,112 110,72 C110,50 90,58 74,58"
                 fill="none" stroke="#b23a2b" stroke-width="2.4" stroke-linecap="round"/>
-          <path d="M215,50 l11,8 l-11,8" fill="none" stroke="#b23a2b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-          <g class="map-pin-now" transform="translate(78,138)">
+          <path d="M85,50 l-11,8 l11,8" fill="none" stroke="#b23a2b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <g class="map-pin-now" transform="translate(222,138)">
             <circle r="5" fill="#b23a2b"/><circle r="5" fill="none" stroke="#b23a2b" stroke-width="1.5"/>
           </g>
-          <text x="78" y="156" font-size="10.5" text-anchor="middle" fill="#3a2a12" font-weight="700">벽난로 · 서기실</text>
-          <g class="map-pin-dest" transform="translate(226,58)">
+          <text x="222" y="156" font-size="10.5" text-anchor="middle" fill="#3a2a12" font-weight="700">벽난로 · 서기실</text>
+          <g class="map-pin-dest" transform="translate(74,58)">
             <circle r="5" fill="#1c6b52"/><circle r="5" fill="none" stroke="#1c6b52" stroke-width="1.5"/>
           </g>
-          <text x="226" y="42" font-size="10.5" text-anchor="middle" fill="#1c6b52" font-weight="700">2층 계단 · 전시실</text>
+          <text x="74" y="42" font-size="10.5" text-anchor="middle" fill="#1c6b52" font-weight="700">2층 계단 · 전시실</text>
         </svg>
       </div>
       <div class="map-cap">지도 위의 붉은 선이 가리키는 곳 ― 2층 계단을 따라 전시실로 올라가라.</div>
