@@ -510,20 +510,11 @@ button{touch-action:manipulation}
 .hidden-flag::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(3deg,transparent 0 12px,rgba(78,54,32,.08) 13px 14px);mix-blend-mode:multiply;pointer-events:none}
 .hidden-flag svg{width:100%;height:100%;display:block}
 .sewing-hands{position:absolute;z-index:4;left:-27px;right:-27px;bottom:17px;height:54px;pointer-events:none}
-.sewing-hand{position:absolute;bottom:0;width:70px;height:34px;border-radius:46% 52% 40% 44%;
-  background:repeating-linear-gradient(97deg,transparent 0 9px,rgba(61,35,24,.24) 10px 11px),linear-gradient(135deg,#8c654d,#b48768 44%,#654331);box-shadow:0 5px 8px #000,inset -8px -5px 9px rgba(60,32,19,.3),inset 0 3px 3px rgba(255,220,185,.14)}
-.sewing-hand.left{left:0;transform:rotate(-12deg)}.sewing-hand.right{right:0;transform:rotate(12deg)}
-.sewing-hand::before{content:"";position:absolute;top:5px;width:62px;height:15px;border-radius:52% 52% 30% 30%;
-  background:
-    radial-gradient(circle at 9px 11px, rgba(40,20,12,.28) 0 3px, transparent 5px),
-    radial-gradient(circle at 23px 9px, rgba(40,20,12,.24) 0 3px, transparent 5px),
-    radial-gradient(circle at 37px 9px, rgba(40,20,12,.24) 0 3px, transparent 5px),
-    radial-gradient(circle at 51px 11px, rgba(40,20,12,.26) 0 3px, transparent 5px),
-    radial-gradient(circle at 30px 3px, rgba(255,232,205,.22) 0 5px, transparent 8px),
-    repeating-linear-gradient(97deg,transparent 0 8px,rgba(61,35,24,.23) 9px 10px),
-    linear-gradient(135deg,#9a6e51,#b98a69);
-  box-shadow:inset 0 -3px 4px rgba(40,20,12,.22)}
-.sewing-hand.left::after{content:"";position:absolute;left:54px;top:-15px;width:2px;height:45px;background:#c8c5b5;transform:rotate(35deg);box-shadow:0 0 3px #000}
+.sewing-hand{position:absolute;bottom:-10px;width:88px;height:66px;filter:drop-shadow(0 6px 7px rgba(0,0,0,.55))}
+.sewing-hand.left{left:-8px;transform:rotate(-10deg)}
+.sewing-hand.right{right:-8px;transform:rotate(10deg) scaleX(-1)}
+.sewing-hand svg{width:100%;height:100%;display:block}
+.sewing-hand .needle{position:absolute;left:62px;top:-27px;width:2px;height:42px;background:#c8c5b5;transform:rotate(30deg);box-shadow:0 0 3px #000}
 .thread-stitch{position:absolute;z-index:3;left:31px;right:30px;bottom:21px;border-top:1px dashed rgba(83,42,29,.72);opacity:.68}
 .flag-date{position:absolute;z-index:4;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;color:#7e2019;
   font:800 46px 'Nanum Myeongjo',serif;text-shadow:0 1px #ead7ad;transform:rotate(-6deg) scale(.7);transition:all .8s}
@@ -554,7 +545,7 @@ button{touch-action:manipulation}
 .stealth-progress span{position:absolute;z-index:2;left:0;right:0;top:-20px;text-align:right;color:#d9c394;font:700 9px 'Nanum Gothic Coding',monospace}
 .flag-hold{position:absolute;z-index:7;left:50%;top:111px;width:330px;height:210px;transform:translateX(-50%);cursor:pointer;border:0;background:transparent;color:transparent;touch-action:none}
 .flag-stealth.holding .sewing-hand.left{animation:sewHandLeft .22s infinite alternate}.flag-stealth.holding .sewing-hand.right{animation:sewHandRight .24s infinite alternate}
-@keyframes sewHandLeft{to{transform:translate(9px,-6px) rotate(-5deg)}}@keyframes sewHandRight{to{transform:translate(-6px,-4px) rotate(7deg)}}
+@keyframes sewHandLeft{to{transform:translate(9px,-6px) rotate(-5deg)}}@keyframes sewHandRight{to{transform:translate(-6px,-4px) rotate(7deg) scaleX(-1)}}
 @media(max-width:520px){.flag-stealth{height:410px}.patrol-state{min-width:124px;font-size:9px}.sewing-room{top:116px;width:244px;height:176px}.flag-hold{width:290px;height:195px}.stealth-help{font-size:11px}}
 
 /* 손전등 — 어둠의 방공호 */
@@ -1100,6 +1091,27 @@ input[type=range]#t-range{
 .preserve-message{position:absolute;left:0;right:0;top:298px;text-align:center;opacity:0;transform:translateY(8px);
   color:var(--ok);font:700 12px/1.8 'Nanum Myeongjo',serif;letter-spacing:.04em;transition:all .8s .35s;word-break:keep-all}
 .preserve-message.on{opacity:1;transform:none}
+
+/* ---------- 강제동원 명부에 이름을 남기는 연출 ---------- */
+.record-ledger{
+  position:relative;width:min(88vw,250px);margin:0 auto 16px;padding:14px 15px 12px;
+  background:repeating-linear-gradient(0deg, transparent 0 25px, rgba(43,29,18,.1) 25px 26px),
+    linear-gradient(160deg,#cfc3a2,#a89772);
+  color:#2c2015;border-radius:2px;box-shadow:0 10px 26px rgba(0,0,0,.6);text-align:left;
+}
+.record-ledger .ledger-head{font-family:'Nanum Myeongjo',serif;font-weight:800;font-size:12.5px;text-align:center;letter-spacing:.16em;border-bottom:1.5px solid #2c2015;padding-bottom:7px;margin-bottom:8px}
+.record-ledger .ledger-row{display:flex;align-items:center;gap:10px;padding:6px 2px;border-bottom:1px dashed rgba(44,32,21,.35);font-family:'Nanum Myeongjo',serif;font-size:12.5px}
+.record-ledger .row-no{flex:0 0 auto;width:16px;color:rgba(44,32,21,.5);font:700 10px 'Nanum Gothic Coding',monospace}
+.record-ledger .row-name{flex:1 1 auto;color:rgba(44,32,21,.55)}
+.record-ledger .ledger-row.blank .row-name{min-height:1.3em;color:#7c2a1e;font-weight:800;opacity:0;transform:translateY(4px);transition:all .6s ease}
+.record-ledger .ledger-row.blank.written .row-name{opacity:1;transform:none}
+.record-ledger .ledger-row.blank.written{background:rgba(124,42,30,.09)}
+.record-input-panel{display:flex;gap:8px;width:min(88vw,300px);margin:0 auto;opacity:1;transition:opacity .4s}
+.record-input-panel[hidden]{display:none}
+.record-input-panel input{min-width:0;flex:1;padding:12px 12px;border:1px solid rgba(205,164,78,.55);border-radius:7px;background:#0a0806;color:#f4e4bd;font:700 16px 'Noto Serif KR',serif;outline:none}
+.record-input-panel input:focus{border-color:#69d9d0;box-shadow:0 0 0 3px rgba(105,217,208,.12)}
+.record-input-panel button{margin:0}
+.record-feedback{min-height:22px;margin-top:9px;color:#e57a68;font:700 12.5px/1.6 'IBM Plex Sans KR',sans-serif;text-align:center}
 .ember{
   position:absolute;border-radius:50%;pointer-events:none;
   border:3px solid rgba(255,140,40,.9);
@@ -2538,7 +2550,7 @@ function buildScreens(){
         <strong>「명부를 옮기려던 연락책이 순사의 눈을 피해 몸을 숨겼소.<br>명부는 아직 그의 손에 있으니, 바퀴 소리를 따라 이동 수단을 직접 찾아 주시오!」</strong>
       </div>
       <p class="signal-lines">
-        검거 지시서가 재로 사라진 순간, 윤식과의 교신이 뚝 끊겼다.<br>
+        연락책이 명부를 품에 안고 사라진 순간, 윤식과의 교신이 뚝 끊겼다.<br>
         대신 스마트폰이 스스로 진동하며, 화면 위로 낡은 나무 바퀴 자국이 어렴풋이 겹쳐졌다.
         <em>그 바퀴는 목포 거리를 오래도록 오가며, 여러 시대를 스쳐 지나온 듯 세월의 흔적을 두르고 있었다.</em>
         <b>진동이 가리킨, 그 바퀴 달린 전시물의 이름을 입력하세요.</b>
@@ -3148,6 +3160,26 @@ function mgBreath(i){
 }
 
 /* --- 태극기 SVG (큰 깃발·폭죽 공용) --- */
+function handSvg(suffix){
+  return `<svg viewBox="0 0 100 74" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="handSkin${suffix}" x1="0" y1="0" x2="0.3" y2="1">
+            <stop offset="0%" stop-color="#d1a67d"/><stop offset="55%" stop-color="#b9855f"/><stop offset="100%" stop-color="#8a6144"/>
+          </linearGradient>
+          <linearGradient id="handSkinF${suffix}" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d8b28a"/><stop offset="100%" stop-color="#a97a54"/>
+          </linearGradient>
+        </defs>
+        <rect x="4" y="6" width="15" height="36" rx="7.5" transform="rotate(-16 11.5 24)" fill="url(#handSkinF${suffix})" stroke="#5c3f28" stroke-width="1"/>
+        <rect x="21" y="0" width="14" height="40" rx="7" transform="rotate(-5 28 20)" fill="url(#handSkinF${suffix})" stroke="#5c3f28" stroke-width="1"/>
+        <rect x="38" y="0" width="14" height="39" rx="7" transform="rotate(5 45 19.5)" fill="url(#handSkinF${suffix})" stroke="#5c3f28" stroke-width="1"/>
+        <rect x="55" y="4" width="13" height="34" rx="6.5" transform="rotate(15 61.5 21)" fill="url(#handSkinF${suffix})" stroke="#5c3f28" stroke-width="1"/>
+        <path d="M5,24 L18,24 M22,19 L34,19 M39,18.5 L51,18.5 M56,22 L67,22" stroke="rgba(60,35,20,.4)" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M14,58 Q8,40 16,29 Q28,18 48,20 Q68,22 76,38 Q82,52 70,62 Q46,72 14,58 Z" fill="url(#handSkin${suffix})" stroke="#5c3f28" stroke-width="1.2"/>
+        <rect x="66" y="32" width="13" height="30" rx="6.5" transform="rotate(52 72.5 47)" fill="url(#handSkinF${suffix})" stroke="#5c3f28" stroke-width="1"/>
+        <path d="M26,44 Q42,52 62,42" stroke="rgba(60,35,20,.3)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      </svg>`;
+}
 const FLAG_SVG = `<svg viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg" aria-label="태극기">
         <rect width="150" height="100" rx="3" fill="#fdfaf0"/>
         <g transform="translate(75,50) rotate(33.69)">
@@ -3217,7 +3249,7 @@ function mgMansae(i){
     <div class="mg-title">◈ 학생들이 순사의 눈을 피해 태극기를 만들고 있다.<br>발소리가 멀어질 때만 천을 길게 눌러 완성하라!</div>
     <div class="flag-stealth" id="flag-stealth">
       <div class="patrol-track"><span class="patrol-icon" aria-label="1920년대 순사"><i class="beam"></i><i class="cap"></i><i class="head"></i><i class="body"></i><i class="legs"></i></span><span class="patrol-state danger">가까움 · 숨으세요</span></div>
-      <div class="sewing-room"><div class="cloth-back"></div><div class="hidden-flag">${FLAG_SVG}</div><div class="thread-stitch"></div><div class="sewing-hands"><span class="sewing-hand left"></span><span class="sewing-hand right"></span></div><div class="flag-date">4·8</div><div class="cloth-curtain"></div></div>
+      <div class="sewing-room"><div class="cloth-back"></div><div class="hidden-flag">${FLAG_SVG}</div><div class="thread-stitch"></div><div class="sewing-hands"><span class="sewing-hand left">${handSvg('L')}<i class="needle"></i></span><span class="sewing-hand right">${handSvg('R')}</span></div><div class="flag-date">4·8</div><div class="cloth-curtain"></div></div>
       <div class="crowd-shadow" aria-hidden="true"></div>
       <button class="flag-hold" aria-label="태극기 천을 누르고 만들기">태극기 만들기</button>
       <div class="stealth-lamp"></div><div class="caught-call">누구냐!</div>
@@ -3501,7 +3533,6 @@ function stageClear(i){
     if(i===2){
       interTelegram.style.display='none';
       await playVaultRift();
-      await playArrestOrderBeforeRickshaw();
     }else{
       await playTelegramFeed(interTelegram);
       await typewrite($('#inter-body'), personalize(CONFIG.stages[i].clear));
@@ -3520,6 +3551,12 @@ function stageClear(i){
       });
       hist.querySelectorAll('.media-frame[data-src]').forEach(frame=>loadMedia(frame, frame.dataset.src));
       sfx.found();
+    }
+    if(i===3){
+      actLayer.classList.add('on');
+      await actRecordName();
+      await new Promise(r=>setTimeout(r, 350));
+      actLayer.classList.remove('on');
     }
     btn.textContent = i === 3 ? '마지막 전보 수신' : '다음 교신 수신';
     btn.style.visibility='visible';
@@ -3620,7 +3657,7 @@ async function playVaultRift(){
   for(let n=0;n<4;n++){ sfx.step(); await delay(260); }
   scene.classList.add('clock-stop');
   await delay(550); caption.textContent='초침이 멎고, 화면의 연도가 흔들린다.'; scene.classList.add('year-on'); sfx.glitch();
-  await delay(1450); caption.textContent='전신선 아래에서 더 먼 시대의 신호가 깨어났다.';
+  await delay(1450); caption.textContent='전신선 아래에서 스무 해 뒤의 신호가 깨어났다.';
   await delay(900);
 }
 
@@ -3650,11 +3687,9 @@ async function endingShot(id,duration){
   await new Promise(r=>setTimeout(r,duration));
 }
 async function playEndingOpening(){
+  await playFinalArrestOrderBurn();
   const cinema=$('#ending-cinematic');
   cinema.classList.add('on');
-  tone(92,.5,'sawtooth',.1); buzz([70,50,110]);
-  await endingShot('#end-burn',3800);
-  sfx.cheer();
   await endingShot('#end-roster',3200);
   cinema.classList.remove('on');
   document.querySelectorAll('.ending-shot').forEach(x=>x.classList.remove('on'));
@@ -3681,12 +3716,13 @@ function renderOperationBadges(){
     {icon:'◆',name:'윤식의 동지',desc:`윤식 신뢰도 최고 단계 달성 · ${trust}%`,earned:trust>=90},
     {icon:'✦',name:'시간의 증인',desc:'방공호의 푸른 발자국과 기록을 완전 복원',earned:state.bunkerRestored}
   ];
-  const earned=badges.filter(x=>x.earned).length;
+  const earnedBadges=badges.filter(x=>x.earned);
+  const earned=earnedBadges.length;
   $('#badge-count').textContent=`${earned} / ${badges.length} 획득`;
   const grid=$('#badge-grid');
-  grid.innerHTML=badges.map((x,idx)=>`<button type="button" class="mission-badge ${x.earned?'earned':''}" data-idx="${idx}" aria-label="${x.name} · ${x.earned?'획득':'미획득'} · 눌러서 자세히 보기"><div class="badge-icon">${x.icon}</div><div class="badge-text"><strong>${x.name}</strong><small>${x.desc}</small></div></button>`).join('');
+  grid.innerHTML=earnedBadges.map((x,idx)=>`<button type="button" class="mission-badge earned" data-idx="${idx}" aria-label="${x.name} · 획득 · 눌러서 자세히 보기"><div class="badge-icon">${x.icon}</div><div class="badge-text"><strong>${x.name}</strong><small>${x.desc}</small></div></button>`).join('');
   grid.querySelectorAll('.mission-badge').forEach(el=>{
-    el.onclick=()=>showBadgeDetail(badges[Number(el.dataset.idx)]);
+    el.onclick=()=>showBadgeDetail(earnedBadges[Number(el.dataset.idx)]);
   });
   return {earned,trust,badges};
 }
@@ -3787,7 +3823,7 @@ async function playBadgeUnlocks(badges){
 async function finishGame(){
   document.body.classList.remove('alarm');
   clearInterval(state.timerId);
-  glitch(1920, _yyyy, '명부 소각 확인… 시공간 복원 중', async ()=>{
+  glitch(1920, _yyyy, '윤식과의 마지막 교신 연결… 시공간 복원 중', async ()=>{
     const hintsUsed = state.hintOpened.reduce((a,b)=>a+b,0);
     const badgeResult=renderOperationBadges();
     $('#end-rank').textContent = '작전 완료';
@@ -3999,21 +4035,19 @@ actLayer.id = 'act-layer';
 document.body.appendChild(actLayer);
 
 async function runStageAction(i){
-  /* 검거 지시서는 3막 금고 직후, 인력거를 발견하기 전에 이미 소각한다. */
-  if(i===3 && state.arrestOrderBurned) return;
+  /* 4막(방공호)의 마무리 동작은 명부 기록 연출과 엔딩의 소각 장면으로 대체되어, 여기서는 별도 동작이 없다. */
+  if(i===3) return;
   actLayer.classList.add('on');
-  const acts = [actKey, actBrick, actDial, actBurn];
+  const acts = [actKey, actBrick, actDial];
   await acts[i]();
-  if(i===3) state.arrestOrderBurned=true;
   await new Promise(r=>setTimeout(r, 350));
   actLayer.classList.remove('on');
 }
 
-/* 금고에서 확보한 검거 지시서를 먼저 없앤 뒤 인력거 신호를 추적한다. */
-async function playArrestOrderBeforeRickshaw(){
+/* 엔딩에서 조사원과 윤식이 함께 검거 지시서를 태워 없앤다. */
+async function playFinalArrestOrderBurn(){
   actLayer.classList.add('on');
   await actBurn();
-  state.arrestOrderBurned=true;
   await new Promise(r=>setTimeout(r, 350));
   actLayer.classList.remove('on');
 }
@@ -4434,6 +4468,59 @@ function actBurn(){
         }
       }, 50);
     }
+  });
+}
+
+/* ---------- 강제동원 명부에 이름을 남기다 ---------- */
+function actRecordName(){
+  return new Promise(res=>{
+    actLayer.innerHTML = `
+      <div class="act-box record-act">
+        <div class="act-title">이름조차 남기지 못한 이들의 강제동원 명부.<br>그의 이름을 이 시대의 기록으로 남겨 주시오.</div>
+        <div class="record-ledger" id="record-ledger">
+          <div class="ledger-head">강제동원 명부 · 목포 방공호</div>
+          <div class="ledger-row"><span class="row-no">1</span><span class="row-name">이름 미상</span></div>
+          <div class="ledger-row"><span class="row-no">2</span><span class="row-name">이름 미상</span></div>
+          <div class="ledger-row"><span class="row-no">3</span><span class="row-name">이름 미상</span></div>
+          <div class="ledger-row blank" id="ledger-blank"><span class="row-no">4</span><span class="row-name" id="ledger-name-slot"></span></div>
+        </div>
+        <div class="record-input-panel" id="record-input-panel">
+          <input id="record-name-input" autocomplete="off" placeholder="이름 입력" aria-label="강제동원 명부에 남길 이름">
+          <button type="button" class="btn gold" id="btn-record-submit">기록하기</button>
+        </div>
+        <div class="record-feedback" id="record-feedback" aria-live="polite"></div>
+      </div>`;
+    const input = document.getElementById('record-name-input');
+    const submit = document.getElementById('btn-record-submit');
+    const feedback = document.getElementById('record-feedback');
+    const panel = document.getElementById('record-input-panel');
+    const blank = document.getElementById('ledger-blank');
+    const slot = document.getElementById('ledger-name-slot');
+    const title = actLayer.querySelector('.act-title');
+    let done = false;
+    function submitName(){
+      if(done) return;
+      const value = input.value.trim().replace(/\s+/g,'');
+      if(value !== '윤식'){
+        feedback.textContent = '그 이름이 아니오. 윤식이라 적어 주시오.';
+        sfx.bad(); if(navigator.vibrate) navigator.vibrate([60,45,60]);
+        input.focus();
+        return;
+      }
+      done = true;
+      feedback.textContent = '';
+      input.disabled = true; submit.disabled = true;
+      slot.textContent = '윤 식';
+      blank.classList.add('written');
+      sfx.found(); buzz([70,50,180]);
+      title.textContent = '이제 그의 이름도, 이 시대의 기록으로 남았다.';
+      title.classList.add('done');
+      setTimeout(()=>{ panel.style.opacity = 0; }, 300);
+      setTimeout(res, 2000);
+    }
+    submit.addEventListener('click', submitName);
+    input.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); submitName(); } });
+    setTimeout(()=>input.focus(), 300);
   });
 }
 </script>
