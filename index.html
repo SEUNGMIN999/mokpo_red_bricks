@@ -1254,10 +1254,12 @@ input[type=range]#t-range{
   color:#e8dcba;white-space:pre-wrap;word-break:keep-all;min-height:60px;
 }
 .glow-brick{
-  color:var(--gold);font-weight:900;
+  color:var(--gold);font-weight:900;cursor:pointer;
   text-shadow:0 0 6px rgba(201,162,75,.85),0 0 14px rgba(138,53,36,.75);
   animation:glowBrickPulse 1.8s ease-in-out infinite;
 }
+.glow-brick:hover,.glow-brick:focus-visible{text-shadow:0 0 14px rgba(201,162,75,1),0 0 30px rgba(138,53,36,1),0 0 40px rgba(201,162,75,.6)}
+.glow-brick:focus-visible{outline:1px dashed rgba(201,162,75,.7);outline-offset:3px}
 @keyframes glowBrickPulse{
   0%,100%{text-shadow:0 0 6px rgba(201,162,75,.7),0 0 12px rgba(138,53,36,.6);}
   50%{text-shadow:0 0 12px rgba(201,162,75,1),0 0 26px rgba(138,53,36,.95),0 0 34px rgba(201,162,75,.5);}
@@ -1647,7 +1649,8 @@ const CONFIG = {
       text:`${_yyyy}년 ${_mm}월 ${_dd}일, 목포.\n\n유달산 아래 붉은 벽돌 건물, 목포근대역사관 1관.\n\n입구 옆, 세월에 바랜 전시 안내판 하나가 눈에 들어왔다.` },
     { type:'sign', image:"images/prologue-sign.jpg",   /* 입구 전시 안내판 사진 */
       sign:"이 건물은 일본영사관으로 지어진 뒤 목포이사청과 목포부청사로 사용되었다.\n붉은 벽돌은 여러 시대의 흔적을 품고 있다.",
-      after:"빛나는 붉은 벽돌을 만지는 순간\n주머니 속 스마트폰이 미친 듯이 떨리기 시작했다." },
+      notice:"전시 안내판에서 「붉은 벽돌」이라는 글자만 홀로 빛나고 있었다.\n나도 모르게 손이 그쪽으로 갔다.",
+      after:"빛나는 붉은 벽돌 단어를 만지는 순간\n주머니 속 스마트폰이 미친 듯이 떨리기 시작했다." },
     { type:'narr', fx:'shake-soft', text:"안테나가 사라졌다. 와이파이도, 데이터도 먹통.\n\n대신 화면에는 처음 보는 주파수 하나가 잡혀 있었다. 마치 벽 속의 낡은 구리선이 백 년 동안 붙들고 있던 신호를, 지금 막 내 전화기에 흘려보내는 것처럼.\n\n뚜… 뚜뚜… 뚜―\n\n…모스 부호다." },
     { type:'narr', preview:'dial', btn:'다이얼 확인하기', text:"그때, 화면이 저절로 바뀌더니\n오래된 라디오처럼 생긴 다이얼 하나가 떠올랐다.\n\n신호가 잡힐 듯 말 듯 흩어진다.\n\n다이얼을 돌려 소리가 가장 또렷해지는\n주파수를 직접 찾아야 한다." },
     { type:'tuner' },
@@ -2785,9 +2788,12 @@ async function playPrologue(){
       }
       $('#pro-sign').style.display = 'block';
       $('#sign-after').innerHTML = '';
-      $('#sign-body').innerHTML = escapeHtml(sc.sign).replace(/붉은 벽돌/g, '<span class="glow-brick">붉은 벽돌</span>');
+      $('#sign-body').innerHTML = escapeHtml(sc.sign).replace(/붉은 벽돌/g, '<span class="glow-brick" id="sign-glow-brick" role="button" tabindex="0" aria-label="빛나는 붉은 벽돌 글자 만지기">붉은 벽돌</span>');
       await new Promise(r=>setTimeout(r, 900));
+      if(sc.notice) await typewrite($('#sign-after'), sc.notice, 30);
+      await waitActivate($('#sign-glow-brick'));
       startFx('shake');
+      $('#sign-after').innerHTML = '';
       await typewrite($('#sign-after'), sc.after, 30);
     } else if(sc.type === 'narr'){
       narr.style.display = 'block';
@@ -3006,6 +3012,16 @@ function waitClick(el){
   return new Promise(res=>{
     const h = ()=>{ el.removeEventListener('click', h); res(); };
     el.addEventListener('click', h);
+  });
+}
+
+/* 클릭뿐 아니라 Enter/Space로도 활성화할 수 있게 하는 대기 함수 — 본문 속 강조 단어처럼 버튼이 아닌 요소에 사용 */
+function waitActivate(el){
+  return new Promise(res=>{
+    const done = ()=>{ el.removeEventListener('click', done); el.removeEventListener('keydown', onKey); res(); };
+    const onKey = e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); done(); } };
+    el.addEventListener('click', done);
+    el.addEventListener('keydown', onKey);
   });
 }
 
