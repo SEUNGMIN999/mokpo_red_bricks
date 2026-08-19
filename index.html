@@ -470,7 +470,7 @@ button{touch-action:manipulation}
 .breath-meter i{display:block;width:0;height:100%;background:linear-gradient(90deg,#79b7b1,#e9d9ae);transition:width .12s}
 @media(max-width:520px){.breath-controls{grid-template-columns:1fr}}
 
-/* 제3막 — 숨어서 태극기를 만드는 잠입 리듬 퍼즐 */
+/* 제3막 — 숨어서 태극기를 복원하는 잠입 리듬 퍼즐 */
 .flag-stealth{position:relative;height:430px;margin-top:12px;overflow:hidden;border-radius:12px;touch-action:none;isolation:isolate;
   background:linear-gradient(rgba(9,7,5,.76),rgba(10,7,5,.9)),url("images/3-brief-students-making-taegeukgi-mixed-correct-v2.png") center 43%/cover;
   border:1px solid rgba(201,162,75,.44);box-shadow:inset 0 0 90px #000,0 16px 35px rgba(0,0,0,.36)}
@@ -517,9 +517,11 @@ button{touch-action:manipulation}
 .sewing-hand .brush{position:absolute;left:56px;top:-30px;width:6px;height:32px;background:linear-gradient(180deg,#3d3d46,#17171b 72%,#0b0b0e);border-radius:3px 3px 1px 1px;transform:rotate(26deg);box-shadow:0 0 3px #000,inset 1px 0 0 rgba(255,255,255,.12)}
 .sewing-hand .brush::before{content:"";position:absolute;left:-1px;bottom:7px;width:8px;height:3px;background:linear-gradient(90deg,#e8d38f,#a4863f);box-shadow:0 1px 1px rgba(0,0,0,.4)}
 .sewing-hand .brush::after{content:"";position:absolute;left:1px;bottom:-6px;width:0;height:0;border-left:2px solid transparent;border-right:2px solid transparent;border-top:7px solid #cfcfd6;filter:drop-shadow(0 1px 1px rgba(0,0,0,.5))}
-.flag-date{position:absolute;z-index:4;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;color:#7e2019;
-  font:800 46px 'Nanum Myeongjo',serif;text-shadow:0 1px #ead7ad;transform:rotate(-6deg) scale(.7);transition:all .8s}
+.flag-date{position:absolute;z-index:4;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;opacity:0;color:#7e2019;
+  text-shadow:0 1px #ead7ad;transform:rotate(-6deg) scale(.7);transition:all .8s}
 .flag-date.on{opacity:.9;transform:rotate(-6deg) scale(1)}
+.flag-date-label{font:700 13px 'Nanum Myeongjo',serif;letter-spacing:.06em;white-space:nowrap}
+.flag-date-num{font:800 46px 'Nanum Myeongjo',serif}
 .cloth-curtain{position:absolute;z-index:6;inset:-8px;background:repeating-linear-gradient(92deg,#28160e 0 20px,#4c2a1a 22px 38px,#21120c 40px 58px);
   box-shadow:inset 0 -18px 30px rgba(0,0,0,.58),0 5px 12px #000;transform:translateY(-108%) rotate(-2deg);transition:transform .2s cubic-bezier(.2,.8,.3,1)}
 .cloth-curtain::after{content:"";position:absolute;inset:0;pointer-events:none;
@@ -1658,8 +1660,8 @@ const CONFIG = {
     { type:'tg', btn:'네, 맞습니다.', text:`치직- 수신 좌표 고정 완료\n\n여기는 1920년 ${_mm}월 ${_dd}일 밤.\n옛 일본영사관 건물을 쓰고 있는 목포부청사요.\n\n나는 부청 통신실에서 일하는 조선인 서기, 윤식이라 하오.\n그대가 다이얼을 맞춘 순간, 백 년 뒤의 신호가 이 전신기에 찍히기 시작했소.\n\n…그대가 있는 곳도 ${_mm}월 ${_dd}일이오?` },
     { type:'identify' },
     { type:'tg', image:"images/prologue-arrest-generated.jpg",   /* 동지 연행 장면 */
-      text:"오늘 낮, 순사들이 우리와 뜻을 함께한 동지 한 사람을 목포부청으로 끌고 갔소.\n\n놈들의 밀실 금고엔 동지들의 이름이 적힌\n「검거 대상자 명부」와 그들을 체포하라는 「검거 대상 지시서」가\n함께 잠들어 있고, 내일 새벽 검거가 시작된다 하오.\n\n오늘 밤 안에 명부를 빼내 동지들에게 전하고, 검거 지시서를 없애야 하오." },
-    { type:'tg', btn:'네, 그대로 있습니다.', text:"허나 나는 감시받는 몸. 전신실을 오래 비우면 곧 의심을 사오.\n\n밀실을 여는 암호는, 발각될 경우에 대비해 우리 동지들이 이 건물의 특징과 목포의 역사 곳곳에 미리 흩어 정해 두었소.\n\n그대의 시대에도,\n이 건물은 그 자리에 그대로 서 있지 않소?" },
+      text:"오늘 낮, 순사들이 우리와 뜻을 함께한 동지 한 사람을 목포부청으로 끌고 갔소.\n\n놈들의 밀실 금고엔\n동지들의 이름이 적힌 「검거 대상자 명부」와\n그들을 체포하라는 「검거 대상 지시서」가\n함께 잠들어 있고, 내일 새벽 검거가 시작된다 하오.\n\n오늘 밤 안에 명부를 빼내 동지들에게 전하고,\n검거 지시서를 없애야 하오." },
+    { type:'tg', btn:'네, 그대로 있습니다.', text:"허나 나는 감시받는 몸. 전신실을 오래 비우면 곧 의심을 사오.\n\n밀실을 여는 암호는 우리쪽 협조자가\n이 건물의 특징과 목포의 역사 곳곳에 미리 흩어 숨겨 두었다하오.\n\n그대의 시대에도,\n이 건물은 그 자리에 그대로 서 있지 않소?" },
     { type:'tg', image:"images/prologue-copper-wire-signal.png",   /* 벽 속 구리 전신선의 시공간 연결 */
       text:"그렇다면 그대가 나의 눈이 되어 주시오.\n\n벽 속 구리선은 백년이 지나도 그 자리에 있고,\n벽돌 또한 변하지 않는 법.\n\n지금 이 전신기와 그대의 기계는 같은 선으로 이어져 있소.\n\n그대는 미래의 전시물을 조사하고, 나는 1920년의 목포부청사에서 움직이겠소. 그대가 찾아낸 암호를 보내 주면 내가 밀실의 자물쇠를 하나씩 열겠소." },
     { type:'narr', text:`믿을 수 없는 이야기였다.\n\n하지만 신호의 발신 좌표는\n정확히 지금 내가 서 있는 이 건물을 가리키고 있었다.\n\n몸은 ${_yyyy}년 ${_mm}월 ${_dd}일에 남아 있었지만,\n스마트폰을 움직일 때마다 과거의 그림자도 함께 움직였다.\n\n과거의 순사에게 발각되면 전신 연결이 끊길 것이다. 나는 떨리는 손으로 답신 버튼을 눌렀다.` }
@@ -1713,11 +1715,11 @@ const CONFIG = {
       clear: "정답을 보내자 스마트폰 속 1920년의 벽난로 뒤에서 벽돌 하나가 밀려났다. 윤식이 꺼낸 낡은 지도가 화면에 전송되고, 지도 위의 2층 계단이 현재 전시실 동선과 겹쳐졌다."
     },
     {
-      no: "제3막", title: "흔들리는 태극기",
+      no: "제3막", title: "태극기에 숨긴 암호",
       images: { brief: "images/3-brief-students-making-taegeukgi-mixed-correct-v2.png", /* 남녀 학생들이 함께 올바른 태극기를 준비하는 장면 */
                 mission: "images/3-mission-taegeukgi-corrected-v2.png" }, /* 건·곤·감·리의 위치와 획을 정확히 교정한 목포 만세운동 장면 */
       place: "역사관 2층 전시실 (독립운동 · 만세운동)",
-      story: "2층에 오르자 현재의 조용한 복도 위로, 순사의 눈을 피해 숨어서 태극기를 그리던 학생들의 붓질 소리와 복도를 오가는 발소리가 겹쳐 들렸다. 윤식의 다급한 전보 ― 「태극기를 완성하고 목포 만세운동의 날짜를 찾으시오! 그날이 금고를 여는 마지막 숫자요!」",
+      story: "2층에 오르자 현재의 조용한 복도 위로, 작년 봄 순사의 눈을 피해 태극기 뒤에 날짜를 숨기던 학생들의 붓질 소리와 복도를 오가는 발소리가 겹쳐 들렸다. 윤식의 다급한 전보 ― 「학생들이 남긴 태극기를 복원해 그 뒤에 숨긴 날짜를 찾으시오! 그날이 금고를 여는 마지막 숫자요!」",
       question: "태극기 뒤에서 드러난 「4·8」은 어떤 역사적 사건을 가리키는가? 2층 전시 기록에서 사건의 이름을 확인해 입력하라.",
       visual: { type: "code", text: "1919 . 4 . 8 ― 이 함성의 이름은?" },
       placeholder: "사건 이름 입력",
@@ -2059,8 +2061,8 @@ function setSceneTheme(theme){
 
 const BRIEF_SHORT = [
   '순사가 동지를 끌고 갔소.\n{player}, 이제 이 건물에 몰래 들어가야 하오.',
-  '첫 자물쇠가 열렸소.\n지금 그 벽난로 위엔 거울이 없겠지만, 그대의 기계 화면 속 차가운 거울에 입김을 불어,\n숨어 있는 뒤집힌 글자를 드러내시오.\n그 글자가 가리키는 대한제국 관아의 이름을 찾으시오.',
-  '복도에 순사의 발소리가 들리오.\n학생들이 숨겨 만든 태극기를 완성하고, 천 뒤에 감춘 날짜를 찾아내시오.',
+  '첫 자물쇠가 열렸소.\n지금 그 벽난로 위엔 거울이 없겠지만,\n그대의 기계 화면 속 차가운 거울에 입김을 불어\n숨어 있는 뒤집힌 글자를 드러내시오.\n그 글자가 가리키는 대한제국 관아의 이름을 찾으시오.',
+  '복도에 순사의 발소리가 들리오.\n작년 봄, 학생들이 만세운동을 준비하며 만든 태극기에\n금고의 마지막 단서를 숨겨 두었소.\n그대의 화면에는 태극기의 일부가 흐릿하게 보일 것이오.\n순사에게 들키지 않도록 태극기를 복원하시오.\n태극기가 완성되면 그 뒤에 숨겨 둔 날짜가 나타날 것이오.\n그 날짜가 어떤 사건을 뜻하는지\n2층 독립운동 전시에서 찾아 보내 주시오.',
   '……{player}, 나 윤식이오.\n당신에게는 잠깐이었겠지만 내게는 스무 해가 흘렀소.\n일본은 전쟁을 이유로 사람들을 강제로 끌고 가고 있소.\n나 역시 이곳으로 끌려와 방공호를 만드는 일에 동원되었소.\n하루 종일 곡괭이로 돌을 깨고 흙을 날랐소.\n어둠 속에서 얼마나 많은 사람이 이 길을 오갔는지 모르오.\n그제야 알았소 ― 그때 함께 들었던 네 번의 두드림은, 사실 내가 이 방공호에서 보내고 있던 신호였소.\n{player}, 화면에 보이는 저 흔적을 따라와 주시오.\n푸른 발자국 네 개를 찾아 이곳에 남은 나의 기억을 되살려 주시오.'
 ];
 const SCENE_EVENTS = [
@@ -2097,7 +2099,7 @@ function closeGear(){
 const GEAR_TOOLS = [
   {icon:'◐',name:'은신 이동',status:'순찰 시야 피하기',target:'#mg0',toast:'은신 지점으로 이동 · 순찰등이 멀어질 때 움직이세요'},
   {icon:'≋',name:'입김',status:'거울 글자 드러내기',target:'#mg1',toast:'입김 도구 준비 · 버튼을 길게 누르거나 마이크를 사용하세요'},
-  {icon:'◩',name:'천 숨기기',status:'태극기 완성하기',target:'#mg2',toast:'천 숨기기 준비 · 발소리가 멀어질 때만 태극기를 만드세요'},
+  {icon:'◩',name:'천 숨기기',status:'태극기 복원하기',target:'#mg2',toast:'천 숨기기 준비 · 발소리가 멀어질 때만 태극기를 복원하세요'},
   {icon:'◉',name:'손전등',status:'푸른 발자국 찾기',target:'#mg3',toast:'손전등 장착 · 화면을 움직여 빛의 흔적을 찾으세요'}
 ];
 
@@ -2183,7 +2185,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape') closeGear();});
 const BRIEF_OBJECTIVES = [
   ['붙잡힌 동지의 단서 확보','정면의 태양 문양 개수 확인','1920년 순찰 시야 회피'],
   ['1층 벽난로와 거울 확인','입김으로 숨은 글자 드러내기','뒤집힌 대한제국 관아 이름 전송'],
-  ['2층 독립운동 전시 탐색','목포 만세운동 날짜 확인','금고의 마지막 암호 전송'],
+  ['학생들이 남긴 태극기 단서 복원','태극기 뒤에 숨은 날짜 확인','전시에서 사건명을 찾아 금고 암호 전송'],
   ['방공호에서 빛의 흔적 탐색','푸른 발자국 네 개 확인','강제동원의 기억 복원']
 ];
 function renderBriefObjectives(i,animate=false){
@@ -3282,19 +3284,19 @@ function flagBurst(originEl){
   setTimeout(()=>layer.remove(), 3200);
 }
 
-/* --- 제3막 : 발소리 사이에 숨어 태극기 완성하기 --- */
+/* --- 제3막 : 발소리 사이에 숨어 태극기 복원하기 --- */
 function mgMansae(i){
   const mg = $('#mg'+i);
   mg.innerHTML = `
-    <div class="mg-title">◈ 학생들이 순사의 눈을 피해 태극기를 그리고 있다.<br>발소리가 멀어질 때만 천을 길게 눌러 완성하라!</div>
+    <div class="mg-title">◈ 그대의 화면 속, 학생들이 남긴 태극기가 흐릿하게 겹쳐 보인다.<br>발소리가 멀어질 때만 천을 길게 눌러 복원하라!</div>
     <div class="flag-stealth" id="flag-stealth">
       <div class="patrol-track"><span class="patrol-icon" aria-label="1920년대 순사"><i class="beam"></i><i class="cap"></i><i class="head"></i><i class="body"></i><i class="legs"></i></span><span class="patrol-state danger">가까움 · 숨으세요</span></div>
-      <div class="sewing-room"><div class="cloth-back"></div><div class="hidden-flag">${FLAG_SVG}</div><div class="sewing-hands"><span class="sewing-hand left">${handSvg('L')}<i class="brush"></i></span><span class="sewing-hand right">${handSvg('R')}</span></div><div class="flag-date">4·8</div><div class="cloth-curtain"></div></div>
+      <div class="sewing-room"><div class="cloth-back"></div><div class="hidden-flag">${FLAG_SVG}</div><div class="sewing-hands"><span class="sewing-hand left">${handSvg('L')}<i class="brush"></i></span><span class="sewing-hand right">${handSvg('R')}</span></div><div class="flag-date"><span class="flag-date-label">「우리가 거리로 나서는 날」</span><span class="flag-date-num">4·8</span></div><div class="cloth-curtain"></div></div>
       <div class="crowd-shadow" aria-hidden="true"></div>
-      <button class="flag-hold" aria-label="태극기 천을 누르고 그리기">태극기 그리기</button>
+      <button class="flag-hold" aria-label="태극기 천을 누르고 복원하기">태극기 복원하기</button>
       <div class="stealth-lamp"></div><div class="caught-call">누구냐!</div>
       <div class="stealth-help"><strong>발소리가 멀어지면 천을 길게 누르세요.</strong><span>가까워지면 즉시 손을 떼고 덮개로 숨기세요.</span></div>
-      <div class="stealth-progress"><span>태극기 완성도 0%</span><i></i></div>
+      <div class="stealth-progress"><span>태극기 복원도 0%</span><i></i></div>
     </div>`;
   const room = mg.querySelector('.flag-stealth');
   const patrol = mg.querySelector('.patrol-icon');
@@ -3308,7 +3310,7 @@ function mgMansae(i){
   let phase = 0;
   function render(){
     fill.style.width = progress + '%';
-    progressText.textContent = `태극기 완성도 ${Math.floor(progress)}%`;
+    progressText.textContent = `태극기 복원도 ${Math.floor(progress)}%`;
     flag.style.clipPath = `inset(0 ${100-progress}% 0 0)`;
     room.classList.toggle('near-done', progress >= 78);
     if(progress >= 91) date.classList.add('on');
@@ -3363,7 +3365,7 @@ function mgMansae(i){
       done=true;holding=false;clearInterval(patrolTimer);clearInterval(makeTimer);
       room.classList.remove('holding','hiding');date.classList.add('on');sfx.cheer();buzz([90,50,90,50,180]);
       setTimeout(()=>flagBurst(flag),500);
-      setTimeout(()=>unlockQuiz(i,'◈ 태극기를 완성했다! 천 뒤에서 「4·8」이 드러났다. 이제 전시 기록에서 사건의 이름을 확인하라.'),1500);
+      setTimeout(()=>unlockQuiz(i,'◈ 태극기를 복원했다! 천 뒤에서 「4·8」이 드러났다. 이제 전시 기록에서 사건의 이름을 확인하라.'),1500);
     }
   },70);
   function start(e){if(done||caughtLock)return;e.preventDefault();holding=true;room.classList.add('holding');holdBtn.setPointerCapture(e.pointerId)}
