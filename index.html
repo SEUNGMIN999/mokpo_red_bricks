@@ -46,7 +46,7 @@ body{
 /* ---------- 상단 상황판 ---------- */
 #hud{
   display:none;align-items:center;justify-content:space-between;
-  padding:10px 16px;font-family:'Nanum Gothic Coding',monospace;font-size:12px;
+  padding:10px 16px;font-family:'IBM Plex Sans KR',sans-serif;font-size:12px;
   letter-spacing:.08em;color:var(--paper-dim);
   border-bottom:1px solid rgba(201,162,75,.25);
   background:rgba(23,16,9,.8);backdrop-filter:blur(4px);
@@ -85,7 +85,7 @@ body{
 .title-plate::before{top:6px;left:6px;border-right:none;border-bottom:none}
 .title-plate::after{bottom:6px;right:6px;border-left:none;border-top:none}
 .eyebrow{
-  font-family:'Nanum Gothic Coding',monospace;font-size:11px;letter-spacing:.45em;
+  font-family:'IBM Plex Sans KR',sans-serif;font-size:11px;letter-spacing:.45em;
   color:var(--gold);margin-bottom:18px;
 }
 h1.game-title{
@@ -108,16 +108,16 @@ h1.game-title .y{
   font-weight:300;
 }
 .title-info strong{color:var(--gold);font-weight:500}
-.title-eyebrow{font:10px 'Nanum Gothic Coding',monospace;letter-spacing:.34em;color:var(--gold);margin-bottom:12px}
-.signal-status{display:inline-flex;align-items:center;gap:8px;margin:18px auto 0;padding:7px 12px;border:1px solid rgba(119,231,212,.34);background:rgba(4,20,22,.55);font:10px 'Nanum Gothic Coding',monospace;letter-spacing:.13em;color:var(--glitch)}
+.title-eyebrow{font:10px 'IBM Plex Sans KR',sans-serif;letter-spacing:.34em;color:var(--gold);margin-bottom:12px}
+.signal-status{display:inline-flex;align-items:center;gap:8px;margin:18px auto 0;padding:7px 12px;border:1px solid rgba(119,231,212,.34);background:rgba(4,20,22,.55);font:10px 'IBM Plex Sans KR',sans-serif;letter-spacing:.13em;color:var(--glitch)}
 .signal-status i{width:7px;height:7px;border-radius:50%;background:var(--glitch);box-shadow:0 0 10px var(--glitch);animation:signalPulse 1.25s infinite}
 @keyframes signalPulse{50%{opacity:.25;transform:scale(.65)}}
 .title-tagline{margin:14px 8px 0;font-family:'Nanum Myeongjo',serif;font-size:12px;line-height:1.8;color:rgba(233,217,174,.72);word-break:keep-all}
 .identity-card{margin-top:18px;padding:14px 14px 12px;border:1px dashed rgba(201,162,75,.48);background:linear-gradient(135deg,rgba(20,12,7,.82),rgba(91,35,23,.3));text-align:left;position:relative}
-.identity-card::after{content:'접수 대기';position:absolute;right:10px;top:9px;padding:2px 6px;border:1px solid rgba(181,60,44,.75);color:#d56a59;font:9px 'Nanum Gothic Coding',monospace;letter-spacing:.1em;transform:rotate(-4deg)}
+.identity-card::after{content:'접수 대기';position:absolute;right:10px;top:9px;padding:2px 6px;border:1px solid rgba(181,60,44,.75);color:#d56a59;font:9px 'IBM Plex Sans KR',sans-serif;letter-spacing:.1em;transform:rotate(-4deg)}
 .identity-card.asking::after{content:'전보 수신 중'}
 .identity-card.answer-ready::after{content:'답신 입력'}
-.identity-card label{display:block;font:10px 'Nanum Gothic Coding',monospace;letter-spacing:.22em;color:var(--gold);margin-bottom:8px}
+.identity-card label{display:block;font:10px 'IBM Plex Sans KR',sans-serif;letter-spacing:.22em;color:var(--gold);margin-bottom:8px}
 .identity-question{min-height:96px;padding:15px 3px 12px;color:var(--paper);font:800 clamp(16px,4.5vw,21px)/1.9 'Nanum Myeongjo',serif;white-space:pre-line;word-break:keep-all}
 .identity-highlight{min-height:0;padding:0 3px 12px;color:var(--paper);font:800 clamp(16px,4.5vw,21px)/1.9 'Nanum Myeongjo',serif;white-space:pre-line;word-break:keep-all;text-align:center}
 .identity-input-panel[hidden]{display:none}.identity-input-panel.input-ready{animation:identityInputReady .65s ease both}
@@ -135,9 +135,9 @@ h1.game-title .y{
   background:repeating-linear-gradient(0deg,#e4d3a5 0 23px,#cfb985 24px);color:#2b1b12;border:1px solid #8d7248;
   box-shadow:0 3px 8px #000;transform:translateY(var(--paper-shift,0px));transition:transform .09s}
 .typewriter-paper::after{content:"";position:absolute;left:0;right:0;top:38px;border-top:1px dashed rgba(75,43,25,.22)}
-.typewriter-paper .identity-row{position:relative;z-index:1}.typewriter-paper .identity-row span{color:#594026;font:700 11px 'Nanum Gothic Coding',monospace}
+.typewriter-paper .identity-row{position:relative;z-index:1}.typewriter-paper .identity-row span{color:#594026;font:700 11px 'IBM Plex Sans KR',sans-serif}
 #player-name{border:0;border-bottom:1px solid rgba(67,42,24,.38);border-radius:0;background:transparent;color:#21140d;
-  padding:7px 6px;font:800 20px 'Nanum Gothic Coding','Batang',serif;letter-spacing:.08em;text-shadow:.35px .35px rgba(20,10,4,.28);box-shadow:none!important}
+  padding:7px 6px;font:800 20px 'IBM Plex Sans KR','Batang',serif;letter-spacing:.08em;text-shadow:.35px .35px rgba(20,10,4,.28);box-shadow:none!important}
 #player-name::placeholder{color:rgba(70,48,29,.42);font-size:13px;letter-spacing:.02em}
 .typewriter .typewriter-keys{display:flex;flex-direction:column;gap:6px;padding:0 2px;perspective:260px}
 .typewriter .typewriter-key-row{display:grid;gap:5px}.typewriter .typewriter-key-row:nth-child(1){grid-template-columns:repeat(10,1fr)}.typewriter .typewriter-key-row:nth-child(2){grid-template-columns:repeat(9,1fr);padding:0 4%}.typewriter .typewriter-key-row:nth-child(3){grid-template-columns:repeat(10,1fr)}
@@ -153,9 +153,9 @@ h1.game-title .y{
 .layout-fix.on{display:block}
 .name-morse{display:none;margin-top:14px;padding:12px;border:1px solid rgba(119,231,212,.35);background:rgba(2,16,18,.66)}
 .name-morse.on{display:block;animation:fadeIn .35s}
-.morse-label{display:flex;justify-content:space-between;font:9px 'Nanum Gothic Coding',monospace;letter-spacing:.14em;color:var(--glitch);margin-bottom:8px}
-.morse-roman{font:700 12px 'Nanum Gothic Coding',monospace;color:var(--gold);letter-spacing:.16em;margin-bottom:7px;word-break:break-all}
-.morse-code{min-height:38px;font:700 16px/1.7 'Nanum Gothic Coding',monospace;color:#e8f7ed;text-shadow:0 0 9px var(--glitch);letter-spacing:.1em;word-break:break-all}
+.morse-label{display:flex;justify-content:space-between;font:9px 'IBM Plex Sans KR',sans-serif;letter-spacing:.14em;color:var(--glitch);margin-bottom:8px}
+.morse-roman{font:700 12px 'IBM Plex Sans KR',sans-serif;color:var(--gold);letter-spacing:.16em;margin-bottom:7px;word-break:break-all}
+.morse-code{min-height:38px;font:700 16px/1.7 'IBM Plex Sans KR',sans-serif;color:#e8f7ed;text-shadow:0 0 9px var(--glitch);letter-spacing:.1em;word-break:break-all}
 .morse-pulse{height:4px;margin-top:8px;background:linear-gradient(90deg,transparent,var(--glitch),transparent);transform:scaleX(0);opacity:0}
 .name-morse.sending .morse-pulse{animation:morsePulse .32s steps(2,end) infinite}.name-morse.sending{box-shadow:inset 0 0 24px rgba(119,231,212,.12)}
 .morse-received{min-height:24px;margin-top:9px;font:700 12px/1.7 'Nanum Myeongjo',serif;color:var(--ok);word-break:keep-all}
@@ -163,7 +163,7 @@ h1.game-title .y{
 .btn:disabled{opacity:.38;cursor:not-allowed;filter:grayscale(.5)}
 #scr-title::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,235,190,.025) 3px 4px);animation:titleScan 8s linear infinite}
 @keyframes titleScan{from{transform:translateY(-12px)}to{transform:translateY(12px)}}
-.hud-player{color:var(--gold);font-family:'Nanum Gothic Coding',monospace;font-size:10px;letter-spacing:.06em}
+.hud-player{color:var(--gold);font-family:'IBM Plex Sans KR',sans-serif;font-size:10px;letter-spacing:.06em}
 
 /* ---------- 버튼 ---------- */
 .btn{
@@ -199,7 +199,7 @@ h1.game-title .y{
 @keyframes receivedStamp{0%{opacity:0;transform:scale(1.9) rotate(-7deg);filter:blur(2px)}62%{opacity:1;transform:scale(.92) rotate(-7deg)}100%{opacity:.88;transform:scale(1) rotate(-7deg);filter:none}}
 .tg-head{
   display:flex;justify-content:space-between;align-items:baseline;
-  font-family:'Nanum Gothic Coding',monospace;font-size:10.5px;letter-spacing:.12em;
+  font-family:'IBM Plex Sans KR',sans-serif;font-size:10.5px;letter-spacing:.12em;
   color:#6b4f2a;border-bottom:1px dashed #6b4f2a55;padding:8px 0 8px;margin-bottom:14px;
 }
 .tg-head .secret{
@@ -217,7 +217,7 @@ h1.game-title .y{
 .end-progress i.on{opacity:1;background:#a53627;box-shadow:0 0 0 3px rgba(165,54,39,.12);transform:scale(1.18)}
 .brief-objectives{display:grid;gap:7px;margin-top:14px}
 .brief-objective{display:flex;align-items:center;gap:10px;padding:9px 11px;border-left:3px solid #8c2f21;background:rgba(126,71,31,.08);font:700 12px/1.55 'Nanum Myeongjo',serif;color:#432610;opacity:0;transform:translateX(-14px)}
-.brief-objective::before{content:'◆';font:9px 'Nanum Gothic Coding',monospace;color:#a13a28}
+.brief-objective::before{content:'◆';font:9px 'IBM Plex Sans KR',sans-serif;color:#a13a28}
 .brief-objectives.on .brief-objective{animation:objectiveStamp .38s cubic-bezier(.2,.8,.2,1) forwards}
 .brief-objectives.on .brief-objective:nth-child(2){animation-delay:.18s}.brief-objectives.on .brief-objective:nth-child(3){animation-delay:.36s}
 @keyframes objectiveStamp{60%{transform:translateX(3px);opacity:1}100%{transform:none;opacity:1}}
@@ -227,7 +227,7 @@ h1.game-title .y{
 .brief-fx .bf-cave{position:absolute;inset:0;background:linear-gradient(rgba(2,5,8,.2),rgba(1,2,3,.78)),url("images/4-mission.jpg") center/cover;opacity:0;transform:scale(1.1);transition:opacity 1.1s,transform 2s}
 .brief-fx.cave-on .bf-cave{opacity:.7;transform:scale(1)}
 .bf-static{position:absolute;inset:0;z-index:2;opacity:.7;mix-blend-mode:screen;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(107,229,219,.12) 3px 5px);animation:bfStatic .12s steps(2) infinite}
-.bf-year{position:absolute;z-index:4;inset:0;display:grid;place-items:center;color:#e7dfbd;font:800 58px 'Nanum Gothic Coding',monospace;letter-spacing:.08em;text-shadow:4px 0 #9f271d,-4px 0 #46c6c3,0 0 22px #000;transition:all .45s}
+.bf-year{position:absolute;z-index:4;inset:0;display:grid;place-items:center;color:#e7dfbd;font:800 58px 'IBM Plex Sans KR',sans-serif;letter-spacing:.08em;text-shadow:4px 0 #9f271d,-4px 0 #46c6c3,0 0 22px #000;transition:all .45s}
 .brief-fx.cave-on .bf-year{font-size:28px;transform:translateY(-82px);color:#9be7df;letter-spacing:.04em;white-space:nowrap;text-shadow:0 2px 8px #000,0 0 14px rgba(71,199,193,.42)}
 .bf-knocks{position:absolute;z-index:5;left:0;right:0;top:102px;display:flex;justify-content:center;gap:15px}
 .bf-knocks i{width:17px;height:17px;border-radius:50%;border:2px solid #d9c493;opacity:0;transform:scale(2.8);box-shadow:0 0 15px #d5482e}
@@ -248,7 +248,7 @@ h1.game-title .y{
   display:flex;align-items:center;gap:12px;margin-bottom:16px;flex:none;
 }
 .stage-band .no{
-  font-family:'Nanum Gothic Coding',monospace;font-size:11px;letter-spacing:.3em;
+  font-family:'IBM Plex Sans KR',sans-serif;font-size:11px;letter-spacing:.3em;
   color:var(--gold);border:1px solid rgba(201,162,75,.5);padding:5px 10px;white-space:nowrap;
 }
 .stage-band h2{
@@ -257,7 +257,7 @@ h1.game-title .y{
 }
 .place-tag{
   font-size:12px;color:var(--glitch);margin:-8px 0 16px;
-  font-family:'Nanum Gothic Coding',monospace;letter-spacing:.1em;
+  font-family:'IBM Plex Sans KR',sans-serif;letter-spacing:.1em;
 }
 .place-tag::before{content:"▸ 탐색 구역 — "}
 .story-block{
@@ -267,7 +267,7 @@ h1.game-title .y{
 }
 .stage-story{margin-bottom:12px}
 .stage-story summary,.brief-photo summary{
-  cursor:pointer;color:rgba(233,217,174,.7);font:700 11px 'Nanum Gothic Coding',monospace;
+  cursor:pointer;color:rgba(233,217,174,.7);font:700 11px 'IBM Plex Sans KR',sans-serif;
   letter-spacing:.1em;padding:8px 3px;list-style:none
 }
 .stage-story summary::before,.brief-photo summary::before{content:'＋ ';color:var(--gold)}
@@ -284,7 +284,7 @@ h1.game-title .y{
   padding:18px 16px 20px;margin-bottom:14px;
 }
 .mission .m-label{
-  font-family:'Nanum Gothic Coding',monospace;font-size:10.5px;letter-spacing:.35em;
+  font-family:'IBM Plex Sans KR',sans-serif;font-size:10.5px;letter-spacing:.35em;
   color:var(--gold);margin-bottom:12px;
 }
 .mission .m-q{
@@ -298,7 +298,7 @@ h1.game-title .y{
 }
 .mirror-note{text-align:center;font-size:11px;color:rgba(233,217,174,.5);margin-bottom:4px}
 .code-visual{
-  margin:16px 0 4px;text-align:center;font-family:'Nanum Gothic Coding',monospace;
+  margin:16px 0 4px;text-align:center;font-family:'IBM Plex Sans KR',sans-serif;
   font-size:15px;letter-spacing:.3em;color:var(--gold);line-height:2;
 }
 
@@ -356,7 +356,7 @@ h1.game-title .y{
 }
 #glitch-layer.on{display:flex}
 #glitch-layer .g-text{
-  font-family:'Nanum Gothic Coding',monospace;font-size:15px;letter-spacing:.25em;
+  font-family:'IBM Plex Sans KR',sans-serif;font-size:15px;letter-spacing:.25em;
   color:var(--glitch);text-shadow:2px 0 var(--danger), -2px 0 #3a7bd5;
   animation:gjitter .12s infinite;
 }
@@ -392,7 +392,7 @@ body.alarm #app::after{
 }
 @keyframes sunrise{from{transform:scale(.2);opacity:0}to{transform:scale(1);opacity:1}}
 .end-title{font-family:'Nanum Myeongjo',serif;font-size:26px;font-weight:800;letter-spacing:.15em;margin-bottom:6px}
-.end-time{font-family:'Nanum Gothic Coding',monospace;font-size:13px;color:var(--gold);margin-bottom:20px;letter-spacing:.15em}
+.end-time{font-family:'IBM Plex Sans KR',sans-serif;font-size:13px;color:var(--gold);margin-bottom:20px;letter-spacing:.15em}
 .end-credit{margin-top:26px;font-size:12px;line-height:2;color:rgba(233,217,174,.6);font-weight:300;word-break:keep-all}
 
 /* --- 최종 기록 화면 : 「독립가」 사진 → 감정적 여운 → 실제 역사 순으로 재구성 --- */
@@ -410,7 +410,7 @@ body.alarm #app::after{
 .hud-right{display:flex;gap:10px;align-items:center}
 .hud-btn{
   background:none;border:1px solid rgba(201,162,75,.35);border-radius:2px;color:var(--paper-dim);
-  font-family:'Nanum Gothic Coding',monospace;font-size:11px;padding:3px 7px;cursor:pointer;
+  font-family:'IBM Plex Sans KR',sans-serif;font-size:11px;padding:3px 7px;cursor:pointer;
   letter-spacing:.05em;line-height:1;
 }
 .hud-btn:active{transform:scale(.94)}
@@ -432,7 +432,7 @@ body.alarm #app::after{
 .minigame.cleared.keep-result .scratch-wrap{display:block!important;margin-top:10px}
 .minigame.cleared.keep-result .breath-controls,.minigame.cleared.keep-result .breath-meter{display:none!important}
 .mg-title{
-  font-family:'Nanum Gothic Coding',monospace;font-size:11px;letter-spacing:.18em;
+  font-family:'IBM Plex Sans KR',sans-serif;font-size:11px;letter-spacing:.18em;
   color:var(--glitch);margin-bottom:12px;line-height:1.8;word-break:keep-all;
 }
 #mg0 .mg-title{color:var(--gold-2);text-shadow:0 0 14px rgba(201,162,75,.14)}
@@ -479,8 +479,8 @@ button{touch-action:manipulation}
   border:1px solid rgba(201,162,75,.44);box-shadow:inset 0 0 90px #000,0 16px 35px rgba(0,0,0,.36)}
 .flag-stealth::before{content:"";position:absolute;z-index:0;inset:0;pointer-events:none;opacity:.3;
   background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 4px),radial-gradient(circle at 50% 43%,transparent 0 24%,rgba(0,0,0,.72) 75%)}
-.flag-stealth::after{content:"발소리";position:absolute;z-index:3;left:17px;top:82px;color:rgba(233,217,174,.68);font:700 9px 'Nanum Gothic Coding',monospace;letter-spacing:.28em}
-.patrol-track{position:absolute;z-index:4;left:0;right:0;top:0;height:96px;font:11px 'Nanum Gothic Coding',monospace;color:#aa9270;
+.flag-stealth::after{content:"발소리";position:absolute;z-index:3;left:17px;top:82px;color:rgba(233,217,174,.68);font:700 9px 'IBM Plex Sans KR',sans-serif;letter-spacing:.28em}
+.patrol-track{position:absolute;z-index:4;left:0;right:0;top:0;height:96px;font:11px 'IBM Plex Sans KR',sans-serif;color:#aa9270;
   background:linear-gradient(180deg,rgba(3,3,3,.96),rgba(14,11,8,.82) 72%,transparent);border-bottom:1px solid rgba(204,174,107,.18)}
 .patrol-track::before{content:"";position:absolute;left:7%;right:7%;bottom:17px;border-top:1px dashed rgba(233,217,174,.2)}
 .patrol-track::after{content:"";position:absolute;left:50%;bottom:13px;width:6px;height:6px;border-radius:50%;background:#b44734;box-shadow:0 0 11px #d94d35}
@@ -543,11 +543,11 @@ button{touch-action:manipulation}
   background:radial-gradient(ellipse at 8% 100%,#050403 0 17px,transparent 18px),radial-gradient(ellipse at 24% 100%,#050403 0 21px,transparent 22px),radial-gradient(ellipse at 42% 100%,#050403 0 18px,transparent 19px),radial-gradient(ellipse at 61% 100%,#050403 0 22px,transparent 23px),radial-gradient(ellipse at 78% 100%,#050403 0 19px,transparent 20px),radial-gradient(ellipse at 94% 100%,#050403 0 22px,transparent 23px)}
 .flag-stealth.near-done .crowd-shadow{opacity:.8;animation:crowdSway .7s ease-in-out infinite alternate}
 @keyframes crowdSway{to{transform:translateY(-5px)}}
-.stealth-help{position:absolute;z-index:5;left:12px;right:12px;bottom:35px;text-align:center;font:700 12px/1.5 'Nanum Gothic Coding',monospace;color:#e4d4ad;text-shadow:0 2px 3px #000}
+.stealth-help{position:absolute;z-index:5;left:12px;right:12px;bottom:35px;text-align:center;font:700 12px/1.5 'IBM Plex Sans KR',sans-serif;color:#e4d4ad;text-shadow:0 2px 3px #000}
 .stealth-help strong{display:block;color:#f0d38a;font-size:13px;letter-spacing:.08em}.stealth-help span{opacity:.82}
 .stealth-progress{position:absolute;z-index:6;left:14px;right:14px;bottom:10px;height:14px;border:1px solid rgba(233,217,174,.48);border-radius:8px;overflow:visible;background:#080504;box-shadow:0 2px 8px #000}
 .stealth-progress i{display:block;width:0;height:100%;border-radius:7px;background:linear-gradient(90deg,#76271d,#c9a24b 55%,#e8d398);transition:width .1s;box-shadow:0 0 12px rgba(225,186,91,.5)}
-.stealth-progress span{position:absolute;z-index:2;left:0;right:0;top:-20px;text-align:right;color:#d9c394;font:700 9px 'Nanum Gothic Coding',monospace}
+.stealth-progress span{position:absolute;z-index:2;left:0;right:0;top:-20px;text-align:right;color:#d9c394;font:700 9px 'IBM Plex Sans KR',sans-serif}
 .flag-hold{position:absolute;z-index:7;left:50%;top:111px;width:330px;height:210px;transform:translateX(-50%);cursor:pointer;border:0;background:transparent;color:transparent;touch-action:none}
 .flag-stealth.holding .sewing-hand.left{animation:sewHandLeft .22s infinite alternate}.flag-stealth.holding .sewing-hand.right{animation:sewHandRight .24s infinite alternate}
 @keyframes sewHandLeft{to{transform:translate(9px,-6px) rotate(-5deg)}}@keyframes sewHandRight{to{transform:translate(-6px,-4px) rotate(7deg) scaleX(-1)}}
@@ -568,7 +568,7 @@ button{touch-action:manipulation}
 .flashlight-ring{position:absolute;left:0;top:0;width:116px;height:116px;border-radius:50%;pointer-events:none;z-index:2;
   border:1px solid rgba(220,238,255,.48);box-shadow:0 0 18px rgba(134,191,255,.38),inset 0 0 15px rgba(220,238,255,.16);
   transform:translate(-999px,-999px);transition:opacity .18s;mix-blend-mode:screen}
-.cave-count{position:absolute;top:8px;right:10px;font-family:'Nanum Gothic Coding',monospace;
+.cave-count{position:absolute;top:8px;right:10px;font-family:'IBM Plex Sans KR',sans-serif;
   font-size:12px;color:var(--paper-dim);z-index:3;pointer-events:none}
 
 /* 은신 락아웃 */
@@ -577,7 +577,7 @@ button{touch-action:manipulation}
 #lock-layer.on{display:flex}
 #lock-layer .lk-t{font-family:'Nanum Myeongjo',serif;font-size:21px;font-weight:800;
   color:var(--danger);letter-spacing:.1em}
-#lock-layer .lk-c{font-family:'Nanum Gothic Coding',monospace;font-size:46px;color:var(--paper)}
+#lock-layer .lk-c{font-family:'IBM Plex Sans KR',sans-serif;font-size:46px;color:var(--paper)}
 #lock-layer .lk-d{font-size:13px;color:rgba(233,217,174,.75);line-height:1.9;word-break:keep-all}
 
 /* ---------- 민우의 독백(내레이션) ---------- */
@@ -631,7 +631,7 @@ button{touch-action:manipulation}
 }
 .hist-card .h-head::before{content:"📜 "}
 .hist-card>summary.h-head{cursor:pointer;list-style:none}
-.hist-card>summary.h-head::after{content:"  펼쳐보기";float:right;font:10px 'Nanum Gothic Coding',monospace;color:rgba(233,217,174,.55)}
+.hist-card>summary.h-head::after{content:"  펼쳐보기";float:right;font:10px 'IBM Plex Sans KR',sans-serif;color:rgba(233,217,174,.55)}
 .hist-card[open]>summary.h-head::after{content:"  접기"}
 .hist-card .h-body{
   padding:14px;font-size:13.5px;line-height:1.95;font-weight:300;
@@ -656,7 +656,7 @@ button{touch-action:manipulation}
 }
 .reply-box textarea:focus{border-color:var(--gold)}
 .morse-send{
-  font-family:'Nanum Gothic Coding',monospace;font-size:13px;letter-spacing:.3em;
+  font-family:'IBM Plex Sans KR',sans-serif;font-size:13px;letter-spacing:.3em;
   color:var(--glitch);margin-top:14px;min-height:20px;
 }
 .epilogue{
@@ -759,28 +759,28 @@ button{touch-action:manipulation}
 .tuner::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:var(--static);
   background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.08) 3px 4px)}
 .t-label{
-  font-family:'Nanum Gothic Coding',monospace;font-size:10.5px;letter-spacing:.35em;
+  font-family:'IBM Plex Sans KR',sans-serif;font-size:10.5px;letter-spacing:.35em;
   color:var(--gold);margin-bottom:14px;text-align:center;
 }
 .radio-brand{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;
-  font-family:'Nanum Gothic Coding',monospace;font-size:9px;letter-spacing:.18em;color:#b89351}
+  font-family:'IBM Plex Sans KR',sans-serif;font-size:9px;letter-spacing:.18em;color:#b89351}
 .radio-brand b{font-family:'Nanum Myeongjo',serif;font-size:15px;color:#e1c47f;letter-spacing:.12em}
 .dial-window{position:relative;height:78px;border:2px solid #2a1a0d;border-radius:5px;overflow:hidden;
   background:linear-gradient(#d6c18e,#a98b52);box-shadow:inset 0 0 18px rgba(44,25,8,.55),0 2px 0 #8f6a37}
 .dial-scale{position:absolute;left:7%;right:7%;top:12px;height:34px;border-top:1px solid rgba(43,29,18,.55);
   background:repeating-linear-gradient(90deg,#443018 0 1px,transparent 1px 5%)}
-.dial-scale span{position:absolute;top:17px;transform:translateX(-50%);font:9px 'Nanum Gothic Coding',monospace;color:#3d2a13}
+.dial-scale span{position:absolute;top:17px;transform:translateX(-50%);font:9px 'IBM Plex Sans KR',sans-serif;color:#3d2a13}
 .dial-needle{position:absolute;left:7%;top:4px;bottom:5px;width:2px;background:#b52c20;
   box-shadow:0 0 4px rgba(181,44,32,.7);transition:left .08s}
 .dial-preview{display:none;margin:14px auto 8px;max-width:520px;padding:13px 15px 15px;border:1px solid rgba(201,162,75,.42);border-radius:7px;background:linear-gradient(160deg,rgba(41,26,14,.96),rgba(10,7,5,.98));box-shadow:0 14px 32px rgba(0,0,0,.55),inset 0 0 24px rgba(189,133,54,.12);opacity:0;transform:translateY(15px) scale(.97)}
 .dial-preview.on{display:block;animation:dialMaterialize .75s ease-out forwards}
-.dial-preview-head{display:flex;justify-content:space-between;margin-bottom:8px;color:#d4b36e;font:700 10px 'Nanum Gothic Coding',monospace;letter-spacing:.14em}
+.dial-preview-head{display:flex;justify-content:space-between;margin-bottom:8px;color:#d4b36e;font:700 10px 'IBM Plex Sans KR',sans-serif;letter-spacing:.14em}
 .dial-preview .dial-window{height:66px}.dial-preview .dial-scale{top:11px}.dial-preview .dial-band{bottom:4px}
 .dial-preview .preview-needle{position:absolute;left:50%;top:3px;bottom:4px;width:2px;background:#cf3527;box-shadow:0 0 5px #d74b37,0 0 13px rgba(215,75,55,.55);animation:previewTune 1.8s ease-in-out infinite alternate}
-.dial-preview-signal{text-align:center;margin-top:9px;color:#76ded6;font:10px 'Nanum Gothic Coding',monospace;letter-spacing:.16em;animation:statusBlink .55s steps(2,end) infinite}
+.dial-preview-signal{text-align:center;margin-top:9px;color:#76ded6;font:10px 'IBM Plex Sans KR',sans-serif;letter-spacing:.16em;animation:statusBlink .55s steps(2,end) infinite}
 @keyframes dialMaterialize{to{opacity:1;transform:none}}
 @keyframes previewTune{0%{left:18%}35%{left:63%}68%{left:39%}100%{left:52%}}
-.dial-band{position:absolute;left:8%;bottom:6px;font:8px 'Nanum Gothic Coding',monospace;color:#5d421f;letter-spacing:.16em}
+.dial-band{position:absolute;left:8%;bottom:6px;font:8px 'IBM Plex Sans KR',sans-serif;color:#5d421f;letter-spacing:.16em}
 .radio-controls{display:grid;grid-template-columns:64px 1fr;gap:13px;align-items:center;margin-top:12px}
 .tuning-knob{width:58px;height:58px;border-radius:50%;background:repeating-conic-gradient(#9b793b 0 5deg,#60451e 5deg 10deg);
   border:3px solid #2a190c;box-shadow:inset 0 0 0 8px #b58b42,0 4px 8px rgba(0,0,0,.55);position:relative;
@@ -789,11 +789,11 @@ button{touch-action:manipulation}
 .radio-grille{height:54px;border:1px solid rgba(201,162,75,.25);border-radius:3px;
   background:repeating-linear-gradient(0deg,#130d09 0 3px,#2b1b10 3px 5px);position:relative}
 .radio-grille::after{content:"SHORT WAVE · MORSE";position:absolute;inset:0;display:grid;place-items:center;
-  font:9px 'Nanum Gothic Coding',monospace;letter-spacing:.17em;color:rgba(224,190,116,.55)}
-.signal-readout{display:flex;justify-content:space-between;margin:9px 2px 0;font:9px 'Nanum Gothic Coding',monospace;
+  font:9px 'IBM Plex Sans KR',sans-serif;letter-spacing:.17em;color:rgba(224,190,116,.55)}
+.signal-readout{display:flex;justify-content:space-between;margin:9px 2px 0;font:9px 'IBM Plex Sans KR',sans-serif;
   color:#b89a60;letter-spacing:.12em}.signal-readout b{color:var(--glitch)}
 .t-freq{
-  text-align:center;font-family:'Nanum Gothic Coding',monospace;font-size:38px;
+  text-align:center;font-family:'IBM Plex Sans KR',sans-serif;font-size:38px;
   color:var(--glitch);text-shadow:0 0 12px rgba(119,231,212,.45);margin-bottom:4px;
 }
 .t-freq small{font-size:14px;color:var(--paper-dim)}
@@ -825,7 +825,7 @@ input[type=range]#t-range{
   min-height:40px;word-break:keep-all;margin-top:8px;
 }
 .t-decode{
-  font-family:'Nanum Gothic Coding',monospace;font-size:14px;letter-spacing:.15em;
+  font-family:'IBM Plex Sans KR',sans-serif;font-size:14px;letter-spacing:.15em;
   color:var(--glitch);text-align:center;min-height:26px;margin-top:6px;word-break:break-all;
 }
 
@@ -1002,7 +1002,7 @@ input[type=range]#t-range{
 }
 .vault-console::before{
   content:'1920 · MOKPO';position:absolute;left:22px;top:15px;color:#8e816b;
-  font:700 10px 'IBM Plex Mono','Nanum Gothic Coding',monospace;letter-spacing:.2em;
+  font:700 10px 'IBM Plex Mono','IBM Plex Sans KR',sans-serif;letter-spacing:.2em;
   text-shadow:0 1px #050403;
 }
 .vault-console::after{
@@ -1039,7 +1039,7 @@ input[type=range]#t-range{
 .dial-disc .spoke{position:absolute;inset:0;pointer-events:none}
 .dial-disc .spoke b{
   position:absolute;top:16px;left:50%;transform:translateX(-50%);
-  font-family:'IBM Plex Mono','Nanum Gothic Coding',monospace;font-size:clamp(20px,5vw,28px);font-weight:800;
+  font-family:'IBM Plex Mono','IBM Plex Sans KR',sans-serif;font-size:clamp(20px,5vw,28px);font-weight:800;
   color:#f1deb2;text-shadow:0 2px 2px #000,0 0 5px rgba(229,191,112,.25);
 }
 .dial-disc .spoke::after{
@@ -1054,7 +1054,7 @@ input[type=range]#t-range{
     radial-gradient(circle,#5f4a27 0 8%,#1b1711 10% 50%,#8a7041 52% 55%,#201b14 57%);
   border:3px solid #0b0907;
   display:flex;align-items:center;justify-content:center;
-  font-family:'IBM Plex Mono','Nanum Gothic Coding',monospace;font-size:38px;font-weight:800;color:#e8c56f;
+  font-family:'IBM Plex Mono','IBM Plex Sans KR',sans-serif;font-size:38px;font-weight:800;color:#e8c56f;
   text-shadow:0 2px 2px #000;box-shadow:inset 0 0 18px rgba(0,0,0,.9),0 0 0 2px #92794a,0 7px 12px #000;
 }
 .dial-pointer{
@@ -1087,7 +1087,7 @@ input[type=range]#t-range{
 .preserved-register img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:sepia(.2) contrast(1.05) brightness(.84)}
 .preserved-register::after{content:"현재 전시관에 보존된 실제 역사 기록";position:absolute;left:8px;right:8px;bottom:7px;
   padding:5px 4px;background:rgba(24,13,7,.84);border:1px solid rgba(201,162,75,.55);
-  color:#f1ddb0;font:700 9px/1.4 'Nanum Gothic Coding',monospace;letter-spacing:.08em;text-align:center;opacity:0;transition:opacity .7s .4s}
+  color:#f1ddb0;font:700 9px/1.4 'IBM Plex Sans KR',sans-serif;letter-spacing:.08em;text-align:center;opacity:0;transition:opacity .7s .4s}
 .preserved-register.reveal{transform:translateX(-50%) scale(1);box-shadow:0 10px 28px rgba(0,0,0,.7),0 0 30px rgba(201,162,75,.32)}
 .preserved-register.reveal::after{opacity:1}
 .burn-paper{
@@ -1099,7 +1099,7 @@ input[type=range]#t-range{
   padding:14px 12px;text-align:left;
 }
 .burn-paper::before{content:"요시찰 · 즉시 검거";position:absolute;right:9px;top:48px;padding:4px 7px;
-  border:2px solid rgba(151,30,20,.78);color:rgba(151,30,20,.82);font:800 10px 'Nanum Gothic Coding',monospace;
+  border:2px solid rgba(151,30,20,.78);color:rgba(151,30,20,.82);font:800 10px 'IBM Plex Sans KR',sans-serif;
   letter-spacing:.08em;transform:rotate(-8deg)}
 .burn-paper::after{content:"내일 새벽 집행";position:absolute;left:50%;bottom:12px;transform:translateX(-50%) rotate(2deg);
   color:#8d241a;font:800 10px 'Nanum Myeongjo',serif;white-space:nowrap;border-bottom:1px solid #8d241a}
@@ -1124,7 +1124,7 @@ input[type=range]#t-range{
 }
 .record-ledger .ledger-head{font-family:'Nanum Myeongjo',serif;font-weight:800;font-size:12.5px;text-align:center;letter-spacing:.16em;border-bottom:1.5px solid #2c2015;padding-bottom:7px;margin-bottom:8px}
 .record-ledger .ledger-row{display:flex;align-items:center;gap:10px;padding:6px 2px;border-bottom:1px dashed rgba(44,32,21,.35);font-family:'Nanum Myeongjo',serif;font-size:12.5px}
-.record-ledger .row-no{flex:0 0 auto;width:16px;color:rgba(44,32,21,.5);font:700 10px 'Nanum Gothic Coding',monospace}
+.record-ledger .row-no{flex:0 0 auto;width:16px;color:rgba(44,32,21,.5);font:700 10px 'IBM Plex Sans KR',sans-serif}
 .record-ledger .row-name{flex:1 1 auto;color:rgba(44,32,21,.55)}
 .record-ledger .ledger-row.blank .row-name{min-height:1.3em;color:#7c2a1e;font-weight:800;opacity:0;transform:translateY(4px);transition:all .6s ease}
 .record-ledger .ledger-row.blank.written .row-name{opacity:1;transform:none}
@@ -1316,11 +1316,11 @@ input[type=range]#t-range{
 .rift-era{position:absolute;z-index:8;top:18px;padding:8px 13px;border:1px solid rgba(239,212,139,.55);background:rgba(4,8,10,.58);color:#efe0b4;font:700 .72rem/1 var(--font-ui);letter-spacing:.14em;opacity:0;backdrop-filter:blur(3px)}
 .rift-era.now-label{left:18px;animation:eraNow 5.8s both}.rift-era.past-label{right:18px;color:#78eadf;border-color:rgba(91,232,220,.5);animation:eraPast 5.8s both}
 .rift-scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 4px,rgba(119,231,212,.08) 4px 6px),linear-gradient(90deg,transparent 49.5%,rgba(233,217,174,.8) 50%,transparent 50.5%);mix-blend-mode:screen;animation:scanTear 1.1s linear infinite}
-.rift-year{position:absolute;inset:0;display:grid;place-items:center;font:800 clamp(70px,22vw,128px) 'Nanum Gothic Coding',monospace;letter-spacing:.08em;color:#dceadf;text-shadow:5px 0 #b53626,-5px 0 #59d9d2,0 0 30px #000;z-index:3;animation:yearLock 4.8s forwards}
-.rift-echo{position:absolute;left:0;right:0;bottom:20%;text-align:center;font:800 clamp(38px,13vw,72px) 'Nanum Gothic Coding',monospace;color:#d8c28c;opacity:0;z-index:4;text-shadow:4px 0 #7d221b,-4px 0 #4cbeb8;animation:echo1940 4.8s forwards}
+.rift-year{position:absolute;inset:0;display:grid;place-items:center;font:800 clamp(70px,22vw,128px) 'IBM Plex Sans KR',sans-serif;letter-spacing:.08em;color:#dceadf;text-shadow:5px 0 #b53626,-5px 0 #59d9d2,0 0 30px #000;z-index:3;animation:yearLock 4.8s forwards}
+.rift-echo{position:absolute;left:0;right:0;bottom:20%;text-align:center;font:800 clamp(38px,13vw,72px) 'IBM Plex Sans KR',sans-serif;color:#d8c28c;opacity:0;z-index:4;text-shadow:4px 0 #7d221b,-4px 0 #4cbeb8;animation:echo1940 4.8s forwards}
 .rift-shadow{position:absolute;bottom:-4%;width:25%;height:48%;background:linear-gradient(transparent 7%,rgba(0,0,0,.88) 8%);clip-path:polygon(42% 0,58% 0,64% 12%,76% 22%,83% 100%,18% 100%,25% 22%,36% 12%);opacity:0;filter:blur(2px);z-index:2}
 .rift-shadow.s1{left:7%;animation:shadowTurn 4.8s 2.5s forwards}.rift-shadow.s2{right:8%;animation:shadowTurn 4.8s 2.8s forwards}
-.rift-status{position:absolute;left:0;right:0;top:8%;z-index:5;text-align:center;font:10px 'Nanum Gothic Coding',monospace;letter-spacing:.26em;color:var(--glitch);text-shadow:0 0 8px #000;animation:statusBlink .32s steps(2,end) infinite}
+.rift-status{position:absolute;left:0;right:0;top:8%;z-index:5;text-align:center;font:10px 'IBM Plex Sans KR',sans-serif;letter-spacing:.26em;color:var(--glitch);text-shadow:0 0 8px #000;animation:statusBlink .32s steps(2,end) infinite}
 @keyframes nowCollapse{0%,16%{opacity:1;transform:scale(1);clip-path:inset(0)}42%{opacity:.92;transform:scale(1.035);clip-path:inset(0 48% 0 0)}67%{opacity:.42;transform:scale(1.08);clip-path:inset(0 62% 0 0)}100%{opacity:0;transform:scale(1.13);clip-path:inset(0 100% 0 0)}}
 @keyframes pastEmerge{0%,18%{opacity:0;clip-path:inset(0 0 0 100%);transform:scale(1.08)}38%{opacity:.72;clip-path:inset(0 0 0 52%)}68%{opacity:.94;clip-path:inset(0 0 0 24%)}100%{opacity:1;clip-path:inset(0);transform:scale(1)}}
 @keyframes riftCrack{0%,16%{opacity:0;transform:translateX(-50%) scaleY(.05) rotate(1.5deg)}24%,66%{opacity:1;transform:translateX(-50%) scaleY(1) rotate(1.5deg)}82%{opacity:.62}100%{opacity:0;transform:translateX(-50%) scaleY(1.05) rotate(1.5deg)}}
@@ -1337,13 +1337,13 @@ input[type=range]#t-range{
 .rift-wire-bridge{display:none;position:relative;min-height:210px;overflow:hidden;border:1px solid rgba(119,231,212,.35);background:radial-gradient(circle at 50% 45%,rgba(80,194,182,.12),transparent 46%),#050707;color:#e8dcba;box-shadow:inset 0 0 50px #000,0 0 28px rgba(119,231,212,.1)}
 .rift-wire-bridge.on{display:grid;place-items:center;animation:bridgeAppear 2.9s both}
 .rift-wire-bridge::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 4px,rgba(119,231,212,.055) 4px 5px);pointer-events:none}
-.rift-bridge-copy{position:relative;z-index:2;text-align:center;font-family:'Nanum Gothic Coding',monospace;letter-spacing:.13em}
+.rift-bridge-copy{position:relative;z-index:2;text-align:center;font-family:'IBM Plex Sans KR',sans-serif;letter-spacing:.13em}
 .rift-bridge-copy span{display:block;margin-bottom:12px;color:#68ded4;font-size:11px;animation:statusBlink .42s steps(2,end) 3}
 .rift-bridge-copy b{display:block;color:#f0dda6;font-size:clamp(17px,4.8vw,25px);font-weight:800;text-shadow:0 0 18px rgba(239,212,139,.28)}
 .rift-bridge-morse{margin-top:13px;color:#73e8dd;font-size:15px;letter-spacing:.34em;white-space:nowrap;animation:morseBridge 1.05s steps(5,end) 2}
 .rift-bridge-wire{position:absolute;left:8%;right:8%;bottom:37px;height:2px;background:rgba(85,53,25,.75);box-shadow:0 0 0 1px rgba(181,112,49,.18)}
 .rift-bridge-wire i{display:block;width:13%;height:100%;background:#f4d787;box-shadow:0 0 8px #f4d787,0 0 24px #63e3d8;animation:wireSignal 1.25s ease-in-out 2}
-.rift-bridge-print{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);color:rgba(232,220,186,.65);font:700 9px/1 'Nanum Gothic Coding',monospace;letter-spacing:.24em;white-space:nowrap}
+.rift-bridge-print{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);color:rgba(232,220,186,.65);font:700 9px/1 'IBM Plex Sans KR',sans-serif;letter-spacing:.24em;white-space:nowrap}
 @keyframes bridgeAppear{0%{opacity:0;filter:brightness(2.2) blur(4px)}12%,82%{opacity:1;filter:none}100%{opacity:0;filter:brightness(1.5)}}
 @keyframes wireSignal{0%{transform:translateX(-10%);opacity:0}16%{opacity:1}100%{transform:translateX(680%);opacity:0}}
 @keyframes morseBridge{0%,12%{opacity:.18}22%,42%{opacity:1}52%,65%{opacity:.25}76%,100%{opacity:1}}
@@ -1412,12 +1412,12 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
 .signal-sync{position:fixed;inset:0;z-index:69;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:28px 20px;background:radial-gradient(circle at 50% 42%,rgba(10,20,19,.97),rgba(0,0,0,.99));text-align:center}
 .signal-sync.on{display:flex;animation:eventIn .3s ease}
 .sync-label{font:800 13px 'IBM Plex Sans KR',sans-serif;letter-spacing:.18em;color:#f4c85c;text-shadow:0 0 10px rgba(244,200,92,.4)}
-.sync-static{font:700 15px 'Nanum Gothic Coding',monospace;color:rgba(102,215,207,.75);letter-spacing:.05em}
+.sync-static{font:700 15px 'IBM Plex Sans KR',sans-serif;color:rgba(102,215,207,.75);letter-spacing:.05em}
 .sync-frag{min-height:96px;max-width:340px;display:flex;align-items:center;justify-content:center;padding:14px 16px;color:#e9d9ae;font:700 15px/1.85 'Noto Serif KR',serif;white-space:pre-line;word-break:keep-all;opacity:1;transition:opacity .35s ease}
 .sync-pad{position:relative;width:min(46vw,170px);aspect-ratio:1;border-radius:50%;border:2px solid rgba(102,215,207,.5);background:radial-gradient(circle at 35% 28%,#123331,#04100f 72%);box-shadow:inset 0 0 30px rgba(0,0,0,.7),0 0 24px rgba(102,215,207,.18);color:#cdf3ee;font:700 14px 'Noto Sans KR',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;transition:transform .15s ease}
 .sync-pad:active{transform:scale(.94)}
 .sync-pad:disabled{opacity:.55;cursor:default}
-.sync-pad .sync-count{font:700 12px 'Nanum Gothic Coding',monospace;color:#88d9d0;letter-spacing:.08em}
+.sync-pad .sync-count{font:700 12px 'IBM Plex Sans KR',sans-serif;color:#88d9d0;letter-spacing:.08em}
 .sync-hint{font:600 12.5px 'Noto Sans KR',sans-serif;color:rgba(233,217,174,.65);word-break:keep-all;max-width:300px}
 
 /* --- 4막 클리어 : 발자국 네 개가 하나의 기억으로 모여드는 연출 --- */
@@ -1565,7 +1565,7 @@ h1.game-title{text-shadow:0 5px 16px rgba(0,0,0,.8);letter-spacing:-.025em}
 .answer-row button{border-radius:7px;background:linear-gradient(145deg,#782d21,#4b1c14);border-color:rgba(177,79,55,.7)}
 .answer-device{margin:12px 0 8px;padding:15px;border-radius:9px;border:1px solid rgba(210,173,94,.24);background:linear-gradient(150deg,rgba(8,7,6,.86),rgba(43,29,18,.74));box-shadow:inset 0 0 28px rgba(0,0,0,.46)}
 .device-label{margin-bottom:11px;color:#bda776;font:600 10px 'IBM Plex Sans KR',sans-serif;letter-spacing:.17em;text-transform:uppercase}.device-help{margin-top:10px;color:#8f846d;font-size:10px;text-align:center}
-.device-display{min-height:48px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;padding:9px;border:1px solid rgba(210,173,94,.3);border-radius:6px;background:#080706;color:#f0d58f;font:700 19px 'Nanum Gothic Coding',monospace;letter-spacing:.12em;box-shadow:inset 0 0 18px #000}
+.device-display{min-height:48px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;padding:9px;border:1px solid rgba(210,173,94,.3);border-radius:6px;background:#080706;color:#f0d58f;font:700 19px 'IBM Plex Sans KR',sans-serif;letter-spacing:.12em;box-shadow:inset 0 0 18px #000}
 .brass-pad{display:grid;grid-template-columns:repeat(6,1fr);gap:7px}.brass-key{aspect-ratio:1;border-radius:50%;border:2px solid #9b7433;background:radial-gradient(circle at 35% 25%,#e5c278,#8b6228 52%,#3c2810);color:#201406;font:800 18px Georgia,serif;box-shadow:inset 0 1px #ffe6a4,0 4px 0 #3c260e;cursor:pointer}.brass-key:active,.brass-key.active{transform:translateY(3px);box-shadow:inset 0 2px 7px #321d0b,0 1px 0 #3c260e;color:#fff3c4}
 .typewriter-keys,.record-fragments{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}.type-key,.record-piece,.wall-char{border:1px solid #8e7244;background:linear-gradient(#2c261e,#15120e);color:#e8d8ae;cursor:pointer;box-shadow:0 3px 0 #090705;font-weight:700}.type-key{width:44px;height:42px;border-radius:50%;font-family:'Noto Serif KR',serif}.type-key.back{width:auto;border-radius:8px;padding:0 13px;color:#d77c69}.record-piece{padding:12px 15px;border-radius:4px;font-family:'Noto Serif KR',serif;background:linear-gradient(145deg,#dbc691,#b99b61);color:#352315;border-color:#ead59c;transform:rotate(var(--tilt,0deg))}.wall-letters{position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,48px));gap:clamp(3px,1.3vw,8px);justify-content:center;align-items:center;min-height:94px;background:linear-gradient(145deg,#27231f,#100e0c);border-radius:5px;padding:16px 12px}.wall-char{width:100%;max-width:48px;height:auto;aspect-ratio:1;border-radius:5px;background:#302a24;color:#817565;border-color:#423a31;transform:rotate(var(--tilt,0deg));font-size:clamp(14px,4.8vw,20px)}.wall-char.active{color:#8ff2e8;border-color:#63cfc5;text-shadow:0 0 13px #44d7ca;box-shadow:0 0 16px rgba(68,215,202,.25)}.wall-actions{display:flex;justify-content:center;margin-top:12px}.wall-actions .back{min-width:82px;height:40px}
 .answer-row.device-submit input{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none}.answer-row.device-submit button{width:100%;min-height:48px;font-family:'Noto Serif KR',serif;letter-spacing:.12em}.answer-row.device-submit input:focus{box-shadow:none}
@@ -1575,7 +1575,7 @@ h1.game-title{text-shadow:0 5px 16px rgba(0,0,0,.8);letter-spacing:-.025em}
 .field-photo-hint{margin:12px 0;border:1px solid rgba(102,215,207,.28);border-radius:8px;overflow:hidden;background:rgba(5,17,17,.72)}
 .field-photo-hint summary{cursor:pointer;list-style:none;margin:10px;padding:13px 16px;border:1px solid rgba(102,215,207,.45);border-radius:7px;background:linear-gradient(135deg,rgba(25,92,88,.32),rgba(7,30,29,.55));color:#9af0e8;font:700 13px 'IBM Plex Sans KR',sans-serif;letter-spacing:.05em;text-align:center;box-shadow:inset 0 1px rgba(255,255,255,.05)}.field-photo-hint summary::-webkit-details-marker{display:none}.field-photo-hint summary::before{content:'▣ ';color:var(--gold)}.field-photo-hint summary .when-open{display:none}.field-photo-hint[open] summary .when-closed{display:none}.field-photo-hint[open] summary .when-open{display:inline}
 .field-hint-body{padding:0 12px 13px}.field-hint-note{margin:0 0 10px;color:#bbb096;font-size:11px;line-height:1.6}.facade-hint-photo{position:relative;overflow:hidden;border-radius:7px;border:1px solid rgba(210,173,94,.3);background:#090807}.facade-hint-photo>img{display:block;width:100%;height:auto;object-fit:contain;filter:none}
-.facade-marker{position:absolute;width:31px;height:31px;border:2px solid #83eee4;border-radius:50%;display:grid;place-items:center;background:rgba(3,25,25,.76);color:#d9fffb;font:800 12px 'Nanum Gothic Coding',monospace;box-shadow:0 0 14px rgba(95,238,226,.65);animation:markerPulse 1.8s infinite}.facade-marker.m1{left:29%;top:37%}.facade-marker.m2{right:29%;top:37%}.facade-marker.m3{left:25%;top:61%}.facade-marker.m4{right:25%;top:61%}
+.facade-marker{position:absolute;width:31px;height:31px;border:2px solid #83eee4;border-radius:50%;display:grid;place-items:center;background:rgba(3,25,25,.76);color:#d9fffb;font:800 12px 'IBM Plex Sans KR',sans-serif;box-shadow:0 0 14px rgba(95,238,226,.65);animation:markerPulse 1.8s infinite}.facade-marker.m1{left:29%;top:37%}.facade-marker.m2{right:29%;top:37%}.facade-marker.m3{left:25%;top:61%}.facade-marker.m4{right:25%;top:61%}
 .field-detail{display:flex;gap:10px;align-items:center;margin-top:10px;padding:9px;border-radius:6px;background:rgba(255,255,255,.035)}.field-detail img{width:76px;height:76px;object-fit:cover;border-radius:50%;border:2px solid rgba(210,173,94,.45)}.field-detail span{font-size:11px;line-height:1.65;color:#d4c7a7}.field-detail b{color:#f0d58f}
 @keyframes markerPulse{50%{transform:scale(1.12);box-shadow:0 0 22px rgba(95,238,226,.9)}}
 .media-frame img,.media-frame video{border-radius:8px;border-color:rgba(210,173,94,.32);box-shadow:0 12px 28px rgba(0,0,0,.38)}
@@ -1610,7 +1610,7 @@ h1.game-title{font-weight:900;letter-spacing:-.045em}
 .eyebrow,.title-eyebrow,.signal-status,#hud,.hud-player,.hud-btn,.place-tag,.stage-band .no,
 .tg-head,.mission .m-label,.mg-title,.code-visual,.hint-btn,.stage-story summary,.brief-photo summary,
 .t-freq,.t-hint,.dial-step,.push-label,.cave-count,.morse-label,.morse-code,.morse-roman{
-  font-family:'Nanum Gothic Coding','IBM Plex Sans KR',monospace
+  font-family:'IBM Plex Sans KR',sans-serif
 }
 @media (max-width:600px){
   .tg-body{font-size:14.5px;line-height:1.82}
@@ -3673,9 +3673,9 @@ function renderFloorMap(){
       <div class="map-svg-wrap">
         <svg viewBox="0 0 300 190" role="img" aria-label="1층 벽난로에서 2층 계단으로 가는 길을 표시한 지도">
           <rect x="14" y="18" width="272" height="70" rx="6" fill="none" stroke="#6b4f2a" stroke-width="1.4" stroke-dasharray="2 3"/>
-          <text x="24" y="13" font-size="10" fill="#6b4f2a" font-family="'Nanum Gothic Coding',monospace">2층 · 목표</text>
+          <text x="24" y="13" font-size="10" fill="#6b4f2a" font-family="'IBM Plex Sans KR',sans-serif">2층 · 목표</text>
           <rect x="14" y="104" width="272" height="70" rx="6" fill="none" stroke="#6b4f2a" stroke-width="1.4" stroke-dasharray="2 3"/>
-          <text x="24" y="99" font-size="10" fill="#6b4f2a" font-family="'Nanum Gothic Coding',monospace">1층 · 현재 위치</text>
+          <text x="24" y="99" font-size="10" fill="#6b4f2a" font-family="'IBM Plex Sans KR',sans-serif">1층 · 현재 위치</text>
           <path class="map-route" d="M222,138 C222,90 110,112 110,72 C110,50 90,58 74,58"
                 fill="none" stroke="#b23a2b" stroke-width="2.4" stroke-linecap="round"/>
           <path d="M85,50 l-11,8 l11,8" fill="none" stroke="#b23a2b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
