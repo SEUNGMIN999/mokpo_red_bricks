@@ -1418,6 +1418,10 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
 .sync-pad:active{transform:scale(.94)}
 .sync-pad:disabled{opacity:.55;cursor:default}
 .sync-pad .sync-count{font:700 12px 'IBM Plex Sans KR',sans-serif;color:#88d9d0;letter-spacing:.08em}
+.sync-pad.knock{animation:syncKnock .65s ease;border-color:#9ffff5;box-shadow:0 0 0 12px rgba(102,215,207,.12),0 0 45px rgba(102,215,207,.7),inset 0 0 35px rgba(102,215,207,.25)}
+.sync-pad.knock::before{content:"";position:absolute;inset:-4px;border:3px solid #77e7d4;border-radius:50%;animation:syncWave .8s ease-out}
+@keyframes syncKnock{0%{transform:scale(1)}30%{transform:scale(1.12)}55%{transform:scale(.97)}100%{transform:scale(1)}}
+@keyframes syncWave{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(1.45)}}
 .sync-hint{font:600 12.5px 'Noto Sans KR',sans-serif;color:rgba(233,217,174,.65);word-break:keep-all;max-width:300px}
 
 /* --- 4막 클리어 : 발자국 네 개가 하나의 기억으로 모여드는 연출 --- */
@@ -1664,8 +1668,8 @@ h1.game-title{font-weight:900;letter-spacing:-.045em}
   <div class="sync-label" id="sync-label">［1940년대 · 미확인 신호］</div>
   <div class="sync-static" id="sync-static">치직― 치지직―</div>
   <div class="sync-frag" id="sync-frag"></div>
-  <button type="button" class="sync-pad" id="sync-pad" aria-label="신호 동조"><span>신호 동조</span><i class="sync-count" id="sync-count">0 / 4</i></button>
-  <div class="sync-hint" id="sync-hint">쿵…… 두드림이 느껴질 때마다 패드를 눌러 신호를 동조하시오.</div>
+  <button type="button" class="sync-pad" id="sync-pad" aria-label="신호 동조" disabled><span id="sync-pad-label">신호 대기</span><i class="sync-count" id="sync-count">0 / 4</i></button>
+  <div class="sync-hint" id="sync-hint">두드림 신호가 나타날 때까지 기다리세요.</div>
 </div>
 <div id="gear-panel" role="dialog" aria-modal="true" aria-labelledby="gear-title">
   <div class="gear-sheet"><div class="gear-sheet-head"><strong id="gear-title">작전 장비</strong><button class="gear-close" id="gear-close" aria-label="닫기">×</button></div><div class="gear-content" id="gear-content"></div></div>
@@ -3067,44 +3071,50 @@ const SIGNAL_SYNC_FRAGMENTS = [
 ];
 const BRIEF4_MISSION_LINE = '「{player}, 화면에 나타난 푸른 흔적을 따라와 주시오.\n이곳에 남은 기억을 찾아야 하오.」';
 async function playSignalSync(){
-  const layer=$('#signal-sync'), frag=$('#sync-frag'), pad=$('#sync-pad'), count=$('#sync-count'), hint=$('#sync-hint'), label=$('#sync-label'), stat=$('#sync-static');
+  const layer=$('#signal-sync'), frag=$('#sync-frag'), pad=$('#sync-pad'), padLabel=$('#sync-pad-label'), count=$('#sync-count'), hint=$('#sync-hint'), label=$('#sync-label'), stat=$('#sync-static');
   layer.classList.add('on');
   label.textContent='［1940년대 · 미확인 신호］';
   stat.textContent='치직― 치지직―';
   frag.style.opacity='1'; frag.textContent='';
   count.textContent='0 / 4';
-  hint.textContent='쿵…… 두드림이 느껴질 때마다 패드를 눌러 신호를 동조하시오.';
-  pad.style.display='flex'; pad.disabled=false;
+  pad.classList.remove('knock');
+  pad.style.display='flex'; pad.disabled=true;
+  padLabel.textContent='신호 대기';
+  hint.textContent='두드림 신호가 나타날 때까지 기다리세요.';
   sfx.glitch();
-  await new Promise(r=>setTimeout(r,700));
-  let taps=0;
-  await new Promise(resolveAll=>{
-    pad.onclick=async ()=>{
-      if(taps>=4) return;
-      pad.disabled=true;
-      taps++;
-      count.textContent=`${taps} / 4`;
-      tone(70+taps*8,.22,'square',.1); buzz([50,40,120]);
-      frag.style.opacity='0';
-      await new Promise(r=>setTimeout(r,220));
-      frag.textContent='쿵……';
-      frag.style.opacity='1';
-      sfx.step();
-      await new Promise(r=>setTimeout(r,420));
-      frag.style.opacity='0';
-      await new Promise(r=>setTimeout(r,260));
-      frag.textContent=personalize(SIGNAL_SYNC_FRAGMENTS[taps-1]);
-      frag.style.opacity='1';
-      if(taps>=4){
-        hint.textContent='';
-        pad.style.display='none';
-        await new Promise(r=>setTimeout(r,1600));
-        resolveAll();
-      }else{
-        pad.disabled=false;
-      }
-    };
-  });
+  /* 네 번의 두드림 : 신호가 먼저 오고, 그 신호에 맞춰 패드를 누르는 순서로 진행한다 */
+  for(let taps=1; taps<=4; taps++){
+    await new Promise(r=>setTimeout(r, taps===1?900:1300));
+    /* 두드림 신호 발생 — 소리·진동·패드 파동이 동시에 일어나며 패드가 즉시 눌릴 수 있는 상태가 된다 */
+    sfx.step(); buzz([0,90,60,90]);
+    pad.disabled=false;
+    padLabel.textContent='신호 받기';
+    hint.textContent='쿵! · 신호 감지 — 지금 패드를 눌러 동조하세요.';
+    pad.classList.remove('knock'); void pad.offsetWidth; pad.classList.add('knock');
+    frag.style.opacity='0';
+    await new Promise(r=>setTimeout(r,180));
+    frag.textContent='쿵!';
+    frag.style.opacity='1';
+    await waitClick(pad);
+    pad.disabled=true;
+    pad.classList.remove('knock');
+    tone(70+taps*8,.22,'square',.1); buzz([50,40,120]);
+    count.textContent=`${taps} / 4`;
+    padLabel.textContent=`신호 동조 완료 · ${taps} / 4`;
+    frag.style.opacity='0';
+    await new Promise(r=>setTimeout(r,220));
+    frag.textContent=personalize(SIGNAL_SYNC_FRAGMENTS[taps-1]);
+    frag.style.opacity='1';
+    if(taps<4){
+      hint.textContent='신호를 기다리세요…';
+      padLabel.textContent='신호 대기';
+      await new Promise(r=>setTimeout(r,1500));
+    }else{
+      hint.textContent='';
+      pad.style.display='none';
+      await new Promise(r=>setTimeout(r,1600));
+    }
+  }
   label.textContent='［시간 좌표 고정 · 1940년대］';
   stat.textContent='치직―';
   sfx.received();
