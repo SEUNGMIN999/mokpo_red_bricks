@@ -4299,16 +4299,32 @@ async function playBadgeUnlocks(badges){
 
 /* ---------- 기억의 전신망 : 답장을 전보 카드와 붉은 벽돌 기록으로 보존 ---------- */
 const MEMORY_WALL_STORAGE_KEY = 'mokpo-red-bricks-memory-wall-v1';
+const MEMORY_DEVICE_STORAGE_KEY = 'mokpo-red-bricks-device-v1';
+const MEMORY_WALL_POLL_MS = 15000;
+let memoryWallPollTimer=null;
 function databaseSettings(){
-  const cfg=window.MOKPO_DATABASE||{};
-  return {
-    url:String(cfg.supabaseUrl||'').replace(/\/+$/,''),
-    key:String(cfg.supabasePublishableKey||'').trim()
-  };
+  const cfg=window.MOKPO_SHEETS||{};
+  return {url:String(cfg.scriptUrl||'').trim()};
 }
 function databaseIsConfigured(){
-  const cfg=databaseSettings();
-  return /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(cfg.url)&&cfg.key.length>20;
+  return /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/i.test(databaseSettings().url);
+}
+function randomMemoryToken(bytes=16){
+  if(globalThis.crypto&&crypto.getRandomValues){
+    const data=crypto.getRandomValues(new Uint8Array(bytes));
+    return Array.from(data,n=>n.toString(16).padStart(2,'0')).join('');
+  }
+  return `${Date.now().toString(36)}${Math.random().toString(36).slice(2)}${Math.random().toString(36).slice(2)}`;
+}
+function memoryDeviceToken(){
+  try{
+    let token=localStorage.getItem(MEMORY_DEVICE_STORAGE_KEY)||'';
+    if(!/^[A-Za-z0-9_-]{16,80}$/.test(token)){
+      token=randomMemoryToken(20);
+      localStorage.setItem(MEMORY_DEVICE_STORAGE_KEY,token);
+    }
+    return token;
+  }catch(e){return randomMemoryToken(20);}
 }
 function memoryDate(value=new Date()){
   try{return new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(value));}
@@ -4349,44 +4365,78 @@ function saveLocalMemoryReply(message){
   return {record,records,mode:'local'};
 }
 function remoteRecord(row){
-  const sequence=Number(row.id)||0;
+  const id=String(row.id||'');
   return {
-    id:`db-${row.id}`,
-    sequence,
-    alias:`기록자 ${String(sequence).padStart(3,'0')}`,
+    id:`db-${id}`,
+    sequence:0,
+    alias:String(row.alias||'익명의 기록자').slice(0,24),
     message:String(row.message||'').trim().slice(0,100),
-    date:memoryDate(row.created_at)
+    date:memoryDate(row.createdAt||new Date())
   };
 }
 function containsContactDetails(message){
   return /(https?:\/\/|www\.|[\w.%+-]+@[\w.-]+\.[a-z]{2,}|01[016789][ -]?\d{3,4}[ -]?\d{4})/i.test(String(message||''));
 }
-async function databaseFetch(path,options={}){
-  const cfg=databaseSettings();
-  const controller=new AbortController();
-  const timeout=setTimeout(()=>controller.abort(),6500);
-  const headers={apikey:cfg.key,'Content-Type':'application/json',...(options.headers||{})};
-  /* 구형 JWT 형식의 anon key도 지원하되 service_role/secret key는 절대 사용하지 않는다. */
-  if(cfg.key.startsWith('eyJ')) headers.Authorization=`Bearer ${cfg.key}`;
-  try{
-    const response=await fetch(`${cfg.url}/rest/v1/${path}`,{...options,headers,signal:controller.signal});
-    if(!response.ok) throw new Error(`기록 서버 응답 오류 (${response.status})`);
-    const text=await response.text();
-    return text?JSON.parse(text):null;
-  }finally{clearTimeout(timeout);}
-}
 async function fetchRemoteMemoryRecords(){
-  const rows=await databaseFetch('memory_records?select=id,message,created_at&order=created_at.desc&limit=24');
-  return (Array.isArray(rows)?rows:[]).map(remoteRecord).reverse();
+  const cfg=databaseSettings();
+  return new Promise((resolve,reject)=>{
+    const callback=`__mokpoRecords_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    const script=document.createElement('script');
+    const timer=setTimeout(()=>finish(new Error('기록 서버 응답 시간이 초과되었습니다.')),8000);
+    let done=false;
+    function cleanup(){
+      clearTimeout(timer);
+      script.remove();
+      try{delete window[callback];}catch(e){window[callback]=undefined;}
+    }
+    function finish(error,data){
+      if(done) return;
+      done=true;
+      cleanup();
+      if(error) reject(error); else resolve(data);
+    }
+    window[callback]=payload=>{
+      if(!payload||payload.ok!==true||!Array.isArray(payload.records)){
+        finish(new Error(payload&&payload.error?payload.error:'기록 목록 형식이 올바르지 않습니다.'));
+        return;
+      }
+      finish(null,payload.records.map(remoteRecord).slice(-24));
+    };
+    const url=new URL(cfg.url);
+    url.searchParams.set('action','list');
+    url.searchParams.set('prefix',callback);
+    url.searchParams.set('_',String(Date.now()));
+    script.async=true;
+    script.src=url.toString();
+    script.onerror=()=>finish(new Error('기록 서버에 연결하지 못했습니다.'));
+    document.head.appendChild(script);
+  });
 }
 async function saveRemoteMemoryReply(message){
-  const rows=await databaseFetch('memory_records?select=id,message,created_at',{
-    method:'POST',
-    headers:{Prefer:'return=representation'},
-    body:JSON.stringify({message:String(message||'').trim().slice(0,100)})
+  const clean=String(message||'').trim().slice(0,100);
+  const recordId=randomMemoryToken(16);
+  const body=new URLSearchParams({
+    action:'submit',
+    recordId,
+    deviceToken:memoryDeviceToken(),
+    message:clean
   });
-  if(!Array.isArray(rows)||!rows[0]) throw new Error('저장된 기록을 확인하지 못했습니다.');
-  return remoteRecord(rows[0]);
+  const response=await fetch(databaseSettings().url,{
+    method:'POST',
+    mode:'no-cors',
+    redirect:'follow',
+    credentials:'omit',
+    headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
+    body
+  });
+  if(response.type!=='opaque'&&!response.ok) throw new Error(`기록 전송 오류 (${response.status})`);
+  return {
+    id:`db-${recordId}`,
+    sequence:0,
+    alias:'방금 보낸 기록',
+    message:clean,
+    date:memoryDate()
+  };
 }
 async function saveMemoryReply(message){
   if(!databaseIsConfigured()) return saveLocalMemoryReply(message);
@@ -4437,7 +4487,8 @@ function renderMemoryWall(records,currentId,mode='local'){
     brick.addEventListener('click',()=>showMemoryRecord(record));
     wall.appendChild(brick);
   });
-  $('#memory-wall-count').textContent=mode==='online'?`모두의 기록 ${records.length}개`:`이 기기의 기록 ${records.length}개`;
+  const online=mode==='online';
+  $('#memory-wall-count').textContent=online?`모두의 기록 ${records.length}개`:`이 기기의 기록 ${records.length}개`;
   const selected=records.find(r=>r.id===currentId)||records[records.length-1];
   if(selected) showMemoryRecord(selected);
 }
@@ -4453,7 +4504,7 @@ async function revealSharedMemoryWall(){
     ? '당신의 답장이 한 장의 전보가 되어, 여러 기기에서 참여한 기록들과 함께 기억의 벽을 완성합니다.'
     : '당신의 답장이 한 장의 전보가 되어 기억의 벽에 놓입니다.';
   $('#memory-privacy').textContent=online
-    ? '답장은 실명 대신 익명 번호로 온라인 기록관에 저장됩니다. 벽돌을 누르면 기록을 다시 읽을 수 있습니다.'
+    ? '답장은 Google 시트에 익명으로 저장되어 모든 참가자의 기록관에 바로 공개됩니다. 벽돌을 누르면 다시 읽을 수 있습니다.'
     : '온라인 기록관에 연결되지 않아 이번 답장은 이 기기에 저장되었습니다. 설정 후에는 모든 기기의 기록이 함께 표시됩니다.';
   $('#memory-telegram-message').textContent=`“${saved.record.message}”`;
   $('#memory-telegram-meta').textContent=`${saved.record.alias} · ${saved.record.date}`;
@@ -4476,6 +4527,19 @@ async function revealSharedMemoryWall(){
   renderMemoryWall(saved.records,saved.record.id,saved.mode);
   wallWrap.classList.add('on');
   status.textContent=online?'기록이 모두의 역사관 벽에 보존되었습니다.':'기록이 이 기기의 역사관 벽에 보존되었습니다.';
+  if(online){
+    clearInterval(memoryWallPollTimer);
+    memoryWallPollTimer=setInterval(async()=>{
+      try{
+        let records=await fetchRemoteMemoryRecords();
+        const current=state.memoryRecordsCache.find(r=>r.id===state.memoryRecordId);
+        const received=records.some(r=>r.id===state.memoryRecordId);
+        if(current&&!received) records=[...records,current].slice(-24);
+        state.memoryRecordsCache=records;
+        renderMemoryWall(records,state.memoryRecordId,'online');
+      }catch(error){console.warn('Google 시트 기록 갱신에 실패했습니다.',error);}
+    },MEMORY_WALL_POLL_MS);
+  }
   sfx.ok();
   await delay(900);
 }

@@ -1,13 +1,10 @@
 /*
- * 붉은 벽돌 기록관 온라인 연결 설정
+ * 붉은 벽돌 기록관 Google Sheets 연결 설정
  *
- * Supabase 대시보드의 Settings > API에서 아래 두 값을 복사하세요.
- * - supabaseUrl: Project URL
- * - supabasePublishableKey: Publishable key (또는 구형 anon public key)
- *
- * 주의: service_role key와 secret key는 브라우저 파일에 절대 넣지 마세요.
+ * GOOGLE_SHEETS_SETUP.md의 안내대로 Apps Script를 웹 앱으로 배포한 뒤,
+ * 발급된 /exec 주소를 scriptUrl에 붙여 넣으세요.
+ * 이 주소는 비밀키가 아니며, 시트 자체는 절대 공개 공유하지 않습니다.
  */
-window.MOKPO_DATABASE = Object.freeze({
-  supabaseUrl: '',
-  supabasePublishableKey: ''
+window.MOKPO_SHEETS = Object.freeze({
+  scriptUrl: 'https://script.google.com/macros/s/AKfycbyi-avtof_o-nqEOCvOa1DA88SJgnKd1lR2wClMCMblWOCcqv-UBhSQuZY976GUJbGoVw/exec'
 });
