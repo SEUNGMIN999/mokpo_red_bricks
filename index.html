@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>목포 : 붉은 벽돌의 비밀</title>
+<title>목포 : 붉은 벽돌의 시간</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=Nanum+Gothic+Coding:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Noto+Serif+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   목포 : 붉은 벽돌의 비밀
+   목포 : 붉은 벽돌의 시간
    디자인 컨셉 — 1920년대 전보(電報)와 낡은 서류, 붉은 벽돌
    ============================================================ */
 :root{
@@ -224,7 +224,7 @@ h1.game-title .y{
 .brief-fx{display:none;position:relative;height:250px;margin:0 0 16px;overflow:hidden;border:1px solid rgba(84,166,176,.38);
   background:#030506;box-shadow:inset 0 0 40px #000,0 0 20px rgba(83,190,198,.09)}
 .brief-fx.on{display:block;animation:briefFxShake .16s steps(2) 8}
-.brief-fx .bf-cave{position:absolute;inset:0;background:linear-gradient(rgba(2,5,8,.2),rgba(1,2,3,.78)),url("images/4-mission.jpg") center/cover;opacity:0;transform:scale(1.1);transition:opacity 1.1s,transform 2s}
+.brief-fx .bf-cave{position:absolute;inset:0;background:linear-gradient(rgba(2,5,8,.2),rgba(1,2,3,.78)),url("images/4-mission.webp") center/cover;opacity:0;transform:scale(1.1);transition:opacity 1.1s,transform 2s}
 .brief-fx.cave-on .bf-cave{opacity:.7;transform:scale(1)}
 .bf-static{position:absolute;inset:0;z-index:2;opacity:.7;mix-blend-mode:screen;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(107,229,219,.12) 3px 5px);animation:bfStatic .12s steps(2) infinite}
 .bf-year{position:absolute;z-index:4;inset:0;display:grid;place-items:center;color:#e7dfbd;font:800 58px 'IBM Plex Sans KR',sans-serif;letter-spacing:.08em;text-shadow:4px 0 #9f271d,-4px 0 #46c6c3,0 0 22px #000;transition:all .45s}
@@ -473,9 +473,9 @@ button{touch-action:manipulation}
 .breath-meter i{display:block;width:0;height:100%;background:linear-gradient(90deg,#79b7b1,#e9d9ae);transition:width .12s}
 @media(max-width:520px){.breath-controls{grid-template-columns:1fr}}
 
-/* 제3막 — 숨어서 태극기를 복원하는 잠입 리듬 퍼즐 */
+/* 제3막 — 숨어서 태극기를 완성하는 잠입 리듬 퍼즐 */
 .flag-stealth{position:relative;height:430px;margin-top:12px;overflow:hidden;border-radius:12px;touch-action:none;isolation:isolate;
-  background:linear-gradient(rgba(9,7,5,.76),rgba(10,7,5,.9)),url("images/3-brief-students-making-taegeukgi-mixed-correct-v2.png") center 43%/cover;
+  background:linear-gradient(rgba(9,7,5,.76),rgba(10,7,5,.9)),url("images/3-brief-students-making-taegeukgi-mixed-correct-v2.webp") center 43%/cover;
   border:1px solid rgba(201,162,75,.44);box-shadow:inset 0 0 90px #000,0 16px 35px rgba(0,0,0,.36)}
 .flag-stealth::before{content:"";position:absolute;z-index:0;inset:0;pointer-events:none;opacity:.3;
   background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 4px),radial-gradient(circle at 50% 43%,transparent 0 24%,rgba(0,0,0,.72) 75%)}
@@ -633,6 +633,9 @@ button{touch-action:manipulation}
 .hist-card>summary.h-head{cursor:pointer;list-style:none}
 .hist-card>summary.h-head::after{content:"  펼쳐보기";float:right;font:10px 'IBM Plex Sans KR',sans-serif;color:rgba(233,217,174,.55)}
 .hist-card[open]>summary.h-head::after{content:"  접기"}
+.history-gate-status{margin:10px 2px 2px;padding:10px 12px;border:1px dashed rgba(210,173,94,.38);border-radius:7px;color:#d8c79f;background:rgba(17,13,10,.55);font:600 12px/1.55 'IBM Plex Sans KR',sans-serif;text-align:center}
+.history-gate-status.done{border-color:rgba(99,207,197,.55);color:#8fe9e1;background:rgba(18,74,68,.22)}
+#btn-inter-next.history-locked{opacity:.48;filter:grayscale(.45);cursor:not-allowed}
 .hist-card .h-body{
   padding:14px;font-size:13.5px;line-height:1.95;font-weight:300;
   color:rgba(233,217,174,.88);word-break:keep-all;
@@ -674,7 +677,7 @@ button{touch-action:manipulation}
 .operation-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid rgba(210,173,94,.18);color:#e8d6a5;font:700 14px 'Noto Serif KR',serif}.operation-card-head span{color:#73dcd3;font:700 11px 'IBM Plex Sans KR',sans-serif}
 .badge-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mission-badge:last-child:nth-child(odd){grid-column:1 / -1}
 .mission-badge{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-height:110px;padding:14px 30px 12px 14px;border-radius:10px;border:1px solid rgba(210,173,94,.16);background:rgba(255,255,255,.028);text-align:left;opacity:.36;filter:grayscale(1);width:100%;cursor:pointer;font:inherit;color:inherit;-webkit-tap-highlight-color:transparent;transition:transform .15s ease}.mission-badge:active{transform:scale(.97)}.mission-badge.earned{opacity:1;filter:none;border-color:rgba(210,173,94,.48);background:radial-gradient(circle at 15% 12%,rgba(210,173,94,.15),rgba(255,255,255,.025));box-shadow:inset 0 1px rgba(255,255,255,.05);animation:badgePop .55s both}.mission-badge.earned:nth-child(2){animation-delay:.1s}.mission-badge.earned:nth-child(3){animation-delay:.2s}.mission-badge.earned:nth-child(4){animation-delay:.3s}.mission-badge.earned:nth-child(5){animation-delay:.4s}
-.mission-badge .badge-icon{flex:0 0 auto;font-size:24px;line-height:1.1;filter:drop-shadow(0 0 8px rgba(210,173,94,.3))}.mission-badge .badge-text{width:100%;min-width:0}.mission-badge strong{display:block;margin:4px 0 2px;color:#efd58f;font:700 13px 'Noto Serif KR',serif}.mission-badge small{display:block;color:#a99b7a;font:500 10px/1.42 'IBM Plex Sans KR',sans-serif;word-break:keep-all}.mission-badge.earned::after{content:'획득';position:absolute;right:8px;top:8px;padding:2px 7px;border-radius:999px;background:rgba(45,137,129,.3);color:#8ce9e0;font-size:8px;white-space:nowrap}.mission-badge:not(.earned)::after{content:'미획득';position:absolute;right:8px;top:8px;color:#887b63;font-size:8px}
+.mission-badge .badge-art{position:relative;width:100%;height:72px;overflow:hidden;border-radius:7px;border:1px solid rgba(210,173,94,.28);background:#120e0a}.mission-badge .badge-art img{width:100%;height:100%;object-fit:cover;filter:sepia(.35) contrast(1.05);opacity:.82}.mission-badge .badge-icon{position:absolute;left:8px;bottom:6px;z-index:1;padding:2px 7px;border-radius:999px;background:rgba(8,7,6,.75);font-size:20px;line-height:1.1;filter:drop-shadow(0 0 8px rgba(210,173,94,.3))}.mission-badge .badge-text{width:100%;min-width:0}.mission-badge strong{display:block;margin:4px 0 2px;color:#efd58f;font:700 13px 'Noto Serif KR',serif}.mission-badge small{display:block;color:#a99b7a;font:500 10px/1.42 'IBM Plex Sans KR',sans-serif;word-break:keep-all}.mission-badge.earned::after{content:'획득';position:absolute;right:8px;top:8px;z-index:2;padding:2px 7px;border-radius:999px;background:rgba(45,137,129,.78);color:#bafff8;font-size:8px;white-space:nowrap}.mission-badge:not(.earned)::after{content:'미획득';position:absolute;right:8px;top:8px;color:#887b63;font-size:8px}
 @keyframes badgePop{from{opacity:0;transform:scale(.82) translateY(12px)}60%{transform:scale(1.04)}to{opacity:1;transform:none}}
 
 /* 업적 획득 카드 — 결과 화면 위로 한 장씩 떠오르는 연출 */
@@ -687,7 +690,7 @@ button{touch-action:manipulation}
 .badge-unlock-card::after{content:"";position:absolute;inset:8px;border:1px solid rgba(235,203,125,.25);border-radius:16px;pointer-events:none}
 .badge-unlock-rays{position:absolute;left:50%;top:42%;width:340px;aspect-ratio:1;transform:translate(-50%,-50%);opacity:.38;background:repeating-conic-gradient(from 0deg,rgba(231,196,108,.42) 0 1deg,transparent 2deg 15deg);mask:radial-gradient(circle,transparent 0 22%,#000 44%,transparent 71%);animation:achievementHalo 12s linear infinite;pointer-events:none}
 .badge-unlock-kicker{position:relative;z-index:2;color:#73ddd4;font:800 12px 'IBM Plex Sans KR',sans-serif;letter-spacing:.28em;text-indent:.28em}.badge-unlock-kicker::before,.badge-unlock-kicker::after{content:"✦";margin:0 9px;color:#e4c06b}
-.badge-unlock-icon{position:relative;z-index:2;display:grid;place-items:center;width:142px;aspect-ratio:1;margin:35px auto 24px;border:1px solid rgba(235,200,113,.64);border-radius:50%;background:radial-gradient(circle at 38% 32%,#5c4825,#21170c 48%,#080706 74%);box-shadow:0 0 0 10px rgba(216,175,79,.07),0 0 45px rgba(226,187,91,.32),inset 0 0 28px #000;color:#f4d985;font:800 64px Georgia,serif;text-shadow:0 0 22px rgba(245,215,133,.72)}
+.badge-unlock-art{position:relative;z-index:2;width:100%;height:178px;margin:22px auto 0;overflow:hidden;border:1px solid rgba(235,200,113,.48);border-radius:12px;background:#100c08;box-shadow:0 14px 30px rgba(0,0,0,.45)}.badge-unlock-art img{width:100%;height:100%;object-fit:cover;filter:sepia(.32) contrast(1.08);opacity:.9}.badge-unlock-icon{position:relative;z-index:3;display:grid;place-items:center;width:76px;aspect-ratio:1;margin:-38px auto 16px;border:1px solid rgba(235,200,113,.64);border-radius:50%;background:radial-gradient(circle at 38% 32%,#5c4825,#21170c 48%,#080706 74%);box-shadow:0 0 0 7px rgba(216,175,79,.09),0 0 32px rgba(226,187,91,.32),inset 0 0 20px #000;color:#f4d985;font:800 38px Georgia,serif;text-shadow:0 0 18px rgba(245,215,133,.72)}
 #badge-unlock-layer.card-on .badge-unlock-icon{animation:achievementMedal .8s .25s cubic-bezier(.17,.84,.32,1.3) both}
 .badge-unlock-card h2{position:relative;z-index:2;margin:0;color:#f6df9c;font:900 clamp(28px,8vw,38px)/1.25 'Noto Serif KR',serif;letter-spacing:-.04em;text-shadow:0 5px 20px #000}.badge-unlock-card p{position:relative;z-index:2;min-height:48px;margin:12px auto 20px;color:#bfb08d;font:600 14px/1.7 'IBM Plex Sans KR',sans-serif;word-break:keep-all}
 .badge-unlock-stamp{position:relative;z-index:2;display:inline-block;padding:7px 14px;border:3px double #d3523d;border-radius:4px;color:#e97058;font:900 17px 'Noto Serif KR',serif;letter-spacing:.22em;text-indent:.22em;opacity:0;transform:scale(1.8) rotate(-12deg)}
@@ -696,7 +699,7 @@ button{touch-action:manipulation}
 #badge-unlock-layer.flash::after{content:"";position:absolute;inset:0;background:#f8dda0;animation:achievementFlash .42s ease-out forwards;pointer-events:none}
 @keyframes achievementFloat{to{transform:translateY(-8px) rotateX(0) scale(1.012)}}@keyframes achievementHalo{to{transform:translate(-50%,-50%) rotate(360deg)}}@keyframes achievementSpin{to{transform:rotate(360deg)}}
 @keyframes achievementMedal{0%{opacity:0;transform:scale(.15) rotate(-80deg)}65%{transform:scale(1.13) rotate(5deg)}100%{opacity:1;transform:none}}@keyframes achievementStamp{to{opacity:1;transform:scale(1) rotate(-6deg)}}@keyframes achievementFlash{from{opacity:.65}to{opacity:0}}
-@media(max-width:480px){.badge-unlock-card{min-height:435px;padding:28px 20px 25px}.badge-unlock-icon{width:122px;margin-top:31px;font-size:55px}.badge-unlock-card p{font-size:13px}}
+@media(max-width:480px){.badge-unlock-card{min-height:435px;padding:28px 20px 25px}.badge-unlock-art{height:150px}.badge-unlock-icon{width:68px;margin-top:-34px;font-size:32px}.badge-unlock-card p{font-size:13px}}
 
 /* ---------- 스마트폰 떨림 연출 ---------- */
 #app.shaking{animation:phoneShake .3s linear infinite}
@@ -1213,6 +1216,22 @@ input[type=range]#t-range{
 #reply-modal textarea:focus{border-color:var(--gold)}
 #reply-modal .morse-send{text-align:center}
 
+/* ---------- 기억의 전신망 · 붉은 벽돌 기록관 ---------- */
+.memory-archive{display:none;margin:22px 0 18px;padding:18px 14px;border:1px solid rgba(210,173,94,.42);border-radius:12px;background:radial-gradient(circle at 50% 0,rgba(99,44,27,.22),rgba(7,6,5,.94) 58%);box-shadow:inset 0 1px rgba(255,255,255,.04),0 18px 36px rgba(0,0,0,.38)}
+.memory-archive.on{display:block;animation:fadeIn .7s ease both}
+.memory-archive-head{text-align:center}.memory-archive-kicker{color:#70dcd3;font:800 10px 'IBM Plex Sans KR',sans-serif;letter-spacing:.22em;text-indent:.22em}.memory-archive h2{margin:8px 0 7px;color:#efd792;font:900 clamp(22px,6vw,30px)/1.35 'Noto Serif KR',serif}.memory-archive-lead{margin:0 auto;max-width:560px;color:#bbae8b;font:600 12px/1.7 'IBM Plex Sans KR',sans-serif;word-break:keep-all}
+.memory-card-stage{position:relative;display:grid;place-items:center;min-height:260px;margin:17px 0 14px;overflow:hidden;border-radius:10px;background:linear-gradient(rgba(0,0,0,.34),rgba(0,0,0,.6)),repeating-linear-gradient(0deg,transparent 0 39px,rgba(105,54,33,.18) 40px 42px)}
+.memory-card-stage::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(235,199,111,.16),transparent 48%);pointer-events:none}
+.memory-telegram-card{position:relative;z-index:1;width:min(86%,380px);min-height:190px;padding:24px 24px 22px;color:#352416;border:1px solid #d0ae69;border-radius:5px;background:repeating-linear-gradient(0deg,transparent 0 31px,rgba(71,46,27,.12) 31px 32px),linear-gradient(145deg,#ecd9a4,#c7a96c);box-shadow:0 26px 55px rgba(0,0,0,.7),inset 0 0 38px rgba(105,55,22,.12);opacity:0;transform:translateY(80px) rotateX(18deg) scale(.78);transition:transform .9s cubic-bezier(.17,.84,.3,1.12),opacity .7s ease,filter .7s ease;transform-origin:center}
+.memory-telegram-card::before{content:"전신 기록";display:block;padding-bottom:10px;margin-bottom:14px;border-bottom:1px dashed rgba(67,39,20,.45);color:#76502e;font:800 10px 'IBM Plex Sans KR',sans-serif;letter-spacing:.25em}.memory-telegram-card.rise{opacity:1;transform:none}.memory-telegram-card.to-brick{opacity:0;transform:translateY(92px) scale(.42);filter:saturate(1.7) sepia(.6) brightness(.62)}
+.memory-telegram-message{font:800 clamp(16px,4.7vw,21px)/1.75 'Nanum Myeongjo',serif;word-break:keep-all;white-space:pre-wrap}.memory-telegram-meta{margin-top:14px;color:#765c39;font:700 10px 'IBM Plex Sans KR',sans-serif;text-align:right;letter-spacing:.06em}.memory-transform-status{position:absolute;z-index:2;left:12px;right:12px;bottom:13px;min-height:18px;color:#78e0d7;font:700 10px 'IBM Plex Sans KR',sans-serif;letter-spacing:.08em;text-align:center;text-shadow:0 2px 8px #000}
+.memory-wall-wrap{opacity:0;transform:translateY(18px);transition:.7s ease}.memory-wall-wrap.on{opacity:1;transform:none}.memory-wall-top{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:8px 2px 11px;color:#d7c69c;font:700 12px 'IBM Plex Sans KR',sans-serif}.memory-wall-count{color:#70dcd3;font-size:10px;white-space:nowrap}
+.memory-wall{padding:10px;border:1px solid rgba(211,167,82,.25);border-radius:8px;background:#251912;box-shadow:inset 0 0 34px rgba(0,0,0,.65)}.memory-bricks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.memory-brick{position:relative;min-height:68px;padding:9px 7px;border:1px solid #783c2d;border-radius:3px;background:linear-gradient(145deg,#7f3929,#4a201a 72%);box-shadow:inset 0 1px rgba(255,226,177,.13),0 3px 0 #170d09;color:#ead9af;text-align:left;font:inherit;overflow:hidden}.memory-brick:not(:disabled){cursor:pointer;-webkit-tap-highlight-color:transparent}.memory-brick:not(:disabled):active{transform:translateY(2px)}.memory-brick.filler{opacity:.42;background:linear-gradient(145deg,#4d291f,#2e1915);border-color:#553027}.memory-brick.current{animation:memoryBrickSet .85s cubic-bezier(.17,.86,.26,1.25) both;box-shadow:0 0 0 2px rgba(111,225,215,.55),0 0 22px rgba(92,217,207,.35),inset 0 1px rgba(255,255,255,.15)}.memory-brick-alias{display:block;color:#f0cf85;font:800 9px/1.3 'IBM Plex Sans KR',sans-serif;letter-spacing:.04em}.memory-brick-excerpt{display:-webkit-box;margin-top:5px;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;color:#d8c5a0;font:700 10px/1.45 'Nanum Myeongjo',serif;word-break:keep-all}
+.memory-record-view{min-height:86px;margin-top:12px;padding:13px 14px;border-left:3px solid #66d5cc;background:rgba(34,24,18,.88);color:#eadcb8}.memory-record-view strong{display:block;margin-bottom:6px;color:#77ded5;font:800 10px 'IBM Plex Sans KR',sans-serif;letter-spacing:.08em}.memory-record-view p{margin:0;font:700 14px/1.75 'Nanum Myeongjo',serif;white-space:pre-wrap;word-break:keep-all}.memory-privacy{margin:10px 3px 0;color:#81755f;font:500 9px/1.55 'IBM Plex Sans KR',sans-serif;text-align:center;word-break:keep-all}
+@keyframes memoryBrickSet{from{opacity:0;transform:translateY(-80px) rotate(-3deg) scale(1.25)}65%{transform:translateY(4px) scale(.96)}to{opacity:1;transform:none}}
+@media(max-width:520px){.memory-archive{padding:16px 10px}.memory-card-stage{min-height:245px}.memory-telegram-card{padding:21px 18px}.memory-bricks{grid-template-columns:repeat(3,minmax(0,1fr))}.memory-brick{min-height:72px}.memory-wall-top{align-items:start;flex-direction:column;gap:3px}}
+@media(prefers-reduced-motion:reduce){.memory-telegram-card,.memory-wall-wrap,.memory-brick.current{transition:none;animation:none}}
+
 /* 후일담·기록 화면 */
 .center-col{justify-content:center}
 /* 내용이 길어 화면보다 커지면 justify-content:center가 콘텐츠 시작부를
@@ -1310,7 +1329,7 @@ input[type=range]#t-range{
 .time-rift.play{display:block;animation:riftShake 5.8s steps(2,end)}
 .rift-now,.rift-past{position:absolute;inset:-4%;background-position:center;background-size:cover}
 .rift-now{background-image:linear-gradient(rgba(5,9,10,.3),rgba(5,9,10,.8)),url("images/title.jpg");filter:grayscale(.55) brightness(.55);animation:nowCollapse 5.8s forwards}
-.rift-past{background-image:linear-gradient(rgba(24,8,3,.18),rgba(7,4,2,.62)),url("images/1-brief-patrol-front.png");filter:sepia(.72) contrast(1.15) brightness(.58);opacity:0;transform:scale(1.12);animation:pastEmerge 5.8s forwards}
+.rift-past{background-image:linear-gradient(rgba(24,8,3,.18),rgba(7,4,2,.62)),url("images/1-brief-patrol-front.webp");filter:sepia(.72) contrast(1.15) brightness(.58);opacity:0;transform:scale(1.12);animation:pastEmerge 5.8s forwards}
 .rift-crack{position:absolute;z-index:7;left:50%;top:-10%;width:3px;height:120%;opacity:0;background:linear-gradient(180deg,transparent,#f6dd96 18%,#fff5c9 48%,#71eee4 75%,transparent);box-shadow:0 0 10px #f3d47c,0 0 36px rgba(95,246,230,.72);transform:rotate(1.5deg);animation:riftCrack 5.8s both}
 .rift-crack::before,.rift-crack::after{content:"";position:absolute;left:0;width:38px;height:2px;background:#ebd586;box-shadow:0 0 13px #70f0e6;transform-origin:left center}.rift-crack::before{top:33%;transform:rotate(145deg)}.rift-crack::after{top:61%;transform:rotate(28deg)}
 .rift-era{position:absolute;z-index:8;top:18px;padding:8px 13px;border:1px solid rgba(239,212,139,.55);background:rgba(4,8,10,.58);color:#efe0b4;font:700 .72rem/1 var(--font-ui);letter-spacing:.14em;opacity:0;backdrop-filter:blur(3px)}
@@ -1675,6 +1694,7 @@ h1.game-title{font-weight:900;letter-spacing:-.045em}
   <div class="gear-sheet"><div class="gear-sheet-head"><strong id="gear-title">작전 장비</strong><button class="gear-close" id="gear-close" aria-label="닫기">×</button></div><div class="gear-content" id="gear-content"></div></div>
 </div>
 <div class="gear-toast" id="gear-toast"></div>
+<script src="database-config.js"></script>
 <script>
 /* ================================================================
    ◆ 선생님 설정 구역 (CONFIG) ◆
@@ -1692,7 +1712,7 @@ const _dd = _now.getDate();        // 오늘 날짜
 
 const CONFIG = {
   gameTitle: "목포",
-  subTitle: "붉은 벽돌의 비밀",
+  subTitle: "붉은 벽돌의 시간",
 
   /* ── 미디어 설정 ──────────────────────────────────────
      모든 사진·영상은 "선택 사항"입니다. 파일이 없으면 그 자리만
@@ -1727,7 +1747,7 @@ const CONFIG = {
     { type:'tg', image:"images/prologue-arrest-generated.jpg",   /* 동지 연행 장면 */
       text:"오늘 낮, 순사들이 우리와 뜻을 함께한 동지 한 사람을 목포부청으로 끌고 갔소.\n\n놈들의 밀실 금고엔\n동지들의 이름이 적힌 「검거 대상자 명부」와\n그들을 체포하라는 「검거 대상 지시서」가\n함께 잠들어 있고, 내일 새벽 검거가 시작된다 하오.\n\n오늘 밤 안에 명부를 빼내 동지들에게 전하고,\n검거 지시서를 없애야 하오." },
     { type:'tg', btn:'네, 그대로 있습니다.', text:"허나 나는 감시받는 몸. 전신실을 오래 비우면 곧 의심을 사오.\n\n밀실을 여는 암호는 우리 쪽 협조자가\n이 건물의 특징과 목포의 역사 곳곳에 미리 흩어 숨겨 두었다 하오.\n\n그대의 시대에도,\n이 건물은 그 자리에 그대로 서 있지 않소?" },
-    { type:'tg', image:"images/prologue-copper-wire-signal.png",   /* 벽 속 구리 전신선의 시공간 연결 */
+    { type:'tg', image:"images/prologue-copper-wire-signal.webp",   /* 벽 속 구리 전신선의 시공간 연결 */
       text:"그렇다면 그대가 나의 눈이 되어 주시오.\n\n벽 속 구리선은 백여 년이 지나도 그 자리에 있고,\n벽돌 또한 변하지 않는 법.\n\n지금 이 전신기와 그대의 기계는 같은 선으로 이어져 있소.\n\n그대는 미래의 전시물을 조사하고, 나는 1920년의 목포부청사에서 움직이겠소. 그대가 찾아낸 암호를 보내 주면 내가 밀실의 자물쇠를 하나씩 열겠소." },
     { type:'narr', text:`믿을 수 없는 이야기였다.\n\n하지만 신호의 발신 좌표는\n정확히 지금 내가 서 있는 이 건물을 가리키고 있었다.\n\n몸은 ${_yyyy}년 ${_mm}월 ${_dd}일에 남아 있었지만,\n스마트폰을 움직일 때마다 과거의 그림자도 함께 움직였다.\n\n과거의 순사에게 발각되면 전신 연결이 끊길 것이다. 나는 떨리는 손으로 답신 버튼을 눌렀다.` }
   ],
@@ -1735,8 +1755,8 @@ const CONFIG = {
   stages: [
     {
       no: "제1막", title: "붉은 벽돌의 시간",
-      images: { brief: "images/1-brief-patrol-front.png",     /* 1920년 목포부청 순찰 장면 */
-                mission: "images/1-mission.jpg" }, /* 태양 문양 "한 개"만 클로즈업 — 여러 개 찍히면 답이 새요! */
+      images: { brief: "images/1-brief-patrol-front.webp",     /* 1920년 목포부청 순찰 장면 */
+                mission: "images/1-mission.webp" }, /* 태양 문양 "한 개"만 클로즈업 — 여러 개 찍히면 답이 새요! */
       place: "역사관 야외 · 현관 앞",
       story: "스마트폰 화면 속에서 1920년의 목포부청사가 현재의 역사관 위에 겹쳐졌다. 과거의 순사에게 발각되지 않도록 이동하며, 붉은 벽돌 사이에 남은 첫 번째 암호를 찾아야 한다.",
       question: "건물 정면을 살펴보라. 붉은 벽돌 사이에 박힌 하얀 벽돌의 태양 문양(일장기 모양 장식)은 정면에 모두 몇 개인가? 그 개수를 입력하라.",
@@ -1750,14 +1770,14 @@ const CONFIG = {
       briefing: "방금 순사들이 동지 한 명을 목포부청으로 끌고 갔소. 검거 지시가 내려가면 새벽부터 체포가 시작될 것이오.\n\n그가 남긴 마지막 쪽지요.\n「붉은 벽돌 사이, 정면을 지키는 하얀 해의 수」\n\n{player}, 태양 문양의 수를 세어 암호를 보내시오. 순찰은 내가 통신실에서 살피겠소.",
       history: {
         title: "역사 노트 ① 구 목포일본영사관",
-        image: "images/1-history-current-building-reconstruction.png",   /* 현재 건물 형태를 바탕으로 한 식민지기 감시 상황 */
+        image: "images/1-history-current-building-reconstruction.webp",   /* 현재 건물 형태를 바탕으로 한 식민지기 감시 상황 */
         text: "이 건물은 1900년에 지어진, 목포에서 가장 오래된 근대 건축물이에요(사적 제289호). 일본은 1897년 목포가 개항하자 자국민 보호를 내세워 이 영사관을 세웠지만, 실제로는 조선 침탈의 거점이었답니다. 창틀 위 태양 문양처럼 건물 곳곳에 일본의 야욕이 새겨져 있어요. 위 장면은 현재 남아 있는 건물의 형태를 바탕으로 당시 영사관 주변의 감시 분위기를 보여 줍니다."
       },
       clear: "스마트폰 속에서 돌쩌귀가 무겁게 돌아가며 1920년의 현관문이 열렸다.\n문 너머의 과거 복도가 현재 전시실 입구와 겹쳐진다.\n\n윤식의 신호다.\n「좋습니다, {player} ― 이제 안으로.\n발소리를 죽이며 들어가시오.」"
     },
     {
       no: "제2막", title: "목포부청 비밀 서기실",
-      images: { brief: "images/2-brief-1920-mirror-recreation.png", /* 1920년대 목포부청 내부의 벽난로와 거울 */
+      images: { brief: "images/2-brief-1920-mirror-recreation.webp", /* 1920년대 목포부청 내부의 벽난로와 거울 */
                 mission: "images/2-mission.jpg" }, /* 벽난로·거울 사진 */
       place: "역사관 1층 전시실 (벽난로)",
       story: "현재의 1층 전시실 위로 1920년 목포부청 사무실이 희미하게 겹쳐졌다. 실제 전시실의 작은 벽난로를 스마트폰으로 비추자, 과거의 거울 형상이 화면 위에 떠올랐다. 거울 속에는 「밀실의 지도」로 통하는 암호문이 좌우로 뒤집혀 있다.",
@@ -1781,10 +1801,10 @@ const CONFIG = {
     },
     {
       no: "제3막", title: "태극기에 숨긴 암호",
-      images: { brief: "images/3-brief-students-making-taegeukgi-mixed-correct-v2.png", /* 남녀 학생들이 함께 올바른 태극기를 준비하는 장면 */
-                mission: "images/3-mission-taegeukgi-corrected-v2.png" }, /* 건·곤·감·리의 위치와 획을 정확히 교정한 목포 만세운동 장면 */
+      images: { brief: "images/3-brief-students-making-taegeukgi-mixed-correct-v2.webp", /* 남녀 학생들이 함께 올바른 태극기를 준비하는 장면 */
+                mission: "images/3-mission-taegeukgi-corrected-v2.webp" }, /* 건·곤·감·리의 위치와 획을 정확히 교정한 목포 만세운동 장면 */
       place: "역사관 2층 전시실 (독립운동 · 만세운동)",
-      story: "2층에 오르자 현재의 조용한 복도 위로, 작년 봄 순사의 눈을 피해 태극기 뒤에 날짜를 숨기던 학생들의 붓질 소리와 복도를 오가는 발소리가 겹쳐 들렸다. 윤식의 다급한 전보 ― 「학생들이 남긴 태극기를 복원해 그 뒤에 숨긴 날짜를 찾으시오! 그날이 금고를 여는 마지막 숫자요!」",
+      story: "2층에 오르자 현재의 조용한 복도 위로, 작년 봄 순사의 눈을 피해 태극기 뒤에 날짜를 숨기던 학생들의 붓질 소리와 복도를 오가는 발소리가 겹쳐 들렸다. 윤식의 다급한 전보 ― 「학생들과 함께 태극기를 완성해 그 뒤에 숨긴 날짜를 찾으시오! 그날이 금고를 여는 마지막 숫자요!」",
       question: "태극기 뒤에서 드러난 「4·8」은 어떤 역사적 사건을 가리키는가? 2층 전시 기록에서 사건의 이름을 확인해 입력하라.",
       visual: { type: "code", text: "1919 . 4 . 8 ― 이 함성의 이름은?" },
       placeholder: "사건 이름 입력",
@@ -1804,8 +1824,8 @@ const CONFIG = {
     {
       no: "제4막", title: "갈라진 시간, 어둠 속 방공호",
       sender: "스무 해 뒤의 윤식 · 1940년대",
-      images: { brief: "images/4-forced-labor-1940.png", /* 1940년대 방공호 강제동원 굴착 현장 */
-                mission: "images/4-mission.jpg" }, /* 방공호 내부 통로(안내판 글씨는 안 보이게) */
+      images: { brief: "images/4-forced-labor-1940.webp", /* 1940년대 방공호 강제동원 굴착 현장 */
+                mission: "images/4-mission.webp" }, /* 방공호 내부 통로(안내판 글씨는 안 보이게) */
       place: "역사관 뒤편 방공호 (토굴) 내부",
       story: "1940년대 목포.\n윤식은 강제로 끌려와 방공호 굴착에 동원되어 있었다.\n\n시간 신호를 따라 방공호에 들어서자\n스마트폰 화면 위로 푸른 흔적이 나타났다.\n그 흔적을 따라 이곳에 남은 기억을 찾아야 한다.",
       question: "방공호 안 안내판과 전시를 보라. 이 굴을 파기 위해 일제가 조선인들에게 저지른 일을 뜻하는 네 글자 단어는 무엇인가? 「이곳에 강제로 끌려와 땀 흘린 이들의 이름을 기억하라.」",
@@ -1819,7 +1839,7 @@ const CONFIG = {
       ],
       history: {
         title: "역사 노트 ④ 방공호와 강제동원",
-        images: ["images/4-history-sign.jpg", "images/4-history-map.jpg", "images/4-forced-labor-1940.png", "images/4-voice-wall.jpg"],
+        images: ["images/4-history-sign.jpg", "images/4-history-map.jpg", "images/4-forced-labor-1940.webp", "images/4-voice-wall.jpg"],
         captions: ["구 목포부청 서고 및 방공호 현장 안내", "방공호 입구·출구와 노동 현장 전시 동선", "1940년대 방공호 굴착에 강제로 동원된 조선인 노동자들", "방공호 벽면에 빛으로 투사된 기억의 글씨"],
         text: "현장 안내판에 따르면 이 방공호는 일제가 태평양전쟁을 준비하던 시기에 조성한 군사시설입니다. 한국인을 비롯한 사람들이 군사시설 건설에 강제로 동원되어 힘들고 위험한 굴착 노동을 해야 했습니다. 현재 내부에는 당시 노동 현장을 보여 주는 조형물과 빛·미디어 전시가 설치되어 있습니다. 사진 속 글씨와 발자국은 현재 전시에 설치된 표현이며, 당시 노동자가 직접 남긴 흔적으로 단정하지 않습니다."
       },
@@ -1832,7 +1852,7 @@ const CONFIG = {
     sign: "― 1940년대 목포, 윤식",
     replyPrompt: "전신선이 끊어지기 전, 스무 해 너머에서 다시 연결된 윤식에게 마지막 답장을 보내세요.",
     brickMoral: "오늘 우리가 딛고 선 이 자리도,\n누군가 지켜낸 시간 위에 놓여 있다.\n\n우리가 잊지 않는 한,\n그 시간도 사라지지 않는다.",
-    credit: "이 게임의 무대인 목포근대역사관 1관(옛 일본영사관·목포부청사)과 뒤편 방공호에는 일제강점기의 아픈 역사가 남아 있습니다.<br>윤식과 비밀 작전, 명부와 지시서, 시간을 잇는 통신 장치는 이야기를 위해 만든 인물과 장치이며, 그 밖의 배경은 실제 역사적 장소와 사건에 바탕을 두고 있습니다."
+    credit: "목포근대역사관 1관과 뒤편 방공호에는 일제강점기의 아픈 역사가 남아 있습니다.<br>기록에 이름을 남기지 못한 이들의 삶과 독립을 향한 마음을 오래 기억해 주세요."
   }
 };
 </script>
@@ -1858,6 +1878,8 @@ const state = {
   lockouts: 0,        // 은신 대기 횟수
   historyViewed: [false,false,false,false],
   bunkerRestored: false,
+  memoryRecordId: '',
+  memoryRecordsCache: [],
   locked: false,
   mgInit: [false,false,false,false],
   muted: false,
@@ -2074,6 +2096,8 @@ function loadMedia(container, src, kind='img'){
     container.appendChild(v);
   } else {
     const im = new Image();
+    im.loading = 'lazy';
+    im.decoding = 'async';
     im.onload = ()=>{ container.appendChild(im); container.classList.add('show'); };
     im.onerror = ()=>{ container.classList.remove('show'); };
     im.src = src;
@@ -2126,7 +2150,7 @@ function setSceneTheme(theme){
 const BRIEF_SHORT = [
   '{player}, 첫 단서는 건물 정면에 있소.\n순찰을 피해 붉은 벽돌 사이의 하얀 태양 문양을 확인해 주시오.',
   '첫 자물쇠가 열렸소.\n지금 그 벽난로 위엔 거울이 없겠지만,\n그대의 기계 화면 속 차가운 거울에 입김을 불어\n숨어 있는 뒤집힌 글자를 드러내시오.\n그 글자가 가리키는 대한제국 관아의 이름을 찾으시오.',
-  '복도에 순사의 발소리가 들리오.\n작년 봄, 학생들이 만세운동을 준비하며 만든 태극기에\n금고의 마지막 단서를 숨겨 두었소.\n그대의 화면에는 태극기의 일부가 흐릿하게 보일 것이오.\n순사에게 들키지 않도록 태극기를 복원하시오.\n태극기가 완성되면 그 뒤에 숨겨 둔 날짜가 나타날 것이오.\n그 날짜가 어떤 사건을 뜻하는지\n2층 독립운동 전시에서 찾아 보내 주시오.',
+  '복도에 순사의 발소리가 들리오.\n작년 봄, 학생들이 만세운동을 준비하며 만들던 태극기에\n금고의 마지막 단서를 숨겨 두었소.\n그대의 화면에는 아직 완성되지 않은 태극기가 보일 것이오.\n순사에게 들키지 않도록 태극기를 마저 완성하시오.\n태극기가 완성되면 그 뒤에 숨겨 둔 날짜가 나타날 것이오.\n그 날짜가 어떤 사건을 뜻하는지\n2층 독립운동 전시에서 찾아 보내 주시오.',
   '……{player}, 나 윤식이오.\n그대에게는 잠깐이었겠지만 내게는 스무 해가 흘렀소.\n\n나 역시 강제로 끌려와 이곳에서 방공호를 파는 일에 동원되었소.\n\n그리고 이제야 알겠소.\n지금 내가 보내는 네 번의 신호가 스무 해 전 우리에게까지 닿았던 것이오.\n\n화면에 나타난 푸른 흔적을 따라와 주시오.'
 ];
 const SCENE_EVENTS = [
@@ -2163,7 +2187,7 @@ function closeGear(){
 const GEAR_TOOLS = [
   {icon:'◐',name:'은신 이동',status:'순찰 시야 피하기',target:'#mg0',toast:'은신 지점으로 이동 · 순찰등이 멀어질 때 움직이세요'},
   {icon:'≋',name:'입김',status:'거울 글자 드러내기',target:'#mg1',toast:'입김 도구 준비 · 버튼을 길게 누르거나 마이크를 사용하세요'},
-  {icon:'◩',name:'천 숨기기',status:'태극기 복원하기',target:'#mg2',toast:'천 숨기기 준비 · 발소리가 멀어질 때만 태극기를 복원하세요'},
+  {icon:'◩',name:'천 숨기기',status:'태극기 완성하기',target:'#mg2',toast:'천 숨기기 준비 · 발소리가 멀어질 때만 태극기를 완성하세요'},
   {icon:'◉',name:'손전등',status:'푸른 발자국 찾기',target:'#mg3',toast:'손전등 장착 · 화면을 움직여 빛의 흔적을 찾으세요'}
 ];
 
@@ -2249,7 +2273,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape') closeGear();});
 const BRIEF_OBJECTIVES = [
   ['1920년 순찰 시야 회피','정면의 태양 문양 개수 확인','첫 번째 암호 전송'],
   ['입김으로 숨은 글자 드러내기','대한제국 관아의 이름 확인','두 번째 암호 전송'],
-  ['태극기 단서 복원 · 4·8 확인','전시에서 사건명 확인','금고의 마지막 암호 전송'],
+  ['태극기 완성 · 4·8 확인','전시에서 사건명 확인','금고의 마지막 암호 전송'],
   ['푸른 발자국 네 개 추적','안내판에서 강제동원 확인','기억의 기록장 복원']
 ];
 function renderBriefObjectives(i,animate=false){
@@ -2407,7 +2431,7 @@ function buildScreens(){
     <div class="title-plate">
       <div class="title-eyebrow">목포근대역사관 · 비밀 전신 기록</div>
       <h1 class="game-title">${CONFIG.gameTitle}</h1>
-      <div class="subtitle"><b>붉은 벽돌</b>의 비밀</div>
+      <div class="subtitle"><b>붉은 벽돌</b>의 시간</div>
       <div class="signal-status"><i></i><span>1920년 미확인 신호 수신 중</span></div>
       <div class="title-tagline">백여 년 동안 끊겼던 전신선에서<br>누군가의 구조 신호가 들려옵니다.</div>
     </div>
@@ -2546,9 +2570,9 @@ function buildScreens(){
         <div class="field-hint-body">
           <p class="field-hint-note">역사관에 직접 가지 못할 때 사진 속 정면을 살펴보세요. 같은 태양 문양이 모두 몇 개인지 세어 보세요.</p>
           <div class="facade-hint-photo">
-            <img src="images/mokpo-museum-front-field-photo.png" alt="목포근대역사관 정면 실제 현장 사진">
+            <img src="images/mokpo-museum-front-field-photo.webp" alt="목포근대역사관 정면 실제 현장 사진" loading="lazy" decoding="async">
           </div>
-          <div class="field-detail"><img src="images/1-mission.jpg" alt="하얀 벽돌 태양 문양 확대 사진"><span><b>찾아야 할 문양</b><br>확대 사진과 같은 둥근 하얀 벽돌 장식을 정면 사진에서 모두 찾아보세요.</span></div>
+          <div class="field-detail"><img src="images/1-mission.webp" alt="하얀 벽돌 태양 문양 확대 사진" loading="lazy" decoding="async"><span><b>찾아야 할 문양</b><br>확대 사진과 같은 둥근 하얀 벽돌 장식을 정면 사진에서 모두 찾아보세요.</span></div>
         </div>
       </details>` : '';
     scr.innerHTML = `
@@ -2596,7 +2620,7 @@ function buildScreens(){
     <div class="vault-rift" id="vault-rift" aria-live="polite">
       <div class="rift-safe"><div class="rift-dial"><b class="n4">4</b><b class="n8">8</b><i class="rift-needle"></i></div></div>
       <div class="rift-order"><small>극비 · 문서번호 1920-48</small><strong>검거 대상 지시서</strong><br>동봉 · 검거 대상자 명부<br>즉시 압수</div>
-      <div class="rift-roster"><img src="images/mokpo-independence-register.png" alt="현재 목포근대역사관에 전시된 목포의 독립운동가 명단"></div>
+      <div class="rift-roster"><img src="images/mokpo-independence-register.webp" alt="현재 목포근대역사관에 전시된 목포의 독립운동가 명단" loading="lazy" decoding="async"></div>
       <div class="rift-roster-label">현재 전시관의 실제 역사 기록</div>
       <div class="rift-clock" aria-hidden="true"></div><div class="rift-knocks" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       <div class="rift-year">1920</div><div class="rift-caption" id="rift-caption">금고의 다이얼이 깨어난다.</div>
@@ -2621,10 +2645,10 @@ function buildScreens(){
         <h2>이동하는 신호</h2>
         <div class="signal-telegram" id="signal-tg-1">
           <span>윤식 · 긴급 전보</span>
-          <strong>「금고 속 검거 대상자 명부를 무사히 빼돌렸소.<br>하지만 오래 가지고 있을 수는 없소.<br>잠시 후 연락책이 이곳으로 올 것이오.<br>내가 명부를 넘길 테니 잠시만 기다려 주시오.」</strong>
+          <strong>「검거 지시서는 재가 되었소.<br>이제 지켜 낸 명부를 연락책에게 넘겨야 하오.<br>골목 밖에서 나무 바퀴 소리가 가까워지고 있소.」</strong>
         </div>
         <p class="signal-lines" id="rickshaw-narr1"></p>
-        <button class="btn gold btn-continue" id="btn-rickshaw-continue">잠시 숨죽여 지켜본다</button>
+        <button class="btn gold btn-continue" id="btn-rickshaw-continue">바퀴 소리의 정체 확인</button>
       </div>
       <div class="rickshaw-page" id="rickshaw-page2" hidden>
         <h2>이동하는 신호</h2>
@@ -2651,9 +2675,9 @@ function buildScreens(){
       <div class="rickshaw-title">시간 추적 — 인력거 바퀴</div>
       <div class="rickshaw-lead"><span>스마트폰의 주파수 다이얼과 바퀴가 함께 떨린다.</span><span>바퀴를 돌려 신호가 향하는 시대를 찾으세요.</span></div>
       <div class="rickshaw-stage era-1920" id="rickshaw-stage">
-        <img class="rickshaw-scene scene-1920" src="images/rickshaw-era-1920.png" alt="1920년대 목포 거리의 인력거와 사람들">
-        <img class="rickshaw-scene scene-1930" src="images/rickshaw-era-1930.png" alt="1930년대 근대화되는 목포 거리의 인력거와 사람들">
-        <img class="rickshaw-scene scene-1940" src="images/rickshaw-era-1940.png" alt="1940년대 전시 체제 아래 목포 거리의 인력거와 노동자들">
+        <img class="rickshaw-scene scene-1920" src="images/rickshaw-era-1920.webp" alt="1920년대 목포 거리의 인력거와 사람들" loading="lazy" decoding="async">
+        <img class="rickshaw-scene scene-1930" src="images/rickshaw-era-1930.webp" alt="1930년대 근대화되는 목포 거리의 인력거와 사람들" loading="lazy" decoding="async">
+        <img class="rickshaw-scene scene-1940" src="images/rickshaw-era-1940.webp" alt="1940년대 전시 체제 아래 목포 거리의 인력거와 노동자들" loading="lazy" decoding="async">
         <div class="rickshaw-year" id="rickshaw-year">1920</div>
         <div class="rickshaw-wheel" id="rickshaw-wheel" role="button" tabindex="0" aria-label="인력거 바퀴 돌리기"></div>
         <div class="rickshaw-signal" id="rickshaw-signal"><span>👣 👣</span><strong>1940 · 지하 신호 감지<br>푸른 흔적이 역사관 뒤편으로 이어진다.</strong></div>
@@ -2669,7 +2693,7 @@ function buildScreens(){
   end.className = 'screen'; end.id = 'scr-end';
   end.innerHTML = `
     <div class="ending-cinematic" id="ending-cinematic">
-      <div class="ending-shot" id="end-roster"><img class="roster-reveal" src="images/mokpo-independence-register.png" alt="목포의 독립운동가 명단"><div class="ending-caption">윤식이 지키려 했던 이름들을 떠올리게 하듯,<br>오늘의 전시관에는 실제 목포 독립운동가들의 이름이 남아 있다.</div></div>
+      <div class="ending-shot" id="end-roster"><img class="roster-reveal" src="images/mokpo-independence-register.webp" alt="목포의 독립운동가 명단" loading="lazy" decoding="async"><div class="ending-caption">윤식이 지키려 했던 이름들을 떠올리게 하듯,<br>오늘의 전시관에는 실제 목포 독립운동가들의 이름이 남아 있다.</div></div>
       <div class="ending-shot cut" id="end-cut"><div class="wire-line"></div><div class="wire-spark">✦</div><div class="ending-caption">치직― 윤식과 이어진 전신선이 끊어진다.</div></div>
       <div class="ending-shot dawn" id="end-dawn"><div class="dawn-window"></div><div class="ending-caption">${_yyyy}년 ${_mm}월 ${_dd}일 아침. 붉은 벽돌 사이로 햇빛이 스며든다.</div></div>
     </div>
@@ -2692,7 +2716,7 @@ function buildScreens(){
     <div class="brick-rise-bg" id="brick-rise-bg" aria-hidden="true"></div>
     <div class="narr-block" id="epi-body"></div>
     <div class="narr-block brick-moral" id="brick-moral"></div>
-    <div class="brick-tagline" id="brick-tagline">― 목포 : 붉은 벽돌의 비밀 ―</div>
+    <div class="brick-tagline" id="brick-tagline">― 목포 : 붉은 벽돌의 시간 ―</div>
     <button class="btn" id="btn-epi-next" style="visibility:hidden">기억을 기록으로 남기기</button>`;
   app.appendChild(epi);
 
@@ -2701,9 +2725,9 @@ function buildScreens(){
   rec.className = 'screen center-col'; rec.id = 'scr-record';
   rec.innerHTML = `
     <div class="media-frame" id="record-media"></div>
-    <div class="small-note" style="display:block;text-align:center;margin:8px 0 16px">현장 기록 ― 정명여학교 선교사 사택 천장에서 발견된 「독립가」<br>선조들의 독립을 향한 열망을 담은 대한제국 시기의 노래</div>
+    <div class="small-note" style="display:block;text-align:center;margin:8px 0 16px">1983년, 정명여학교 선교사 사택 천장에서 발견된 「독립가」<br>그 노래에는 빼앗긴 나라를 되찾고자 했던 선조들의 간절한 열망이 남아 있습니다.</div>
     <div class="record-reveal"><div class="record-reveal-body" id="record-reveal-body"></div></div>
-    <div class="record-reveal-title" id="record-reveal-title">― 목포 : 붉은 벽돌의 비밀 ―</div>
+    <div class="record-reveal-title" id="record-reveal-title">― 목포 : 붉은 벽돌의 시간 ―</div>
     <section class="history-note-card" id="history-note-card">
       <div class="history-note-head">이야기와 실제 역사</div>
       <div class="end-credit">${CONFIG.ending.credit}</div>
@@ -2716,7 +2740,26 @@ function buildScreens(){
         <div class="operation-card-head"><b id="badge-card-title">작전 행동 배지</b><span id="badge-count">0 / 5 획득</span></div>
         <div class="badge-grid" id="badge-grid"></div>
       </section>
-      <div class="gear-telegram" id="record-reply" style="display:none;margin:12px 0"></div>
+      <section class="memory-archive" id="memory-archive" aria-labelledby="memory-archive-title">
+        <div class="memory-archive-head">
+          <div class="memory-archive-kicker">MEMORY TELEGRAPH NETWORK</div>
+          <h2 id="memory-archive-title">붉은 벽돌 기록관</h2>
+          <p class="memory-archive-lead" id="memory-archive-lead">당신의 답장이 한 장의 전보가 되어, 앞서 다녀간 참가자들의 기록과 함께 기억의 벽을 완성합니다.</p>
+        </div>
+        <div class="memory-card-stage" id="memory-card-stage" aria-live="polite">
+          <article class="memory-telegram-card" id="memory-telegram-card">
+            <div class="memory-telegram-message" id="memory-telegram-message"></div>
+            <div class="memory-telegram-meta" id="memory-telegram-meta"></div>
+          </article>
+          <div class="memory-transform-status" id="memory-transform-status"></div>
+        </div>
+        <div class="memory-wall-wrap" id="memory-wall-wrap">
+          <div class="memory-wall-top"><span>함께 완성하는 역사관의 벽</span><span class="memory-wall-count" id="memory-wall-count"></span></div>
+          <div class="memory-wall"><div class="memory-bricks" id="memory-bricks" role="list"></div></div>
+          <div class="memory-record-view" id="memory-record-view" aria-live="polite"></div>
+          <div class="memory-privacy" id="memory-privacy">답장은 실명 대신 익명 번호로 안전하게 저장됩니다. 벽돌을 누르면 기록을 다시 읽을 수 있습니다.</div>
+        </div>
+      </section>
     </div>
     <button class="btn ghost" id="btn-retry">처음부터 다시 하기</button>`;
   app.appendChild(rec);
@@ -3064,8 +3107,8 @@ async function playBunkerBriefEffect(){
 /* 4막 시작 : 긴 전보를 읽는 대신, 네 번의 신호를 직접 두드려 동조하며
    윤식의 정체·스무 해가 흐른 사실·강제동원의 사정을 하나씩 알아간다. */
 const SIGNAL_SYNC_FRAGMENTS = [
-  '……{player}, 나 윤식이오.\n그대에게는 잠깐이었겠지만 내게는 스무 해가 흘렀소.',
-  '나 역시 강제로 끌려와\n이곳에서 방공호를 파는 일에 동원되었소.',
+  '……{player}, 나 윤식이오.\n그대에게는 잠깐이었겠지만\n내게는 스무 해가 흘렀소.',
+  '당신이 기억하던 젊은 서기는 이제 없소.\n나 역시 강제로 끌려와\n이곳에서 방공호를 파는 일에 동원되었소.',
   '그런데 이 두드림……\n어디선가 들은 적이 있지 않소?',
   '이제야 알겠소.\n지금 내가 보내는 네 번의 신호가\n스무 해 전 우리에게까지 닿았던 것이오.'
 ];
@@ -3447,19 +3490,19 @@ function flagBurst(originEl){
   setTimeout(()=>layer.remove(), 3200);
 }
 
-/* --- 제3막 : 발소리 사이에 숨어 태극기 복원하기 --- */
+/* --- 제3막 : 발소리 사이에 숨어 태극기 완성하기 --- */
 function mgMansae(i){
   const mg = $('#mg'+i);
   mg.innerHTML = `
-    <div class="mg-title">◈ 그대의 화면 속, 학생들이 남긴 태극기가 흐릿하게 겹쳐 보인다.<br>발소리가 멀어질 때만 천을 길게 눌러 복원하라!</div>
+    <div class="mg-title">◈ 그대의 화면 속, 학생들이 함께 준비하던 태극기가 흐릿하게 겹쳐 보인다.<br>발소리가 멀어질 때만 천을 길게 눌러 완성하라!</div>
     <div class="flag-stealth" id="flag-stealth">
-      <div class="patrol-track"><span class="patrol-icon" aria-label="1920년대 순사"><i class="beam"></i><i class="cap"></i><i class="head"></i><i class="body"></i><i class="legs"></i></span><span class="patrol-state danger">가까움 · 숨으세요</span></div>
+      <div class="patrol-track"><span class="patrol-icon" aria-label="1920년대 순사"><i class="beam"></i><i class="cap"></i><i class="head"></i><i class="body"></i><i class="legs"></i></span><span class="patrol-state danger">발소리 가까움</span></div>
       <div class="sewing-room"><div class="cloth-back"></div><div class="hidden-flag">${FLAG_SVG}</div><div class="sewing-hands"><span class="sewing-hand left">${handSvg('L')}<i class="brush"></i></span><span class="sewing-hand right">${handSvg('R')}</span></div><div class="flag-date"><span class="flag-date-label">「우리가 거리로 나서는 날」</span><span class="flag-date-num">4·8</span></div><div class="cloth-curtain"></div></div>
       <div class="crowd-shadow" aria-hidden="true"></div>
-      <button class="flag-hold" aria-label="태극기 천을 누르고 복원하기">태극기 복원하기</button>
+      <button class="flag-hold" aria-label="태극기 천을 누르고 완성하기">태극기 완성하기</button>
       <div class="stealth-lamp"></div><div class="caught-call">누구냐!</div>
       <div class="stealth-help"><strong>발소리가 멀어지면 천을 길게 누르세요.</strong><span>가까워지면 즉시 손을 떼고 덮개로 숨기세요.</span></div>
-      <div class="stealth-progress"><span>태극기 복원도 0%</span><i></i></div>
+      <div class="stealth-progress"><span>태극기 완성도 0%</span><i></i></div>
     </div>`;
   const room = mg.querySelector('.flag-stealth');
   const patrol = mg.querySelector('.patrol-icon');
@@ -3473,7 +3516,7 @@ function mgMansae(i){
   let phase = 0;
   function render(){
     fill.style.width = progress + '%';
-    progressText.textContent = `태극기 복원도 ${Math.floor(progress)}%`;
+    progressText.textContent = `태극기 완성도 ${Math.floor(progress)}%`;
     flag.style.clipPath = `inset(0 ${100-progress}% 0 0)`;
     room.classList.toggle('near-done', progress >= 78);
     if(progress >= 91) date.classList.add('on');
@@ -3508,7 +3551,7 @@ function mgMansae(i){
     patrol.style.left=(8+wave*84)+'%';
     room.dataset.side=wave<.5?'left':'right';
     patrol.style.filter=`brightness(${danger?1.25:.55}) drop-shadow(0 0 ${danger?8:2}px rgba(213,72,46,.8))`;
-    stateText.textContent=danger?'가까움 · 숨으세요':'멀어짐 · 지금 만드세요';
+    stateText.textContent=danger?'발소리 가까움':'발소리 멀어짐';
     stateText.className='patrol-state '+(danger?'danger':'safe');
     room.dataset.danger=danger?'1':'0';
     room.classList.toggle('danger',danger);
@@ -3528,7 +3571,7 @@ function mgMansae(i){
       done=true;holding=false;clearInterval(patrolTimer);clearInterval(makeTimer);
       room.classList.remove('holding','hiding');date.classList.add('on');sfx.cheer();buzz([90,50,90,50,180]);
       setTimeout(()=>flagBurst(flag),500);
-      setTimeout(()=>unlockQuiz(i,'◈ 태극기를 복원했다! 천 뒤에서 「4·8」이 드러났다. 이제 전시 기록에서 사건의 이름을 확인하라.'),1500);
+      setTimeout(()=>unlockQuiz(i,'◈ 태극기를 완성했다! 천 뒤에서 「4·8」이 드러났다. 이제 전시 기록에서 사건의 이름을 확인하라.'),1500);
     }
   },70);
   function start(e){if(done||caughtLock)return;e.preventDefault();holding=true;room.classList.add('holding');holdBtn.setPointerCapture(e.pointerId)}
@@ -3713,6 +3756,39 @@ function renderFloorMap(){
     </div>`;
   sfx.found();
 }
+function requireHistoryReview(hist,i,btn,nextLabel){
+  const card=hist.querySelector('.hist-card');
+  if(!card) return Promise.resolve();
+  const status=document.createElement('div');
+  status.className='history-gate-status';
+  status.setAttribute('role','status');
+  status.textContent='역사 노트를 펼쳐 확인하면 다음 교신이 열립니다.';
+  hist.appendChild(status);
+  btn.textContent='역사 노트를 먼저 확인하세요';
+  btn.disabled=true;
+  btn.classList.add('history-locked');
+  btn.setAttribute('aria-disabled','true');
+  btn.style.visibility='visible';
+  return new Promise(resolve=>{
+    let unlocked=false;
+    const unlock=()=>{
+      if(unlocked || !card.open) return;
+      unlocked=true;
+      state.historyViewed[i]=true;
+      status.textContent='역사 노트 확인 완료 · 다음 교신을 받을 수 있습니다.';
+      status.classList.add('done');
+      btn.textContent=nextLabel;
+      btn.disabled=false;
+      btn.classList.remove('history-locked');
+      btn.removeAttribute('aria-disabled');
+      card.removeEventListener('toggle',unlock);
+      sfx.tick();
+      resolve();
+    };
+    card.addEventListener('toggle',unlock);
+    unlock();
+  });
+}
 function stageClear(i){
   // 벽돌 진행도
   $('#bricks').children[i].classList.add('done');
@@ -3752,13 +3828,11 @@ function stageClear(i){
       const caps = h.captions || [];
       const gallery = imgs.length ? `<div class="hist-gallery">${imgs.map((src,idx)=>`<div class="hist-slide"><div class="media-frame in-paper" data-src="${src}"></div>${caps[idx] ? `<div class="hist-cap">${caps[idx]}</div>` : ''}</div>`).join('')}</div>` : '';
       hist.innerHTML = `<details class="hist-card"><summary class="h-head">${h.title}</summary>${gallery}<div class="h-body">${h.text}</div></details>`;
-      const historyCard=hist.querySelector('.hist-card');
-      historyCard.addEventListener('toggle',()=>{
-        if(historyCard.open) state.historyViewed[i]=true;
-      });
       hist.querySelectorAll('.media-frame[data-src]').forEach(frame=>loadMedia(frame, frame.dataset.src));
       sfx.found();
     }
+    const nextLabel=i===3?'마지막 전보 수신':'다음 교신 수신';
+    if(h) await requireHistoryReview(hist,i,btn,nextLabel);
     if(i===3){
       actLayer.classList.add('on');
       await actMemorySignal();
@@ -3766,14 +3840,14 @@ function stageClear(i){
       await new Promise(r=>setTimeout(r, 350));
       actLayer.classList.remove('on');
     }
-    btn.textContent = i === 3 ? '마지막 전보 수신' : '다음 교신 수신';
+    btn.textContent=nextLabel;
     btn.style.visibility='visible';
     await waitClick(btn);
     if(i === 3) finishGame();
     else if(i === 2){
+      await playArrestOrderBurnScene();
       await playRickshawDiscovery();
       await playRickshawHandoffLines();
-      await playArrestOrderBurnScene();
       await playSignalSurgeScene();
       await playRickshawArrivalScene();
       await playRickshawWheelGame();
@@ -3815,37 +3889,20 @@ function playRickshawDiscovery(){
   return new Promise(resolve=>{
     (async ()=>{
       narr1.classList.add('on');
-      await typewrite(narr1, '윤식은 명부를 품속 깊이 숨긴 채 약속된 장소에서 연락책을 기다렸다.\n잠시 후 멀리서\n덜컹… 덜컹…\n돌길을 구르는 나무 바퀴 소리가 들려왔다.\n골목 끝에 한 대의 탈것이 멈춰 섰다.\n주변을 살피던 사내가 윤식에게 조용히 손을 내밀었다.', 30);
-      await new Promise(r=>setTimeout(r,700)); /* 잠시 숨죽여 지켜보는 정적 */
+      await typewrite(narr1, '지시서가 재로 무너지자 윤식은 명부를 품속 깊이 숨겼다.\n잠시 후 멀리서\n덜컹… 덜컹…\n돌길을 구르는 나무 바퀴 소리가 들려왔다.\n약속한 연락책이 다가오고 있다.\n그가 타고 온 것을 알아내야 명부를 건넬 수 있다.', 30);
+      await new Promise(r=>setTimeout(r,700));
       continueBtn.hidden=false; continueBtn.disabled=false;
       await waitClick(continueBtn);
       continueBtn.disabled=true;
       continueBtn.classList.add('gone');
-      /* 1장 → 2장 : 화면을 완전히 교체한다 (opacity 페이드가 아니라 페이지 자체를 숨김) */
+      /* 1장 → 3장 : 명부를 넘기기 전에 연락책의 이동수단부터 확인한다. */
       page1.hidden=true;
-      page2.hidden=false;
-      scr.scrollTop=0;
-      sfx.received();
-      if(navigator.vibrate) navigator.vibrate([45,50,120]);
-      await typewrite(tg2body, '……명부를 넘겼소.\n연락책도 무사히 떠났소.', 30);
-      await new Promise(r=>setTimeout(r,1000));
-      await typewrite(tg2body2, '그런데 이상하오.\n그가 떠난 뒤부터\n그 바퀴 소리에 그대 쪽 신호가 겹쳐 들리고 있소.', 30);
-      await new Promise(r=>setTimeout(r,500));
-      narr2.classList.add('on');
-      await typewrite(narr2, '그 순간 스마트폰이 크게 진동했다.\n덜컹…… 덜컹……\n화면 위로 낡은 나무 바퀴의 흔적이 떠올랐다.\n연락책이 떠난 뒤에도\n그 바퀴 소리에 시간 신호가 겹쳐 들리고 있었다.\n마치 그 바퀴가\n다른 시대까지 이어지는 길을 만들고 있는 것 같았다.', 30);
-      await new Promise(r=>setTimeout(r,600));
-      trackBtn.hidden=false; trackBtn.disabled=false;
-      await waitClick(trackBtn);
-      trackBtn.disabled=true;
-      trackBtn.classList.add('gone');
-      /* 2장 → 3장 : 서사 화면을 완전히 접고, 탐색 전용 화면만 남긴다 */
-      page2.hidden=true;
       page3.hidden=false;
       scr.scrollTop=0;
       sfx.received();
       if(navigator.vibrate) navigator.vibrate([45,50,120]);
       hint.classList.add('on');
-      await typewrite(hint, '신호와 같은 바퀴를 가진 전시물을 찾으세요.', 30);
+      await typewrite(hint, '근대 목포 거리 전시에서 나무 바퀴가 달린 운송 수단을 찾으세요.', 30);
       await new Promise(r=>setTimeout(r,200));
       photo.style.transition='opacity .6s ease,transform .6s ease,filter .6s ease';
       photo.style.filter='blur(7px)';
@@ -3867,7 +3924,7 @@ function playRickshawDiscovery(){
         answer.focus();
         return;
       }
-      feedback.textContent='신호 일치 · 시간 신호가 닿은 전시물을 찾아냈습니다.';
+      feedback.textContent='인력거 확인 · 약속한 연락책이 맞습니다.';
       feedback.className='rickshaw-feedback good';
       answer.disabled=true; findBtn.disabled=true;
       sfx.received();
@@ -3879,25 +3936,35 @@ function playRickshawDiscovery(){
   });
 }
 
-/* 정답 확인 직후 ― 인력거 바퀴에 남은 시간의 흔적을 짧게 확인해 주는 두 줄. */
+/* 정답 확인 직후 ― 연락책에게 명부를 넘기고, 바퀴에 겹친 시간 신호를 발견한다. */
 async function playRickshawHandoffLines(){
-  const feedback=$('#rickshaw-feedback');
-  const lines=['「인력거였구려.','그 바퀴에 이상한 시간의 흔적이 남아 있소.','하지만 먼저 이 지시서를 없애야 하오.」'];
-  for(const line of lines){
-    feedback.textContent=line;
-    feedback.className='rickshaw-feedback good';
-    sfx.tick();
-    await new Promise(r=>setTimeout(r,1100));
-  }
+  const scr=$('#scr-rickshaw');
+  const page2=$('#rickshaw-page2'), page3=$('#rickshaw-page3');
+  const tg2body=$('#signal-tg-2-body'), tg2body2=$('#signal-tg-2-body2');
+  const narr2=$('#rickshaw-narr2'), trackBtn=$('#btn-rickshaw-track');
+  page3.hidden=true; page2.hidden=false; scr.scrollTop=0;
+  tg2body.textContent=''; tg2body2.textContent=''; narr2.textContent=''; narr2.classList.remove('on');
+  trackBtn.hidden=true; trackBtn.disabled=true; trackBtn.classList.remove('gone');
+  sfx.received();
+  await typewrite(tg2body, '인력거였구려. 약속한 연락책이 맞소.\n……방금 명부를 무사히 넘겼소.', 30);
+  await delay(900);
+  await typewrite(tg2body2, '그런데 그가 떠난 뒤부터\n바퀴 소리에 그대 쪽 신호가 겹쳐 들리고 있소.', 30);
+  await delay(500);
+  narr2.classList.add('on');
+  await typewrite(narr2, '그 순간 스마트폰이 크게 진동했다.\n덜컹…… 덜컹……\n화면 위로 낡은 나무 바퀴의 흔적이 떠올랐다.\n마치 그 바퀴가 다른 시대까지 이어지는 길을 만들고 있는 것 같았다.', 30);
+  await delay(600);
+  trackBtn.hidden=false; trackBtn.disabled=false;
+  await waitClick(trackBtn);
+  trackBtn.disabled=true; trackBtn.classList.add('gone');
 }
 
-/* 지시서 소각 직후 ― 스마트폰이 다시 크게 진동하며 시간 신호의 이동을 알린다. */
+/* 명부를 인계한 직후 ― 스마트폰이 다시 크게 진동하며 시간 신호의 이동을 알린다. */
 function playSignalSurgeScene(){
   return new Promise(res=>{
     actLayer.classList.add('on');
     actLayer.innerHTML = `
       <div class="act-box signal-surge-act">
-        <div class="act-title">지시서가 다 타는 순간, 스마트폰이 다시 크게 진동했다.<br>치직― 치지직―</div>
+        <div class="act-title">명부를 실은 인력거가 골목을 떠나는 순간, 스마트폰이 다시 크게 진동했다.<br>치직― 치지직―</div>
         <div class="surge-panel" id="surge-panel">
           <div class="surge-alert">[시간 신호 재발생]</div>
           <div class="surge-loc">방금 확인한 <b>인력거</b>에서 신호가 다시 강해지고 있다.</div>
@@ -3939,7 +4006,7 @@ function playRickshawArrivalScene(){
   });
 }
 
-/* 지시서 소각 직후 ― 인력거 바퀴가 스무 해를 굴려 1940년대로 넘어간다. */
+/* 명부 인계 직후 ― 인력거 바퀴가 스무 해를 굴려 1940년대로 넘어간다. */
 function playRickshawWheelGame(){
   show('#scr-rickshaw');
   const discovery=$('#rickshaw-discovery'), game=$('#rickshaw-game');
@@ -4029,7 +4096,7 @@ const ENDING_TELEGRAM_SCENES = [
   { text:"……고맙소, {player}.\n내 이름을 기억해 주어서.", hold:1800 },
   { text:"이제 이 전신선도\n오래 버티지 못할 것 같소.", hold:1000 },
   { text:"마지막으로 한 가지만 묻겠소.", hold:700 },
-  { text:"그대가 있는 시대의 목포는……\n이제 평화롭소?", hold:0 }
+  { text:"당신이 서 있는 미래의 목포는\n평화로운지 궁금하오.", hold:0 }
 ];
 async function playEndingTelegram(){
   const body=$('#end-body');
@@ -4118,17 +4185,17 @@ function renderOperationBadges(){
   const wrongTotal=state.wrong.reduce((a,b)=>a+b,0);
   const trust=Math.max(0,100-hintsUsed*8-wrongTotal*6-state.alertEvents*7-state.lockouts*12);
   const badges=[
-    {icon:'◉',name:'매의 눈',desc:'사진 단서를 힌트와 오답 없이 한 번에 해결',earned:state.wrong[0]===0&&state.hintOpened[0]===0},
-    {icon:'⌁',name:'무전 침묵',desc:'작전 중 한 번도 순사의 의심을 받지 않음',earned:state.alertEvents===0&&state.lockouts===0},
-    {icon:'▤',name:'기록 보존자',desc:'네 개의 역사 자료를 모두 펼쳐 확인',earned:state.historyViewed.every(Boolean)},
-    {icon:'◆',name:'윤식의 동지',desc:`윤식 신뢰도 최고 단계 달성 · ${trust}%`,earned:trust>=90},
-    {icon:'✦',name:'시간의 증인',desc:'방공호의 푸른 발자국과 기록을 완전 복원',earned:state.bunkerRestored}
+    {icon:'◉',name:'붉은 벽돌의 관찰자',desc:'하얀 태양 문양을 찾아 첫 번째 암호를 해독',image:'images/1-mission.webp',earned:true},
+    {icon:'⌁',name:'벽난로의 비밀',desc:'차가운 거울과 헐거운 벽돌 뒤의 단서를 발견',image:'images/2-mission.jpg',earned:true},
+    {icon:'▤',name:'태극기의 약속',desc:'학생들과 태극기를 완성하고 4·8의 함성을 확인',image:'images/3-brief-students-making-taegeukgi-mixed-correct-v2.webp',earned:true},
+    {icon:'◆',name:'스무 해의 신호',desc:'인력거 바퀴를 따라 1940년대 윤식의 신호와 재접속',image:'images/4-forced-labor-1940.webp',earned:true},
+    {icon:'✦',name:'시간의 증인',desc:'네 개의 역사 노트와 방공호의 기억을 끝까지 기록',image:'images/record-writing.jpg',earned:state.historyViewed.every(Boolean)&&state.bunkerRestored}
   ];
   const earnedBadges=badges.filter(x=>x.earned);
   const earned=earnedBadges.length;
   $('#badge-count').textContent=`${earned} / ${badges.length} 획득`;
   const grid=$('#badge-grid');
-  grid.innerHTML=earnedBadges.map((x,idx)=>`<button type="button" class="mission-badge earned" data-idx="${idx}" aria-label="${x.name} · 획득 · 눌러서 자세히 보기"><div class="badge-icon">${x.icon}</div><div class="badge-text"><strong>${x.name}</strong><small>${x.desc}</small></div></button>`).join('');
+  grid.innerHTML=earnedBadges.map((x,idx)=>`<button type="button" class="mission-badge earned" data-idx="${idx}" aria-label="${x.name} · 획득 · 눌러서 자세히 보기"><div class="badge-art"><img src="${x.image}" alt="" loading="lazy" decoding="async"><span class="badge-icon">${x.icon}</span></div><div class="badge-text"><strong>${x.name}</strong><small>${x.desc}</small></div></button>`).join('');
   grid.querySelectorAll('.mission-badge').forEach(el=>{
     el.onclick=()=>showBadgeDetail(earnedBadges[Number(el.dataset.idx)]);
   });
@@ -4151,6 +4218,7 @@ function showBadgeDetail(badge){
   card.innerHTML=`
     <div class="badge-unlock-rays"></div>
     <div class="badge-unlock-kicker">${badge.earned?'업적 획득':'미획득 업적'}</div>
+    <div class="badge-unlock-art"><img src="${badge.image}" alt="${badge.name} 카드 그림" decoding="async"></div>
     <div class="badge-unlock-icon">${badge.icon}</div>
     <h2>${badge.name}</h2>
     <p>${badge.desc}</p>
@@ -4189,6 +4257,7 @@ async function playBadgeUnlocks(badges){
       <div class="badge-unlock-rays"></div>
       <div class="badge-unlock-count">ACHIEVEMENT ${String(i+1).padStart(2,'0')} / ${String(earnedBadges.length).padStart(2,'0')}</div>
       <div class="badge-unlock-kicker">업적 획득</div>
+      <div class="badge-unlock-art"><img src="${badge.image}" alt="${badge.name} 카드 그림" decoding="async"></div>
       <div class="badge-unlock-icon">${badge.icon}</div>
       <h2>${badge.name}</h2>
       <p>${badge.desc}</p>
@@ -4228,13 +4297,196 @@ async function playBadgeUnlocks(badges){
   layer.remove();
 }
 
+/* ---------- 기억의 전신망 : 답장을 전보 카드와 붉은 벽돌 기록으로 보존 ---------- */
+const MEMORY_WALL_STORAGE_KEY = 'mokpo-red-bricks-memory-wall-v1';
+function databaseSettings(){
+  const cfg=window.MOKPO_DATABASE||{};
+  return {
+    url:String(cfg.supabaseUrl||'').replace(/\/+$/,''),
+    key:String(cfg.supabasePublishableKey||'').trim()
+  };
+}
+function databaseIsConfigured(){
+  const cfg=databaseSettings();
+  return /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(cfg.url)&&cfg.key.length>20;
+}
+function memoryDate(value=new Date()){
+  try{return new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(value));}
+  catch(e){return '';}
+}
+function readLocalMemoryRecords(){
+  if(state.memoryRecordsCache.length) return state.memoryRecordsCache.slice();
+  try{
+    const parsed=JSON.parse(localStorage.getItem(MEMORY_WALL_STORAGE_KEY)||'[]');
+    if(Array.isArray(parsed)){
+      state.memoryRecordsCache=parsed.filter(r=>r&&typeof r.message==='string'&&r.message.trim()).map(r=>({
+        id:String(r.id||''),
+        sequence:Number(r.sequence)||0,
+        alias:String(r.alias||'익명의 기록자').slice(0,24),
+        message:String(r.message).trim().slice(0,100),
+        date:String(r.date||'')
+      })).slice(-24);
+    }
+  }catch(e){ state.memoryRecordsCache=[]; }
+  return state.memoryRecordsCache.slice();
+}
+function saveLocalMemoryReply(message){
+  let records=readLocalMemoryRecords();
+  const already=state.memoryRecordId&&records.find(r=>r.id===state.memoryRecordId);
+  if(already) return {record:already,records,mode:'local'};
+  const sequence=records.reduce((max,r)=>Math.max(max,Number(r.sequence)||0),0)+1;
+  const record={
+    id:`${Date.now().toString(36)}-${Math.random().toString(36).slice(2,8)}`,
+    sequence,
+    alias:`기록자 ${String(sequence).padStart(3,'0')}`,
+    message:String(message||'').trim().slice(0,100),
+    date:memoryDate()
+  };
+  records=[...records,record].slice(-24);
+  state.memoryRecordId=record.id;
+  state.memoryRecordsCache=records;
+  try{ localStorage.setItem(MEMORY_WALL_STORAGE_KEY,JSON.stringify(records)); }catch(e){}
+  return {record,records,mode:'local'};
+}
+function remoteRecord(row){
+  const sequence=Number(row.id)||0;
+  return {
+    id:`db-${row.id}`,
+    sequence,
+    alias:`기록자 ${String(sequence).padStart(3,'0')}`,
+    message:String(row.message||'').trim().slice(0,100),
+    date:memoryDate(row.created_at)
+  };
+}
+function containsContactDetails(message){
+  return /(https?:\/\/|www\.|[\w.%+-]+@[\w.-]+\.[a-z]{2,}|01[016789][ -]?\d{3,4}[ -]?\d{4})/i.test(String(message||''));
+}
+async function databaseFetch(path,options={}){
+  const cfg=databaseSettings();
+  const controller=new AbortController();
+  const timeout=setTimeout(()=>controller.abort(),6500);
+  const headers={apikey:cfg.key,'Content-Type':'application/json',...(options.headers||{})};
+  /* 구형 JWT 형식의 anon key도 지원하되 service_role/secret key는 절대 사용하지 않는다. */
+  if(cfg.key.startsWith('eyJ')) headers.Authorization=`Bearer ${cfg.key}`;
+  try{
+    const response=await fetch(`${cfg.url}/rest/v1/${path}`,{...options,headers,signal:controller.signal});
+    if(!response.ok) throw new Error(`기록 서버 응답 오류 (${response.status})`);
+    const text=await response.text();
+    return text?JSON.parse(text):null;
+  }finally{clearTimeout(timeout);}
+}
+async function fetchRemoteMemoryRecords(){
+  const rows=await databaseFetch('memory_records?select=id,message,created_at&order=created_at.desc&limit=24');
+  return (Array.isArray(rows)?rows:[]).map(remoteRecord).reverse();
+}
+async function saveRemoteMemoryReply(message){
+  const rows=await databaseFetch('memory_records?select=id,message,created_at',{
+    method:'POST',
+    headers:{Prefer:'return=representation'},
+    body:JSON.stringify({message:String(message||'').trim().slice(0,100)})
+  });
+  if(!Array.isArray(rows)||!rows[0]) throw new Error('저장된 기록을 확인하지 못했습니다.');
+  return remoteRecord(rows[0]);
+}
+async function saveMemoryReply(message){
+  if(!databaseIsConfigured()) return saveLocalMemoryReply(message);
+  try{
+    const record=await saveRemoteMemoryReply(message);
+    state.memoryRecordId=record.id;
+    let records;
+    try{records=await fetchRemoteMemoryRecords();}
+    catch(e){records=[record];}
+    if(!records.some(r=>r.id===record.id)) records=[...records,record].slice(-24);
+    state.memoryRecordsCache=records;
+    return {record,records,mode:'online'};
+  }catch(error){
+    console.warn('온라인 기록관 연결 실패, 이 기기에 임시 저장합니다.',error);
+    state.memoryRecordsCache=[];
+    state.memoryRecordId='';
+    return {...saveLocalMemoryReply(message),mode:'fallback'};
+  }
+}
+function showMemoryRecord(record){
+  const view=$('#memory-record-view');
+  view.replaceChildren();
+  const meta=document.createElement('strong');
+  meta.textContent=`${record.alias} · ${record.date||'날짜 미상'}`;
+  const message=document.createElement('p');
+  message.textContent=`“${record.message}”`;
+  view.append(meta,message);
+}
+function renderMemoryWall(records,currentId,mode='local'){
+  const wall=$('#memory-bricks');
+  wall.replaceChildren();
+  const visible=records.slice(-12);
+  const fillers=Math.max(0,12-visible.length);
+  for(let i=0;i<fillers;i++){
+    const brick=document.createElement('button');
+    brick.type='button'; brick.className='memory-brick filler'; brick.disabled=true;
+    brick.setAttribute('aria-hidden','true'); brick.tabIndex=-1;
+    wall.appendChild(brick);
+  }
+  visible.forEach(record=>{
+    const brick=document.createElement('button');
+    brick.type='button'; brick.className=`memory-brick${record.id===currentId?' current':''}`;
+    brick.setAttribute('role','listitem');
+    brick.setAttribute('aria-label',`${record.alias}의 기록 읽기`);
+    const alias=document.createElement('span'); alias.className='memory-brick-alias'; alias.textContent=record.alias;
+    const excerpt=document.createElement('span'); excerpt.className='memory-brick-excerpt'; excerpt.textContent=record.message;
+    brick.append(alias,excerpt);
+    brick.addEventListener('click',()=>showMemoryRecord(record));
+    wall.appendChild(brick);
+  });
+  $('#memory-wall-count').textContent=mode==='online'?`모두의 기록 ${records.length}개`:`이 기기의 기록 ${records.length}개`;
+  const selected=records.find(r=>r.id===currentId)||records[records.length-1];
+  if(selected) showMemoryRecord(selected);
+}
+async function revealSharedMemoryWall(){
+  if(!state.reply) return;
+  const archive=$('#memory-archive');
+  const card=$('#memory-telegram-card');
+  const status=$('#memory-transform-status');
+  const wallWrap=$('#memory-wall-wrap');
+  const saved=await saveMemoryReply(state.reply);
+  const online=saved.mode==='online';
+  $('#memory-archive-lead').textContent=online
+    ? '당신의 답장이 한 장의 전보가 되어, 여러 기기에서 참여한 기록들과 함께 기억의 벽을 완성합니다.'
+    : '당신의 답장이 한 장의 전보가 되어 기억의 벽에 놓입니다.';
+  $('#memory-privacy').textContent=online
+    ? '답장은 실명 대신 익명 번호로 온라인 기록관에 저장됩니다. 벽돌을 누르면 기록을 다시 읽을 수 있습니다.'
+    : '온라인 기록관에 연결되지 않아 이번 답장은 이 기기에 저장되었습니다. 설정 후에는 모든 기기의 기록이 함께 표시됩니다.';
+  $('#memory-telegram-message').textContent=`“${saved.record.message}”`;
+  $('#memory-telegram-meta').textContent=`${saved.record.alias} · ${saved.record.date}`;
+  archive.classList.add('on');
+  card.classList.remove('rise','to-brick');
+  card.style.visibility='visible';
+  wallWrap.classList.remove('on');
+  status.textContent='당신의 답장이 한 장의 전보 기록이 되었습니다.';
+  try{archive.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});}catch(e){archive.scrollIntoView();}
+  await delay(450);
+  card.classList.add('rise');
+  sfx.found(); buzz([45,35,80]);
+  await delay(1500);
+  status.textContent='전보를 붉은 벽돌에 새겨 기억의 벽으로 보냅니다…';
+  card.classList.add('to-brick');
+  tone(196,.18,'triangle',.07); setTimeout(()=>tone(294,.25,'triangle',.08),180);
+  buzz([70,45,120]);
+  await delay(1050);
+  card.style.visibility='hidden';
+  renderMemoryWall(saved.records,saved.record.id,saved.mode);
+  wallWrap.classList.add('on');
+  status.textContent=online?'기록이 모두의 역사관 벽에 보존되었습니다.':'기록이 이 기기의 역사관 벽에 보존되었습니다.';
+  sfx.ok();
+  await delay(900);
+}
+
 /* ---------- 최종 기록 화면 : 「독립가」 사진 다음, 감정적 여운을 먼저 보여준 뒤
    실제 역사 안내와 작전 기록(배지)은 뒤로 미룬다 ---------- */
 const RECORD_REVEAL_BEATS = [
-  { text:"누가 어떤 마음으로 이 노래를 남겼는지,\n우리는 그 모든 이야기를 알 수 없습니다.\n\n그러나 그들이 남긴 노래는 오늘까지 전해졌습니다.", hold:2200 },
-  { text:"윤식은 실제 기록에 남아 있는 인물이 아닙니다.\n하지만 그가 겪은 강제동원과 방공호 노동은\n이 시기 목포와 한반도 곳곳에서 실제로 있었던 일입니다.\n\n이름을 남기지 못한 수많은 '윤식'이 있었습니다.", hold:2200 },
-  { text:"윤식이 남긴 마지막 질문은\n이제 우리에게 남았습니다.", hold:2600 },
-  { text:"우리가 누리는 오늘의 평화가\n그 질문에 대한 하나의 답이기를 바랍니다.", hold:2200 }
+  { text:"1983년, 정명여학교 선교사 사택 천장에서\n오랫동안 숨어 있던 「독립가」가 발견되었습니다.", hold:2200 },
+  { text:"누가 어떤 마음으로 이 노래를 남겼는지,\n우리는 그 모든 이야기를 알 수 없습니다.\n\n그러나 그들이 남긴 노래는\n오늘까지 전해졌습니다.", hold:2400 },
+  { text:"기록에 이름을 남기지 못한 수많은 이들이 있었습니다.\n그들이 견딘 시간과 독립을 향한 마음은\n오늘의 목포에 여전히 남아 있습니다.", hold:2600 },
+  { text:"우리가 누리는 오늘의 평화가\n그들이 남긴 질문에 대한\n하나의 답이기를 바랍니다.", hold:2400 }
 ];
 async function playRecordReveal(){
   const body=$('#record-reveal-body'), title=$('#record-reveal-title'), hist=$('#history-note-card'), stats=$('#record-stats');
@@ -4327,12 +4579,9 @@ async function finishGame(){
     /* ⑤ 작전 기록 */
     show('#scr-record');
     loadMedia($('#record-media'), CONFIG.media && CONFIG.media.recordImage);
-    if(state.reply){
-      const rr=$('#record-reply'); rr.style.display='block';
-      rr.textContent=`마지막 송신 기록\n“${state.reply}”`;
-    }
     await playRecordReveal();
     await playBadgeUnlocks(badgeResult.badges);
+    await revealSharedMemoryWall();
     sfx.cheer();
   });
 }
@@ -4350,9 +4599,17 @@ function replyModal(){
     modal.classList.add('on');
     setTimeout(()=>ta.focus(), 350);
     btn.onclick = async ()=>{
-      if(!ta.value.trim()){ ta.focus(); return; }
-      state.reply = ta.value.trim();
+      const reply=ta.value.trim();
+      if(!reply){ ta.focus(); return; }
+      if(containsContactDetails(reply)){
+        line.textContent='전화번호·이메일·인터넷 주소는 기록에 남길 수 없습니다.';
+        line.style.letterSpacing='0';
+        ta.focus();
+        return;
+      }
+      state.reply = reply;
       ta.disabled = true; btn.disabled = true; btn.style.opacity = .4;
+      line.style.letterSpacing='';
       const code = ['·','―','·','·','―','―','·','―','·','·','·','―'];
       for(const c of code){
         line.textContent += c + ' ';
@@ -4486,7 +4743,7 @@ $('#btn-back').addEventListener('click', ()=>{
 /* ================================================================
    조작 연출 — 정답 입력 직후, 손으로 완성하는 성공의 순간
    1막 열쇠 돌리기 · 2막 벽돌 밀기 · 3막 금고 다이얼
-   (3막 클리어 후 인력거 인계 직후엔 별도로 지시서 소각 연출이,
+   (3막 클리어 후 인력거 연락책을 만나기 전에는 별도로 지시서 소각 연출이,
     4막 클리어 후엔 기억의 기록장에 이름을 남기는 연출이 이어진다.)
    ================================================================ */
 const actLayer = document.createElement('div');
@@ -4503,7 +4760,7 @@ async function runStageAction(i){
   actLayer.classList.remove('on');
 }
 
-/* 연락책이 명부를 안전히 넘겨받은 직후, 사무실에 남은 지시서의 흔적을 태워 없앤다. (1920년 시점 — 1940년대로 넘어가기 전에 마무리) */
+/* 금고를 연 직후, 연락책을 만나기 전에 검거 지시서를 먼저 태워 없앤다. */
 async function playArrestOrderBurnScene(){
   actLayer.classList.add('on');
   await actBurn();
@@ -4578,7 +4835,7 @@ function actBrick(){
         <div class="act-title">벽난로 오른편 적벽돌 벽.<br>줄눈이 벌어진 벽돌을 찾아 꾹 누른 채 버텨라!</div>
         <div class="fireplace-push-scene">
           <div class="fireplace-visual" aria-hidden="true">
-            <img src="images/2-brief-1920-mirror-recreation.png" alt="">
+            <img src="images/2-brief-1920-mirror-recreation.webp" alt="" decoding="async">
             <span class="fireplace-caption">1920년 목포부청 서기실</span>
           </div>
           <div class="push-wall" id="push-wall">
@@ -4751,7 +5008,7 @@ function actDial(){
   });
 }
 
-/* ---------- 3막→4막 전환 : 성냥을 그어 지시서를 태워라 (인력거 인계 직후, 1920년 시점) ---------- */
+/* ---------- 3막→4막 전환 : 성냥을 그어 지시서를 태워라 (인력거 연락책을 만나기 전, 1920년 시점) ---------- */
 function actBurn(){
   return new Promise(res=>{
     const names = ['대상 갑','대상 을','대상 병','대상 정','연락책 미상','학생 조직원','인쇄 책임자','전보 연락원','외 다수'];
@@ -4760,7 +5017,7 @@ function actBurn(){
         <div class="act-title">윤식 ― 「좋소. 이제 이 지시서를 없애겠소. 화면의 성냥을 그어 불을 붙여 주시오.」<br>성냥을 마찰판에 문질러 불을 붙여라!</div>
         <div class="burn-scene" id="burn-scene">
           <div class="preserved-register" id="preserved-register">
-            <img src="images/mokpo-independence-register.png" alt="목포의 독립운동가 전시 명단">
+            <img src="images/mokpo-independence-register.webp" alt="목포의 독립운동가 전시 명단" decoding="async">
           </div>
           <div class="burn-paper" id="burn-paper">
             <div class="bp-title">검거 대상 지시서</div>
