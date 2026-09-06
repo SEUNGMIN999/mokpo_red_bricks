@@ -4606,7 +4606,7 @@ function actBrick(){
     const wall = document.getElementById('push-wall');
     const dusts = [...wall.querySelectorAll('.brick-dust')];
     const title = actLayer.querySelector('.act-title');
-    let p = 0, hold = null, decay = null, done = false;
+    let p = 0, hold = null, decay = null, done = false, pressing = false;
     function render(){
       fill.style.width = p + '%';
       brick.style.transform = `scale(${1 - p*0.0022}) translateY(${p*0.03}px)`;
@@ -4614,10 +4614,16 @@ function actBrick(){
       wall.style.setProperty('--pressure', p);
     }
     function start(e){
-      if(done) return;
+      if(done || pressing) return;
+      pressing = true;
       brick.classList.add('pushing');
       wall.classList.add('pressing');
-      brick.setPointerCapture(e.pointerId);
+      /* 일부 기기·인앱 브라우저는 Pointer Events를 부분적으로만 지원해
+         setPointerCapture 호출에서 예외를 던지기도 한다. 이 예외를 그대로 두면
+         start() 전체가 중단되어 압력 게이지가 아예 오르지 않는 오류로 이어지므로 반드시 감싼다. */
+      if(e && e.pointerId !== undefined && brick.setPointerCapture){
+        try{ brick.setPointerCapture(e.pointerId); }catch(_){}
+      }
       clearInterval(decay);
       hold = setInterval(()=>{
         p = Math.min(100, p + 2.4); render();
@@ -4631,13 +4637,15 @@ function actBrick(){
       }, 40);
     }
     function stop(){
+      if(!pressing) return;
+      pressing = false;
       clearInterval(hold);
       wall.classList.remove('pressing');
       if(done) return;
       decay = setInterval(()=>{ p = Math.max(0, p - 1.6); render(); if(p<=0) clearInterval(decay); }, 40);
     }
     function finish(){
-      done = true; clearInterval(hold);
+      done = true; pressing = false; clearInterval(hold);
       wall.classList.remove('pressing');
       wall.classList.add('opened');
       sweepTone(150,42,.75,'sawtooth',.065);
@@ -4651,9 +4659,20 @@ function actBrick(){
       title.classList.add('done');
       setTimeout(res, 2300);
     }
-    brick.addEventListener('pointerdown', start);
-    brick.addEventListener('pointerup', stop);
-    brick.addEventListener('pointercancel', stop);
+    /* Pointer Events가 없거나 일부만 동작하는 기기(구형 안드로이드, 일부 인앱 브라우저)를 위해
+       touch·mouse 이벤트도 함께 받는다. pressing 플래그가 중복 발동을 막아 여러 이벤트가
+       겹쳐 들어와도 압력이 두 배로 오르지 않는다. */
+    const onStart = e=>{ if(e.cancelable) e.preventDefault(); start(e); };
+    const onStop = e=>{ if(e.cancelable) e.preventDefault(); stop(e); };
+    brick.addEventListener('pointerdown', onStart);
+    brick.addEventListener('pointerup', onStop);
+    brick.addEventListener('pointercancel', onStop);
+    brick.addEventListener('touchstart', onStart, {passive:false});
+    brick.addEventListener('touchend', onStop);
+    brick.addEventListener('touchcancel', onStop);
+    brick.addEventListener('mousedown', onStart);
+    brick.addEventListener('mouseup', onStop);
+    brick.addEventListener('mouseleave', onStop);
   });
 }
 
