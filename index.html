@@ -677,7 +677,7 @@ button{touch-action:manipulation}
 .operation-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid rgba(210,173,94,.18);color:#e8d6a5;font:700 14px 'Noto Serif KR',serif}.operation-card-head span{color:#73dcd3;font:700 11px 'IBM Plex Sans KR',sans-serif}
 .badge-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mission-badge:last-child:nth-child(odd){grid-column:1 / -1}
 .mission-badge{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-height:110px;padding:14px 30px 12px 14px;border-radius:10px;border:1px solid rgba(210,173,94,.16);background:rgba(255,255,255,.028);text-align:left;opacity:.36;filter:grayscale(1);width:100%;cursor:pointer;font:inherit;color:inherit;-webkit-tap-highlight-color:transparent;transition:transform .15s ease}.mission-badge:active{transform:scale(.97)}.mission-badge.earned{opacity:1;filter:none;border-color:rgba(210,173,94,.48);background:radial-gradient(circle at 15% 12%,rgba(210,173,94,.15),rgba(255,255,255,.025));box-shadow:inset 0 1px rgba(255,255,255,.05);animation:badgePop .55s both}.mission-badge.earned:nth-child(2){animation-delay:.1s}.mission-badge.earned:nth-child(3){animation-delay:.2s}.mission-badge.earned:nth-child(4){animation-delay:.3s}.mission-badge.earned:nth-child(5){animation-delay:.4s}
-.mission-badge .badge-art{position:relative;width:100%;height:72px;overflow:hidden;border-radius:7px;border:1px solid rgba(210,173,94,.28);background:#120e0a}.mission-badge .badge-art img{width:100%;height:100%;object-fit:cover;filter:sepia(.35) contrast(1.05);opacity:.82}.mission-badge .badge-icon{position:absolute;left:8px;bottom:6px;z-index:1;padding:2px 7px;border-radius:999px;background:rgba(8,7,6,.75);font-size:20px;line-height:1.1;filter:drop-shadow(0 0 8px rgba(210,173,94,.3))}.mission-badge .badge-text{width:100%;min-width:0}.mission-badge strong{display:block;margin:4px 0 2px;color:#efd58f;font:700 13px 'Noto Serif KR',serif}.mission-badge small{display:block;color:#a99b7a;font:500 10px/1.42 'IBM Plex Sans KR',sans-serif;word-break:keep-all}.mission-badge.earned::after{content:'획득';position:absolute;right:8px;top:8px;z-index:2;padding:2px 7px;border-radius:999px;background:rgba(45,137,129,.78);color:#bafff8;font-size:8px;white-space:nowrap}.mission-badge:not(.earned)::after{content:'미획득';position:absolute;right:8px;top:8px;color:#887b63;font-size:8px}
+.mission-badge .badge-art{position:relative;width:100%;height:72px;overflow:hidden;border-radius:7px;border:1px solid rgba(210,173,94,.28);background:#120e0a}.badge-illustration{display:grid;place-items:center;width:100%;height:100%;background:radial-gradient(circle at 50% 35%,rgba(210,173,94,.24),rgba(20,13,8,.96) 72%);color:#efd58f}.badge-illustration svg{width:72%;height:72%;overflow:visible;filter:drop-shadow(0 5px 7px rgba(0,0,0,.55))}.badge-illustration-fireplace{background:radial-gradient(circle at 50% 45%,rgba(187,83,46,.32),rgba(20,13,8,.97) 75%)}.badge-illustration-flag{background:radial-gradient(circle at 50% 45%,rgba(210,173,94,.3),rgba(20,13,8,.97) 75%)}.badge-illustration-signal{background:radial-gradient(circle at 50% 45%,rgba(46,139,138,.3),rgba(20,13,8,.97) 75%)}.badge-illustration-song{background:radial-gradient(circle at 50% 45%,rgba(121,67,38,.3),rgba(20,13,8,.97) 75%)}.mission-badge .badge-icon{position:absolute;left:8px;bottom:6px;z-index:1;padding:2px 7px;border-radius:999px;background:rgba(8,7,6,.75);font-size:20px;line-height:1.1;filter:drop-shadow(0 0 8px rgba(210,173,94,.3))}.mission-badge .badge-text{width:100%;min-width:0}.mission-badge strong{display:block;margin:4px 0 2px;color:#efd58f;font:700 13px 'Noto Serif KR',serif}.mission-badge small{display:block;color:#a99b7a;font:500 10px/1.42 'IBM Plex Sans KR',sans-serif;word-break:keep-all}.mission-badge.earned::after{content:'획득';position:absolute;right:8px;top:8px;z-index:2;padding:2px 7px;border-radius:999px;background:rgba(45,137,129,.78);color:#bafff8;font-size:8px;white-space:nowrap}.mission-badge:not(.earned)::after{content:'미획득';position:absolute;right:8px;top:8px;color:#887b63;font-size:8px}
 @keyframes badgePop{from{opacity:0;transform:scale(.82) translateY(12px)}60%{transform:scale(1.04)}to{opacity:1;transform:none}}
 
 /* 업적 획득 카드 — 결과 화면 위로 한 장씩 떠오르는 연출 */
@@ -690,7 +690,7 @@ button{touch-action:manipulation}
 .badge-unlock-card::after{content:"";position:absolute;inset:8px;border:1px solid rgba(235,203,125,.25);border-radius:16px;pointer-events:none}
 .badge-unlock-rays{position:absolute;left:50%;top:42%;width:340px;aspect-ratio:1;transform:translate(-50%,-50%);opacity:.38;background:repeating-conic-gradient(from 0deg,rgba(231,196,108,.42) 0 1deg,transparent 2deg 15deg);mask:radial-gradient(circle,transparent 0 22%,#000 44%,transparent 71%);animation:achievementHalo 12s linear infinite;pointer-events:none}
 .badge-unlock-kicker{position:relative;z-index:2;color:#73ddd4;font:800 12px 'IBM Plex Sans KR',sans-serif;letter-spacing:.28em;text-indent:.28em}.badge-unlock-kicker::before,.badge-unlock-kicker::after{content:"✦";margin:0 9px;color:#e4c06b}
-.badge-unlock-art{position:relative;z-index:2;width:100%;height:178px;margin:22px auto 0;overflow:hidden;border:1px solid rgba(235,200,113,.48);border-radius:12px;background:#100c08;box-shadow:0 14px 30px rgba(0,0,0,.45)}.badge-unlock-art img{width:100%;height:100%;object-fit:cover;filter:sepia(.32) contrast(1.08);opacity:.9}.badge-unlock-icon{position:relative;z-index:3;display:grid;place-items:center;width:76px;aspect-ratio:1;margin:-38px auto 16px;border:1px solid rgba(235,200,113,.64);border-radius:50%;background:radial-gradient(circle at 38% 32%,#5c4825,#21170c 48%,#080706 74%);box-shadow:0 0 0 7px rgba(216,175,79,.09),0 0 32px rgba(226,187,91,.32),inset 0 0 20px #000;color:#f4d985;font:800 38px Georgia,serif;text-shadow:0 0 18px rgba(245,215,133,.72)}
+.badge-unlock-art{position:relative;z-index:2;width:100%;height:178px;margin:22px auto 0;overflow:hidden;border:1px solid rgba(235,200,113,.48);border-radius:12px;background:#100c08;box-shadow:0 14px 30px rgba(0,0,0,.45)}.badge-unlock-art .badge-illustration{background:radial-gradient(circle at 50% 38%,rgba(210,173,94,.24),rgba(11,8,6,.97) 74%)}.badge-unlock-art .badge-illustration svg{width:53%;height:78%;filter:drop-shadow(0 9px 10px rgba(0,0,0,.7))}.badge-unlock-icon{position:relative;z-index:3;display:grid;place-items:center;width:76px;aspect-ratio:1;margin:-38px auto 16px;border:1px solid rgba(235,200,113,.64);border-radius:50%;background:radial-gradient(circle at 38% 32%,#5c4825,#21170c 48%,#080706 74%);box-shadow:0 0 0 7px rgba(216,175,79,.09),0 0 32px rgba(226,187,91,.32),inset 0 0 20px #000;color:#f4d985;font:800 38px Georgia,serif;text-shadow:0 0 18px rgba(245,215,133,.72)}
 #badge-unlock-layer.card-on .badge-unlock-icon{animation:achievementMedal .8s .25s cubic-bezier(.17,.84,.32,1.3) both}
 .badge-unlock-card h2{position:relative;z-index:2;margin:0;color:#f6df9c;font:900 clamp(28px,8vw,38px)/1.25 'Noto Serif KR',serif;letter-spacing:-.04em;text-shadow:0 5px 20px #000}.badge-unlock-card p{position:relative;z-index:2;min-height:48px;margin:12px auto 20px;color:#bfb08d;font:600 14px/1.7 'IBM Plex Sans KR',sans-serif;word-break:keep-all}
 .badge-unlock-stamp{position:relative;z-index:2;display:inline-block;padding:7px 14px;border:3px double #d3523d;border-radius:4px;color:#e97058;font:900 17px 'Noto Serif KR',serif;letter-spacing:.22em;text-indent:.22em;opacity:0;transform:scale(1.8) rotate(-12deg)}
@@ -4185,21 +4185,32 @@ function renderOperationBadges(){
   const wrongTotal=state.wrong.reduce((a,b)=>a+b,0);
   const trust=Math.max(0,100-hintsUsed*8-wrongTotal*6-state.alertEvents*7-state.lockouts*12);
   const badges=[
-    {icon:'◉',name:'붉은 벽돌의 관찰자',desc:'하얀 태양 문양을 찾아 첫 번째 암호를 해독',image:'images/1-mission.webp',earned:true},
-    {icon:'⌁',name:'벽난로의 비밀',desc:'차가운 거울과 헐거운 벽돌 뒤의 단서를 발견',image:'images/2-mission.jpg',earned:true},
-    {icon:'▤',name:'태극기의 약속',desc:'학생들과 태극기를 완성하고 4·8의 함성을 확인',image:'images/3-brief-students-making-taegeukgi-mixed-correct-v2.webp',earned:true},
-    {icon:'◆',name:'스무 해의 신호',desc:'인력거 바퀴를 따라 1940년대 윤식의 신호와 재접속',image:'images/4-forced-labor-1940.webp',earned:true},
-    {icon:'✦',name:'시간의 증인',desc:'네 개의 역사 노트와 방공호의 기억을 끝까지 기록',image:'images/record-writing.jpg',earned:state.historyViewed.every(Boolean)&&state.bunkerRestored}
+    {icon:'◉',art:'brick',name:'붉은 벽돌의 관찰자',desc:'하얀 태양 문양을 찾아 첫 번째 암호를 해독',earned:true},
+    {icon:'⌁',art:'fireplace',name:'벽난로의 비밀',desc:'차가운 거울과 헐거운 벽돌 뒤의 단서를 발견',earned:true},
+    {icon:'▤',art:'flag',name:'태극기의 약속',desc:'학생들과 태극기를 완성하고 4·8의 함성을 확인',earned:true},
+    {icon:'◆',art:'signal',name:'스무 해의 신호',desc:'인력거 바퀴를 따라 1940년대 윤식의 신호와 재접속',earned:true},
+    {icon:'✦',art:'song',name:'시간의 증인',desc:'네 개의 역사 노트와 방공호의 기억을 끝까지 기록',earned:state.historyViewed.every(Boolean)&&state.bunkerRestored}
   ];
   const earnedBadges=badges.filter(x=>x.earned);
   const earned=earnedBadges.length;
   $('#badge-count').textContent=`${earned} / ${badges.length} 획득`;
   const grid=$('#badge-grid');
-  grid.innerHTML=earnedBadges.map((x,idx)=>`<button type="button" class="mission-badge earned" data-idx="${idx}" aria-label="${x.name} · 획득 · 눌러서 자세히 보기"><div class="badge-art"><img src="${x.image}" alt="" loading="lazy" decoding="async"><span class="badge-icon">${x.icon}</span></div><div class="badge-text"><strong>${x.name}</strong><small>${x.desc}</small></div></button>`).join('');
+  grid.innerHTML=earnedBadges.map((x,idx)=>`<button type="button" class="mission-badge earned" data-idx="${idx}" aria-label="${x.name} · 획득 · 눌러서 자세히 보기"><div class="badge-art">${badgeIllustration(x.art)}<span class="badge-icon">${x.icon}</span></div><div class="badge-text"><strong>${x.name}</strong><small>${x.desc}</small></div></button>`).join('');
   grid.querySelectorAll('.mission-badge').forEach(el=>{
     el.onclick=()=>showBadgeDetail(earnedBadges[Number(el.dataset.idx)]);
   });
   return {earned,trust,badges};
+}
+
+function badgeIllustration(type){
+  const art={
+    brick:`<svg viewBox="0 0 180 100" role="img" aria-label="붉은 벽돌과 하얀 태양 문양 일러스트"><path d="M12 18h156v64H12z" fill="#74301f" stroke="#d4a85c" stroke-width="3"/><path d="M12 39h156M12 61h156M62 18v21M120 18v21M38 39v22M92 39v22M148 39v22M62 61v21M120 61v21" stroke="#381910" stroke-width="4"/><circle cx="90" cy="50" r="30" fill="#e8d7aa"/><circle cx="90" cy="50" r="16" fill="#74301f"/><path d="M90 20v12M90 68v12M60 50h12M108 50h12" stroke="#e8d7aa" stroke-width="6"/></svg>`,
+    fireplace:`<svg viewBox="0 0 180 100" role="img" aria-label="벽난로와 거울 일러스트"><path d="M28 28h124l-8 18H36zM39 46h102v42H39z" fill="#d0b47e" stroke="#6e4a28" stroke-width="3"/><rect x="67" y="10" width="46" height="28" rx="2" fill="#1a2524" stroke="#e1c477" stroke-width="3"/><path d="M74 16h32v16H74z" fill="#49615b"/><path d="M56 88h68" stroke="#4b2418" stroke-width="7"/><path d="M68 81q22-29 44 0" fill="#18100b" stroke="#9b4929" stroke-width="3"/><path d="M90 69q-7 8 0 13q7-5 0-13" fill="#e7b75d"/></svg>`,
+    flag:`<svg viewBox="0 0 180 100" role="img" aria-label="태극기 일러스트"><path d="M22 18h136v64H22z" fill="#eadfbe" stroke="#b89450" stroke-width="3"/><path d="M90 28a22 22 0 1 0 0 44a11 11 0 1 1 0-22a11 11 0 1 0 0-22" fill="#b64032"/><path d="M90 50a22 22 0 1 0 0 44a11 11 0 1 0 0-22a11 11 0 1 1 0-22" fill="#315b78" transform="translate(0 -22)"/><path d="M39 29l13 8m-13 0l13-8M128 69l13 8m-13 0l13-8M39 72l13-8m-13 0l13 8M128 31l13-8m-13 0l13 8" stroke="#1c1a18" stroke-width="5" stroke-linecap="round"/></svg>`,
+    signal:`<svg viewBox="0 0 180 100" role="img" aria-label="푸른 발자국과 전파 신호 일러스트"><path d="M48 70q-8-19 7-28q13-8 20 5q5 11-4 20q-8 8-23 3M102 70q-8-19 7-28q13-8 20 5q5 11-4 20q-8 8-23 3" fill="#6f4bc4" stroke="#b3a2ed" stroke-width="3"/><path d="M76 30q20-18 40 0M84 20q12-11 24 0" fill="none" stroke="#70ddd4" stroke-width="4" stroke-linecap="round"/><circle cx="90" cy="13" r="4" fill="#efd38d"/></svg>`,
+    song:`<svg viewBox="0 0 180 100" role="img" aria-label="독립가 기록지와 악보 일러스트"><path d="M48 12h84v76H48z" fill="#ead6a2" stroke="#c29b55" stroke-width="3"/><path d="M60 30h60M60 43h60M60 56h60" stroke="#9a7444" stroke-width="3"/><path d="M95 34v31q-8-6-15 0q-5 6 2 9q13 4 19-7V28l20-5v24q-8-6-15 0q-5 6 2 9q13 4 19-7V16L95 23z" fill="#733225"/></svg>`
+  };
+  return `<span class="badge-illustration badge-illustration-${type}">${art[type]||art.brick}</span>`;
 }
 
 /* ---------- 결과 화면에서 배지 카드를 눌렀을 때 상세 팝업 ---------- */
@@ -4218,7 +4229,7 @@ function showBadgeDetail(badge){
   card.innerHTML=`
     <div class="badge-unlock-rays"></div>
     <div class="badge-unlock-kicker">${badge.earned?'업적 획득':'미획득 업적'}</div>
-    <div class="badge-unlock-art"><img src="${badge.image}" alt="${badge.name} 카드 그림" decoding="async"></div>
+    <div class="badge-unlock-art">${badgeIllustration(badge.art)}</div>
     <div class="badge-unlock-icon">${badge.icon}</div>
     <h2>${badge.name}</h2>
     <p>${badge.desc}</p>
@@ -4257,7 +4268,7 @@ async function playBadgeUnlocks(badges){
       <div class="badge-unlock-rays"></div>
       <div class="badge-unlock-count">ACHIEVEMENT ${String(i+1).padStart(2,'0')} / ${String(earnedBadges.length).padStart(2,'0')}</div>
       <div class="badge-unlock-kicker">업적 획득</div>
-      <div class="badge-unlock-art"><img src="${badge.image}" alt="${badge.name} 카드 그림" decoding="async"></div>
+      <div class="badge-unlock-art">${badgeIllustration(badge.art)}</div>
       <div class="badge-unlock-icon">${badge.icon}</div>
       <h2>${badge.name}</h2>
       <p>${badge.desc}</p>
@@ -4501,11 +4512,11 @@ async function revealSharedMemoryWall(){
   const saved=await saveMemoryReply(state.reply);
   const online=saved.mode==='online';
   $('#memory-archive-lead').textContent=online
-    ? '당신의 답장이 한 장의 전보가 되어, 여러 기기에서 참여한 기록들과 함께 기억의 벽을 완성합니다.'
+    ? '당신의 답장이 한 장의 전보가 되어, 앞서 이곳을 지나간 이들의 기록과 함께 기억의 벽을 완성합니다.'
     : '당신의 답장이 한 장의 전보가 되어 기억의 벽에 놓입니다.';
   $('#memory-privacy').textContent=online
-    ? '답장은 Google 시트에 익명으로 저장되어 모든 참가자의 기록관에 바로 공개됩니다. 벽돌을 누르면 다시 읽을 수 있습니다.'
-    : '온라인 기록관에 연결되지 않아 이번 답장은 이 기기에 저장되었습니다. 설정 후에는 모든 기기의 기록이 함께 표시됩니다.';
+    ? '답장은 이름 없이 기억의 벽에 새겨집니다. 벽돌을 누르면 다시 읽을 수 있습니다.'
+    : '당신의 답장이 기억의 벽에 새겨졌습니다. 벽돌을 누르면 다시 읽을 수 있습니다.';
   $('#memory-telegram-message').textContent=`“${saved.record.message}”`;
   $('#memory-telegram-meta').textContent=`${saved.record.alias} · ${saved.record.date}`;
   archive.classList.add('on');
